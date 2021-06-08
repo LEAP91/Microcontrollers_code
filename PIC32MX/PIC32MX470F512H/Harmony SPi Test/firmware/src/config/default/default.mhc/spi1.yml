@@ -1,0 +1,36 @@
+format_version: v1.0
+type: UniqueComponent
+attributes: {id: spi1}
+children:
+- type: Symbols
+  children:
+  - type: Integer
+    attributes: {id: SPI_BRG_VALUE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: spi1, value: '39'}
+  - type: Boolean
+    attributes: {id: SPI_INTERRUPT_MODE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: KeyValueSet
+    attributes: {id: SPI_SPICON_MSSEN}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '0'}
+  - type: KeyValueSet
+    attributes: {id: SPI_SPICON_SMP}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '0'}
+- type: ElementPosition
+  attributes: {x: '460', y: '20', id: spi1}

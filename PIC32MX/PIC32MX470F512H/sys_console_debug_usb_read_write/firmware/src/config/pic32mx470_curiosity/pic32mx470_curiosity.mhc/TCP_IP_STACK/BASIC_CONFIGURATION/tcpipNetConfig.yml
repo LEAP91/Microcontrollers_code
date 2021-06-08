@@ -1,0 +1,34 @@
+format_version: v1.0
+type: GeneratorComponent
+attributes: {id: tcpipNetConfig}
+children:
+- type: Instances
+  children:
+  - type: InstanceComponent
+    attributes: {instance: '0', id: tcpipNetConfig}
+    children:
+    - type: Symbols
+      children:
+      - type: String
+        attributes: {id: TCPIP_NETWORK_DEFAULT_MAC_DRIVER_IDX0}
+        children:
+        - type: Values
+          children:
+          - type: User
+            attributes: {value: ''}
+      - type: Boolean
+        attributes: {id: TCPIP_STACK_NETWORK_CONFIG_IDX0}
+        children:
+        - type: Values
+          children:
+          - type: Dynamic
+            attributes: {id: tcpipNetConfig_0, value: 'true'}
+      - type: Integer
+        attributes: {id: TCPIP_STACK_NETWORK_CONFIG_NUMBER}
+        children:
+        - type: Values
+          children:
+          - type: Dynamic
+            attributes: {id: tcpipNetConfig_0, value: '0'}
+- type: ElementPosition
+  attributes: {x: '420', y: '20', id: tcpipNetConfig}
