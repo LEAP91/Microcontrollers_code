@@ -47,10 +47,10 @@ int main ( void )
     /* Initialize all modules */
     SYS_Initialize ( NULL );
     Out_Dis_Set();
-    TMR2_CallbackRegister(TIMER2_EventHandler,(uintptr_t)NULL);
-    TMR2_Start();
+    //TMR2_CallbackRegister(TIMER2_EventHandler,(uintptr_t)NULL);
+    //TMR2_Start();
     SPI4_Write(&led1, 1);
-    
+ 
 
     while ( true )
     {
