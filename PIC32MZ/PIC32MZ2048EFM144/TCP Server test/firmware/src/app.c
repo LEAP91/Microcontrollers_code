@@ -31,7 +31,7 @@ void APP_Tasks ( void )
           
             if (appInitialized)
             {
-                LED1_On();
+                //LED1_On();
                 appData.state = APP_TCPIP_WAIT_INIT;
             }
             break;
@@ -43,11 +43,11 @@ void APP_Tasks ( void )
             tcpipStat = TCPIP_STACK_Status(sysObj.tcpip);
              if(tcpipStat < 0)
             {   
-                 RGB_LED_R_On();
+                 //RGB_LED_R_On();
             }
             else if(tcpipStat == SYS_STATUS_READY)
             {
-                LED2_On();
+                //LED2_On();
                 nNets = TCPIP_STACK_NumberOfNetworksGet();
                 for(i = 0; i < nNets; i++)
                 {
@@ -73,7 +73,7 @@ void APP_Tasks ( void )
 
             // if the IP address of an interface has changed
             // display the new value on the system console
-            LED3_On();
+            //LED3_On();
             nNets = TCPIP_STACK_NumberOfNetworksGet();
 
             for (i = 0; i < nNets; i++)
@@ -81,7 +81,7 @@ void APP_Tasks ( void )
                 netH = TCPIP_STACK_IndexToNet(i);
                 if(!TCPIP_STACK_NetIsReady(netH))
                 {
-                    RGB_LED_B_On();
+                    //RGB_LED_B_On();
                     return;    // interface not ready yet!
                 }
                 
@@ -94,8 +94,8 @@ void APP_Tasks ( void )
                     //SYS_CONSOLE_MESSAGE(" IP Address: ");
                     //SYS_CONSOLE_PRINT("%d.%d.%d.%d \r\n", ipAddr.v[0], ipAddr.v[1], ipAddr.v[2], ipAddr.v[3]);
                 }
-                RGB_LED_B_Off();
-                RGB_LED_G_On();
+                //RGB_LED_B_Off();
+                //RGB_LED_G_On();
                 appData.state = APP_TCPIP_OPENING_SERVER;
             }
             break;
@@ -115,7 +115,8 @@ void APP_Tasks ( void )
         }
         break;
         case APP_TCPIP_WAIT_FOR_CONNECTION:
-        {
+        {   
+            LED2_On();
             if (!TCPIP_TCP_IsConnected(appData.socket))
             {
                 return;
@@ -137,10 +138,11 @@ void APP_Tasks ( void )
                 //SYS_CONSOLE_MESSAGE("Connection was closed\r\n");
                 break;
             }
-            LED3_Off();
+            //LED3_Off();
             int16_t wMaxGet, wMaxPut, wCurrentChunk;
             uint16_t w, w2;
             uint8_t AppBuffer[32 + 1];
+            uint8_t led_binary = 0b11111111;
             // Figure out how many bytes have been received and how many we can transmit.
             wMaxGet = TCPIP_TCP_GetIsReady(appData.socket);	// Get TCP RX FIFO byte count
             wMaxPut = TCPIP_TCP_PutIsReady(appData.socket);	// Get TCP TX FIFO free space
@@ -176,6 +178,13 @@ void APP_Tasks ( void )
                         appData.state = APP_TCPIP_CLOSING_CONNECTION;
                         //SYS_CONSOLE_MESSAGE("Connection was closed\r\n");
                     }
+                    else if(i==led_binary)
+                    {
+                        RGB_LED_B_On();
+                        while(SWITCH1_Get());
+                        RGB_LED_B_Off();
+                    }
+                  
                 }
                 AppBuffer[w2] = 0;  // end the console string properly
 

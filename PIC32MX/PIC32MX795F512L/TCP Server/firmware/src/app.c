@@ -10,6 +10,8 @@ uint8_t led1 = 0b00000011;
 uint8_t led2 = 0b00000100;
 uint8_t led3 = 0b00001000;
 uint8_t led4 = 0b11110000;
+uint8_t led5 = 0b11111111;
+uint8_t lex;
 
 void APP_Initialize ( void )
 {
@@ -33,7 +35,7 @@ void APP_Tasks ( void )
         case APP_STATE_INIT:
         {
             bool appInitialized = true;
-            //SPI4_Write(&led1, 1);
+            SPI4_Write(&led5, 1);
             if (appInitialized)
             {
                 
@@ -48,11 +50,11 @@ void APP_Tasks ( void )
             tcpipStat = TCPIP_STACK_Status(sysObj.tcpip);
              if(tcpipStat < 0)
             {   
-                SPI4_Write(&led3, 1); 
+                //SPI4_Write(&led3, 1); 
             }
             else if(tcpipStat == SYS_STATUS_READY)
             {
-                SPI4_Write(&led4, 1);
+                //SPI4_Write(&led4, 1);
                 nNets = TCPIP_STACK_NumberOfNetworksGet();
                 for(i = 0; i < nNets; i++)
                 {
@@ -91,6 +93,7 @@ void APP_Tasks ( void )
                     return;    // interface not ready yet!
                 }
                 SPI4_Write(&led2, 1);
+                while(SPI4_IsBusy());
                 ipAddr.Val = TCPIP_STACK_NetAddress(netH);
                 if(dwLastIP[i].Val != ipAddr.Val)
                 {
@@ -146,6 +149,7 @@ void APP_Tasks ( void )
             int16_t wMaxGet, wMaxPut, wCurrentChunk;
             uint16_t w, w2;
             uint8_t AppBuffer[32 + 1];
+            
             // Figure out how many bytes have been received and how many we can transmit.
             wMaxGet = TCPIP_TCP_GetIsReady(appData.socket);	// Get TCP RX FIFO byte count
             wMaxPut = TCPIP_TCP_PutIsReady(appData.socket);	// Get TCP TX FIFO free space
@@ -166,7 +170,9 @@ void APP_Tasks ( void )
 
                 // Transfer the data out of the TCP RX FIFO and into our local processing buffer.
                 TCPIP_TCP_ArrayGet(appData.socket, AppBuffer, wCurrentChunk);
-
+                lex = AppBuffer[0];
+                //SPI4_Write(&led1, 1);
+                while(SPI4_IsBusy());
                 // Perform the "ToUpper" operation on each data byte
                 for(w2 = 0; w2 < wCurrentChunk; w2++)
                 {
