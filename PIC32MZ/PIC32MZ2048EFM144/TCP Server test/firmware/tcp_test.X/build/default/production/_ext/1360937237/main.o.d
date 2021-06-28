@@ -15,6 +15,8 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/default/system/int/sys_int_mapping.h \
  ../src/config/default/configuration.h ../src/config/default/user.h \
  ../src/config/default/peripheral/coretimer/plib_coretimer.h \
+ ../src/config/default/peripheral/uart/plib_uart1.h \
+ ../src/config/default/peripheral/uart/plib_uart_common.h \
  ../src/config/default/library/tcpip/tcpip.h \
  ../src/config/default/library/tcpip/tcpip_common_ports.h \
  ../src/config/default/library/tcpip/tcpip_mac.h \
@@ -46,14 +48,16 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
  ../src/config/default/osal/osal_definitions.h \
  ../src/config/default/osal/osal_impl_basic.h \
  ../src/config/default/system/debug/sys_debug.h \
+ ../src/config/default/system/console/sys_console.h \
+ ../src/config/default/driver/driver.h \
+ ../src/config/default/system/console/src/sys_console_local.h \
  ../src/config/default/peripheral/clk/plib_clk.h \
  ../src/config/default/peripheral/gpio/plib_gpio.h \
  ../src/config/default/peripheral/evic/plib_evic.h \
  ../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_wolfcryptcb.h \
- ../src/app.h ../src/config/default/library/tcpip/tcpip.h \
  ../src/config/default/system/console/sys_console.h \
- ../src/config/default/driver/driver.h \
- ../src/config/default/system/console/src/sys_console_local.h \
+ ../src/config/default/system/console/src/sys_console_uart_definitions.h \
+ ../src/app.h ../src/config/default/library/tcpip/tcpip.h \
  ../src/config/default/bsp/bsp.h
 
 ../src/config/default/definitions.h:
@@ -91,6 +95,10 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
 ../src/config/default/user.h:
 
 ../src/config/default/peripheral/coretimer/plib_coretimer.h:
+
+../src/config/default/peripheral/uart/plib_uart1.h:
+
+../src/config/default/peripheral/uart/plib_uart_common.h:
 
 ../src/config/default/library/tcpip/tcpip.h:
 
@@ -154,6 +162,12 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
 
 ../src/config/default/system/debug/sys_debug.h:
 
+../src/config/default/system/console/sys_console.h:
+
+../src/config/default/driver/driver.h:
+
+../src/config/default/system/console/src/sys_console_local.h:
+
 ../src/config/default/peripheral/clk/plib_clk.h:
 
 ../src/config/default/peripheral/gpio/plib_gpio.h:
@@ -162,14 +176,12 @@ build/default/production/_ext/1360937237/main.o: ../src/main.c \
 
 ../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_wolfcryptcb.h:
 
+../src/config/default/system/console/sys_console.h:
+
+../src/config/default/system/console/src/sys_console_uart_definitions.h:
+
 ../src/app.h:
 
 ../src/config/default/library/tcpip/tcpip.h:
-
-../src/config/default/system/console/sys_console.h:
-
-../src/config/default/driver/driver.h:
-
-../src/config/default/system/console/src/sys_console_local.h:
 
 ../src/config/default/bsp/bsp.h:

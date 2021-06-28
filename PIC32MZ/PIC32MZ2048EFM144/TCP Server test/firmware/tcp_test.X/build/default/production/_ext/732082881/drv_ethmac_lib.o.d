@@ -10,6 +10,10 @@ build/default/production/_ext/732082881/drv_ethmac_lib.o: \
  ../src/config/default/system/system_module.h \
  ../src/config/default/system/system_common.h \
  ../src/config/default/configuration.h \
+ ../src/config/default/system/console/sys_console.h \
+ ../src/config/default/driver/driver.h \
+ ../src/config/default/driver/driver_common.h \
+ ../src/config/default/system/console/src/sys_console_local.h \
  ../src/config/default/system/time/sys_time.h \
  ../src/config/default/system/time/sys_time_definitions.h \
  ../src/config/default/system/int/sys_int.h \
@@ -24,7 +28,6 @@ build/default/production/_ext/732082881/drv_ethmac_lib.o: \
  ../src/config/default/driver/ethmac/src/drv_ethmac_local.h \
  ../src/config/default/library/tcpip/tcpip_mac_object.h \
  ../src/config/default/library/tcpip/tcpip_mac.h \
- ../src/config/default/driver/driver_common.h \
  ../src/config/default/driver/ethphy/drv_ethphy.h \
  ../src/config/default/driver/ethmac/drv_ethmac.h
 
@@ -49,6 +52,14 @@ build/default/production/_ext/732082881/drv_ethmac_lib.o: \
 ../src/config/default/system/system_common.h:
 
 ../src/config/default/configuration.h:
+
+../src/config/default/system/console/sys_console.h:
+
+../src/config/default/driver/driver.h:
+
+../src/config/default/driver/driver_common.h:
+
+../src/config/default/system/console/src/sys_console_local.h:
 
 ../src/config/default/system/time/sys_time.h:
 
@@ -77,8 +88,6 @@ build/default/production/_ext/732082881/drv_ethmac_lib.o: \
 ../src/config/default/library/tcpip/tcpip_mac_object.h:
 
 ../src/config/default/library/tcpip/tcpip_mac.h:
-
-../src/config/default/driver/driver_common.h:
 
 ../src/config/default/driver/ethphy/drv_ethphy.h:
 

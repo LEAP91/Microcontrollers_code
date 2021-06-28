@@ -23,7 +23,10 @@ build/default/production/_ext/438849557/drv_miim.o: \
  ../src/config/default/system/time/sys_time.h \
  ../src/config/default/system/time/sys_time_definitions.h \
  ../src/config/default/system/time/sys_time_definitions.h \
- ../src/config/default/system/debug/sys_debug.h
+ ../src/config/default/system/debug/sys_debug.h \
+ ../src/config/default/system/console/sys_console.h \
+ ../src/config/default/driver/driver.h \
+ ../src/config/default/system/console/src/sys_console_local.h
 
 ../src/config/default/driver/miim/src/drv_miim_local.h:
 
@@ -76,3 +79,9 @@ build/default/production/_ext/438849557/drv_miim.o: \
 ../src/config/default/system/time/sys_time_definitions.h:
 
 ../src/config/default/system/debug/sys_debug.h:
+
+../src/config/default/system/console/sys_console.h:
+
+../src/config/default/driver/driver.h:
+
+../src/config/default/system/console/src/sys_console_local.h:

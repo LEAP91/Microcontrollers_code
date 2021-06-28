@@ -11,6 +11,10 @@ build/default/production/_ext/1033058136/tcpip_manager.o: \
  ../src/config/default/system/system_module.h \
  ../src/config/default/system/system_common.h \
  ../src/config/default/configuration.h \
+ ../src/config/default/system/console/sys_console.h \
+ ../src/config/default/driver/driver.h \
+ ../src/config/default/driver/driver_common.h \
+ ../src/config/default/system/console/src/sys_console_local.h \
  ../src/config/default/system/sys_random_h2_adapter.h \
  ../src/config/default/system/sys_time_h2_adapter.h \
  ../src/config/default/system/time/sys_time.h \
@@ -27,7 +31,6 @@ build/default/production/_ext/1033058136/tcpip_manager.o: \
  ../src/config/default/library/tcpip/tcpip.h \
  ../src/config/default/library/tcpip/tcpip_common_ports.h \
  ../src/config/default/library/tcpip/tcpip_mac.h \
- ../src/config/default/driver/driver_common.h \
  ../src/config/default/library/tcpip/tcpip_mac_object.h \
  ../src/config/default/library/tcpip/tcpip_manager.h \
  ../src/config/default/library/tcpip/tcpip_heap.h \
@@ -84,6 +87,14 @@ build/default/production/_ext/1033058136/tcpip_manager.o: \
 
 ../src/config/default/configuration.h:
 
+../src/config/default/system/console/sys_console.h:
+
+../src/config/default/driver/driver.h:
+
+../src/config/default/driver/driver_common.h:
+
+../src/config/default/system/console/src/sys_console_local.h:
+
 ../src/config/default/system/sys_random_h2_adapter.h:
 
 ../src/config/default/system/sys_time_h2_adapter.h:
@@ -115,8 +126,6 @@ build/default/production/_ext/1033058136/tcpip_manager.o: \
 ../src/config/default/library/tcpip/tcpip_common_ports.h:
 
 ../src/config/default/library/tcpip/tcpip_mac.h:
-
-../src/config/default/driver/driver_common.h:
 
 ../src/config/default/library/tcpip/tcpip_mac_object.h:
 

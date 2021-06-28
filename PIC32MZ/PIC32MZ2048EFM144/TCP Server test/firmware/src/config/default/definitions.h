@@ -53,6 +53,7 @@
 #include "peripheral/nvm/plib_nvm.h"
 #include "system/time/sys_time.h"
 #include "peripheral/coretimer/plib_coretimer.h"
+#include "peripheral/uart/plib_uart1.h"
 #include "library/tcpip/tcpip.h"
 #include "driver/ethmac/drv_ethmac.h"
 #include "driver/miim/drv_miim.h"
@@ -65,6 +66,8 @@
 #include "peripheral/gpio/plib_gpio.h"
 #include "peripheral/evic/plib_evic.h"
 #include "wolfssl/wolfcrypt/port/pic32/crypt_wolfcryptcb.h"
+#include "system/console/sys_console.h"
+#include "system/console/src/sys_console_uart_definitions.h"
 #include "app.h"
 
 
@@ -191,10 +194,14 @@ Remarks:
 typedef struct
 {
     SYS_MODULE_OBJ  sysTime;
+    SYS_MODULE_OBJ  sysConsole0;
+
 
     SYS_MODULE_OBJ  tcpip;
 
     SYS_MODULE_OBJ  drvMiim;
+    SYS_MODULE_OBJ  sysDebug;
+
 
 } SYSTEM_OBJECTS;
 

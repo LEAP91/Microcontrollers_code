@@ -22,7 +22,10 @@ build/default/production/_ext/444070925/drv_ethphy.o: \
  ../src/config/default/system/int/sys_int_mapping.h \
  ../src/config/default/configuration.h \
  ../src/config/default/system/time/sys_time_definitions.h \
- ../src/config/default/system/debug/sys_debug.h
+ ../src/config/default/system/debug/sys_debug.h \
+ ../src/config/default/system/console/sys_console.h \
+ ../src/config/default/driver/driver.h \
+ ../src/config/default/system/console/src/sys_console_local.h
 
 ../src/config/default/driver/ethphy/src/drv_ethphy_local.h:
 
@@ -71,3 +74,9 @@ build/default/production/_ext/444070925/drv_ethphy.o: \
 ../src/config/default/system/time/sys_time_definitions.h:
 
 ../src/config/default/system/debug/sys_debug.h:
+
+../src/config/default/system/console/sys_console.h:
+
+../src/config/default/driver/driver.h:
+
+../src/config/default/system/console/src/sys_console_local.h:

@@ -88,7 +88,8 @@ typedef enum
     APP_TCPIP_CLOSING_CONNECTION,
 
     APP_TCPIP_ERROR,
-    APP_STATE_INIT,        
+    APP_STATE_INIT,
+    APP_STATE_WAIT_UART_CONSOLE_CONFIGURED
     /* TODO: Define states used by the application state machine. */
 
 } APP_STATES;
@@ -113,6 +114,7 @@ typedef struct
     APP_STATES state;
     SYS_CONSOLE_HANDLE console0Handle;
     TCP_SOCKET socket;
+    SYS_CONSOLE_HANDLE consoleHandle;
     /* TODO: Define any additional data used by the application. */
 
 } APP_DATA;
