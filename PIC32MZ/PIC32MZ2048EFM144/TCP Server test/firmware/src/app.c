@@ -17,9 +17,8 @@ static uint8_t iLlegal_Function;
 uint8_t MODBUS_RX[MODBUS_RX_BUFFER_SIZE]; //Modbus TCP buffer
 uint8_t MODBUS_TX[MODBUS_TX_BUFFER_SIZE]; //Modbus TCP bufffer to transfer respose
 
-uint8_t _CoilStatus;
 WORD_VAL1 COIL;
-uint8_t COIL_Status[1]; //Save the status of each coils as a bit
+uint8_t coil_status_byte; //Save the status of each coils as a bit
 uint8_t COIL_REG[3] = {0,0,0}; //Saves the value of each coil in binary form
 
 uint16_t HOLDING_REG[HOLDING_REG_SIZE] =
@@ -77,18 +76,16 @@ uint16_t INPUT_REG[INPUT_REG_SIZE] =
 
 void coils_status(void)
 {   
-    
-    uint8_t i;
-    uint8_t qty_coils; //quantity of coils to read
-    uint8_t start_add; // starting address of coil to read
-    start_add = MODBUS_COMMAND.StartAddress.v[0] = MODBUS_RX[9]; //Address Lo Stores the value for the Output Address
-    qty_coils = MODBUS_COMMAND.NumberOfRegister.v[0] = MODBUS_RX[11]; //Stores Quantity of coils to read
-    
-    for(i=start_add; i<qty_coils; i++)
-        _CoilStatus |= COIL_REG[i];
-    
-    COIL_Status[0]=_CoilStatus;
-    
+    uint8_t n;
+    int i;
+    uint8_t start_addr;
+    n=MODBUS_RX[11];
+    start_addr = MODBUS_RX[9] - 0xFA;
+    for(i=0; i<n; i++)
+    {
+        coil_status_byte |= COIL_REG[start_addr];
+        start_addr++;
+    }
 }
 
 
@@ -96,11 +93,11 @@ void output_drive(void)
 {
     switch(COIL.Addr)
     {
-        case 0x00:
+        case 0x00FA:
             if(COIL.Val == 0xFF)
             {
                 LED1_On();
-                COIL_REG[0]=0b00000001;
+                COIL_REG[0]=1;
             }
             else
             {
@@ -108,11 +105,11 @@ void output_drive(void)
                 COIL_REG[0]=0;
             }
             break;
-        case 0x01:
+        case 0x00FB:
             if(COIL.Val == 0xFF)
             {
                 LED2_On();
-                COIL_REG[0]=0b00000010;
+                COIL_REG[1]=1;
             }
             else
             {
@@ -120,11 +117,11 @@ void output_drive(void)
                 COIL_REG[1]=0;
             }
             break;
-        case 0x02:
+        case 0x00FC:
             if(COIL.Val == 0xFF)
             {
                 LED3_On();
-                COIL_REG[0]=0b00000100;
+                COIL_REG[2]=1;
             }
             else
             {
@@ -169,7 +166,9 @@ void ProcessReceivedMessage(void)
     if(!((MODBUS_COMMAND.FunctionCode == ReadHoldingRegister)      ||
             (MODBUS_COMMAND.FunctionCode == WriteMultipleRegister) ||
             (MODBUS_COMMAND.FunctionCode == ReadInputRegister)     ||
-            (MODBUS_COMMAND.FunctionCode == WriteSingleCoil)))
+            (MODBUS_COMMAND.FunctionCode == WriteSingleCoil)       ||
+            (MODBUS_COMMAND.FunctionCode == WriteSingleRegister)   ||
+            (MODBUS_COMMAND.FunctionCode == ReadCoil)))            
     {
         SYS_CONSOLE_MESSAGE("MODBUS ERROR ILLEGAL FUNCTION CODE: \r\n");
         ModbusError(Illegal_Function_Code);
@@ -352,11 +351,12 @@ void Read_Coils(void)
     MODBUS_RX[5]=0x4;
     //Byte count: Always 1Byte since there is only 3 coils(bits)
     MODBUS_RX[8]=0X1;
-    //Data Byte containing the status bits requested
-    MODBUS_RX[9]=COIL_Status[0];
-    
+        
     //Call function to update coil status register
     coils_status();
+    
+    //Data: Byte containing the status bits requested
+    MODBUS_RX[9]=coil_status_byte;
     
     //copy modbus rx buffer to modbus tx buffer
     //Always copy 10bytes
@@ -429,6 +429,23 @@ void Modbus_Server(void)
                 w = 12;
 
             break; 
+            
+        case WriteSingleRegister:  
+            
+            //Assemble the data
+            writeSingleCoil();
+
+            //Test if server sends Exception error to the client
+            if ((MODBUS_TX[MODBUS_FunctionCode] == 0X85))
+            {
+                SYS_CONSOLE_MESSAGE("Exception error \r\n");
+                w = 0x09 + MODBUS_TX[8];
+            }
+
+            else
+                w = 12;
+
+            break;
             
         case ReadCoil:
             //Assemble the data
