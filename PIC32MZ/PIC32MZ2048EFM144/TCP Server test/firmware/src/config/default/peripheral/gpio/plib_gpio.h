@@ -62,6 +62,50 @@
 // *****************************************************************************
 
 
+/*** Macros for SWITCH4 pin ***/
+#define SWITCH4_Set()               (LATCSET = (1<<15))
+#define SWITCH4_Clear()             (LATCCLR = (1<<15))
+#define SWITCH4_Toggle()            (LATCINV= (1<<15))
+#define SWITCH4_OutputEnable()      (TRISCCLR = (1<<15))
+#define SWITCH4_InputEnable()       (TRISCSET = (1<<15))
+#define SWITCH4_Get()               ((PORTC >> 15) & 0x1)
+#define SWITCH4_PIN                  GPIO_PIN_RC15
+#define SWITCH4_InterruptEnable()   (CNENCSET = (1<<15))
+#define SWITCH4_InterruptDisable()  (CNENCCLR = (1<<15))
+
+/*** Macros for SWITCH1 pin ***/
+#define SWITCH1_Set()               (LATJSET = (1<<4))
+#define SWITCH1_Clear()             (LATJCLR = (1<<4))
+#define SWITCH1_Toggle()            (LATJINV= (1<<4))
+#define SWITCH1_OutputEnable()      (TRISJCLR = (1<<4))
+#define SWITCH1_InputEnable()       (TRISJSET = (1<<4))
+#define SWITCH1_Get()               ((PORTJ >> 4) & 0x1)
+#define SWITCH1_PIN                  GPIO_PIN_RJ4
+#define SWITCH1_InterruptEnable()   (CNENJSET = (1<<4))
+#define SWITCH1_InterruptDisable()  (CNENJCLR = (1<<4))
+
+/*** Macros for SWITCH2 pin ***/
+#define SWITCH2_Set()               (LATJSET = (1<<5))
+#define SWITCH2_Clear()             (LATJCLR = (1<<5))
+#define SWITCH2_Toggle()            (LATJINV= (1<<5))
+#define SWITCH2_OutputEnable()      (TRISJCLR = (1<<5))
+#define SWITCH2_InputEnable()       (TRISJSET = (1<<5))
+#define SWITCH2_Get()               ((PORTJ >> 5) & 0x1)
+#define SWITCH2_PIN                  GPIO_PIN_RJ5
+#define SWITCH2_InterruptEnable()   (CNENJSET = (1<<5))
+#define SWITCH2_InterruptDisable()  (CNENJCLR = (1<<5))
+
+/*** Macros for SWITCH3 pin ***/
+#define SWITCH3_Set()               (LATJSET = (1<<6))
+#define SWITCH3_Clear()             (LATJCLR = (1<<6))
+#define SWITCH3_Toggle()            (LATJINV= (1<<6))
+#define SWITCH3_OutputEnable()      (TRISJCLR = (1<<6))
+#define SWITCH3_InputEnable()       (TRISJSET = (1<<6))
+#define SWITCH3_Get()               ((PORTJ >> 6) & 0x1)
+#define SWITCH3_PIN                  GPIO_PIN_RJ6
+#define SWITCH3_InterruptEnable()   (CNENJSET = (1<<6))
+#define SWITCH3_InterruptDisable()  (CNENJCLR = (1<<6))
+
 
 // *****************************************************************************
 /* GPIO Port
@@ -240,6 +284,7 @@ typedef enum
 
 } GPIO_PIN;
 
+typedef  void (*GPIO_PIN_CALLBACK) ( GPIO_PIN pin, uintptr_t context);
 
 void GPIO_Initialize(void);
 
@@ -264,6 +309,29 @@ void GPIO_PortToggle(GPIO_PORT port, uint32_t mask);
 void GPIO_PortInputEnable(GPIO_PORT port, uint32_t mask);
 
 void GPIO_PortOutputEnable(GPIO_PORT port, uint32_t mask);
+
+void GPIO_PortInterruptEnable(GPIO_PORT port, uint32_t mask);
+
+void GPIO_PortInterruptDisable(GPIO_PORT port, uint32_t mask);
+
+// *****************************************************************************
+// *****************************************************************************
+// Section: Local Data types and Prototypes
+// *****************************************************************************
+// *****************************************************************************
+
+typedef struct {
+
+    /* target pin */
+    GPIO_PIN                 pin;
+
+    /* Callback for event on target pin*/
+    GPIO_PIN_CALLBACK        callback;
+
+    /* Callback Context */
+    uintptr_t               context;
+
+} GPIO_PIN_CALLBACK_OBJ;
 
 // *****************************************************************************
 // *****************************************************************************
@@ -311,6 +379,21 @@ static inline void GPIO_PinOutputEnable(GPIO_PIN pin)
     GPIO_PortOutputEnable((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
 }
 
+static inline void GPIO_PinInterruptEnable(GPIO_PIN pin)
+{
+    GPIO_PortInterruptEnable((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
+}
+
+static inline void GPIO_PinInterruptDisable(GPIO_PIN pin)
+{
+    GPIO_PortInterruptDisable((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
+}
+
+bool GPIO_PinInterruptCallbackRegister(
+    GPIO_PIN pin,
+    const   GPIO_PIN_CALLBACK callBack,
+    uintptr_t context
+);
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility

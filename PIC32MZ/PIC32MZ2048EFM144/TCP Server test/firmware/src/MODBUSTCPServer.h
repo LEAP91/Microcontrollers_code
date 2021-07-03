@@ -13,8 +13,8 @@
 #define MODBUS_PORT         502
 
 //Define for buffer size
-#define HOLDING_REG_SIZE        25
-#define INPUT_REG_SIZE          25
+#define HOLDING_REG_SIZE        4
+#define INPUT_REG_SIZE          4
 #define MODBUS_RX_BUFFER_SIZE      50
 #define MODBUS_TX_BUFFER_SIZE   50
 #define COIL_SIZE                3
@@ -33,6 +33,7 @@
 //Modbus Errors
 #define Illegal_Function_Code   0x01u
 #define Illegal_Data_Address    0x02u
+#define Illegal_Qty             0x03u
 
 //Position of the data in the frame
 #define MODBUS_UnitID           6
@@ -84,6 +85,8 @@ typedef struct
     uint8_t FunctionCode;            //Function code
     WORD_VAL StartAddress;        //Starting register address
     WORD_VAL NumberOfRegister;    //Number of registers
+    uint8_t ByteCount;            // Byte count as per modbus applications protocol pg.29
+    WORD_VAL OutputsValue;         // outputs value as per modbus applications protocol pg.29 
 } _MODBUS_COMMAND;                //MODBUS_COMMAND
 
 _MODBUS_COMMAND MODBUS_COMMAND;
@@ -94,6 +97,13 @@ typedef struct
     uint8_t Addr;
 
 } WORD_VAL1, WORD_BITS1;
+
+typedef struct
+{
+    uint16_t Val2;
+    uint16_t Addr2;
+
+} WORD_VAL2, WORD_BITS2;
 
 //Function Prototypes
 void MODBUSTCPServer(void);

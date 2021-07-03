@@ -65,6 +65,8 @@ void CORE_TIMER_InterruptHandler( void );
 void UART1_FAULT_InterruptHandler( void );
 void UART1_RX_InterruptHandler( void );
 void UART1_TX_InterruptHandler( void );
+void CHANGE_NOTICE_C_InterruptHandler( void );
+void CHANGE_NOTICE_J_InterruptHandler( void );
 void ETHERNET_InterruptHandler( void );
 void NVM_InterruptHandler( void );
 
@@ -93,6 +95,16 @@ void __ISR(_UART1_RX_VECTOR, ipl1SRS) UART1_RX_Handler (void)
 void __ISR(_UART1_TX_VECTOR, ipl1SRS) UART1_TX_Handler (void)
 {
     UART1_TX_InterruptHandler();
+}
+
+void __ISR(_CHANGE_NOTICE_C_VECTOR, ipl1SRS) CHANGE_NOTICE_C_Handler (void)
+{
+    CHANGE_NOTICE_C_InterruptHandler();
+}
+
+void __ISR(_CHANGE_NOTICE_J_VECTOR, ipl1SRS) CHANGE_NOTICE_J_Handler (void)
+{
+    CHANGE_NOTICE_J_InterruptHandler();
 }
 
 void __ISR(_ETHERNET_VECTOR, ipl1SRS) ETHERNET_Handler (void)

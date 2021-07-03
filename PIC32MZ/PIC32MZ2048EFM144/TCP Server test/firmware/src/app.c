@@ -12,335 +12,75 @@ uint16_t ReadByteReverse = 1;           //If a modbus client requires to reverse
 uint16_t InputByteReverse = 1;
 uint16_t WriteByteReverse = 0;
 
-
 static uint8_t iLlegal_Function;
 uint8_t MODBUS_RX[MODBUS_RX_BUFFER_SIZE]; //Modbus TCP buffer
 uint8_t MODBUS_TX[MODBUS_TX_BUFFER_SIZE]; //Modbus TCP bufffer to transfer respose
 
 WORD_VAL1 COIL;
+WORD_VAL2 REG;
 uint8_t coil_status_byte; //Save the status of each coils as a bit
-uint8_t COIL_REG[3] = {0,0,0}; //Saves the value of each coil in binary form
+uint8_t input_status_byte; //Save the status of each input as a bit
+
+uint8_t COIL_REG[3] = 
+{
+    0, //0x00FA
+    0, //0x00FB
+    0  //0x00FC
+}; //Saves the value of each coil in binary form
 
 uint16_t HOLDING_REG[HOLDING_REG_SIZE] =
                         {
-                        0x0000,     //0
-                        0x0001,     //1
-                        0x0002,     //2
-                        0x0003,     //3
-                        0x0004,     //4
-                        0x0005,     //5
-                        0x0006,     //6
-                        0x0007,     //7
-                        0x0008,     //8
-                        0x0009,     //9
-                        0x0009,     //10
-                        0x0008,     //11
-                        0x0007,     //12
-                        0x0007,     //13
-                        0x0006,     //14
-                        0x0005,     //15
-                        0x0004,     //16
-                        0x0003,     //17
-                        0x0002,     //18
-                        0x0001,     //19
-                        0x0025,     //20
-                        0x0035,     //21
-                        0x0036,     //22
-                        0x9957,     //23
-                        0x7890      //24
+                        0x0001,                 //0x00B0 - Node ID
+                        0x0001,                 //0x00B1 - Power Up / Safe
+                        0x0000,                 //0x00B2 - Digital Outputs
+                        0x0000,                 //0x00B3 - Digital Inputs
                        };
 
 uint16_t INPUT_REG[INPUT_REG_SIZE] =
                         {
-                        0x0001,     //0
-                        0x0000,     //1
-                        0x0000,     //2
-                        0x0003,     //3
-                        0x0004,     //4
-                        0x0005,     //5
-                        0x0006,     //6
-                        0x0007,     //7
-                        0x0008,     //8
-                        0x0009,     //9
-                        0x0009,     //10
-                        0x0008,     //11
-                        0x0007,     //12
-                        0x0007,     //13
-                        0x0006,     //14
-                        0x0005,     //15
-                        0x0004,     //16
-                        0x0003,     //17
-                        0x0002,     //18
-                        0x0001      //19
+                        0,     //160
+                        0,     //161
+                        0,     //162
+                        0,     //163
                         };
 
+uint16_t REVERSED_HOLDING_REG[HOLDING_REG_SIZE]; //Mirrors the holding reg. to reverse bytes
+
+//Function Code 01 - Read coils status
 void coils_status(void)
 {   
-    uint8_t n;
+    coil_status_byte=0;
+    uint8_t n = MODBUS_RX[11];
     int i;
-    uint8_t start_addr;
-    n=MODBUS_RX[11];
-    start_addr = MODBUS_RX[9] - 0xFA;
+    uint8_t start_addr = MODBUS_RX[9] - 0xFA;
+    //SYS_CONSOLE_PRINT("Starting Addr. %d\r\n", start_addr);
     for(i=0; i<n; i++)
     {
         coil_status_byte |= COIL_REG[start_addr];
         start_addr++;
     }
-}
-
-
-void output_drive(void)
-{
-    switch(COIL.Addr)
-    {
-        case 0x00FA:
-            if(COIL.Val == 0xFF)
-            {
-                LED1_On();
-                COIL_REG[0]=1;
-            }
-            else
-            {
-                LED1_Off();
-                COIL_REG[0]=0;
-            }
-            break;
-        case 0x00FB:
-            if(COIL.Val == 0xFF)
-            {
-                LED2_On();
-                COIL_REG[1]=1;
-            }
-            else
-            {
-                LED2_Off();
-                COIL_REG[1]=0;
-            }
-            break;
-        case 0x00FC:
-            if(COIL.Val == 0xFF)
-            {
-                LED3_On();
-                COIL_REG[2]=1;
-            }
-            else
-            {
-                LED3_Off();
-                COIL_REG[2]=0;
-            }
-            break;
-    }
-}
-
-void APP_Initialize ( void )
-{
-    /* Place the App state machine in its initial state. */
-    appData.state = APP_STATE_INIT;
- }
-
-
-void ProcessReceivedMessage(void)
-{
-
-    //Transaction Identifier
-    MODBUS_COMMAND.TransactionID.v[1] = MODBUS_RX[0];
-    MODBUS_COMMAND.TransactionID.v[0] = MODBUS_RX[1];
-    //Protocol Identifier
-    MODBUS_COMMAND.ProtocolID.v[1] = MODBUS_RX[2];
-    MODBUS_COMMAND.ProtocolID.v[0] = MODBUS_RX[3];
-    //Number of bytes to receive
-    MODBUS_COMMAND.Length = MODBUS_RX[5];
-    //Unit Identifier
-    MODBUS_COMMAND.UnitID = MODBUS_RX[6];
-    //Function code
-    MODBUS_COMMAND.FunctionCode = MODBUS_RX[7];
-    //Address
-    MODBUS_COMMAND.StartAddress.v[1] = MODBUS_RX[8]; //Address Hi
-    MODBUS_COMMAND.StartAddress.v[0] = MODBUS_RX[9]; //Address Lo
-    //Number of Register or Quantity
-    MODBUS_COMMAND.NumberOfRegister.v[1] = MODBUS_RX[10];
-    MODBUS_COMMAND.NumberOfRegister.v[0] = MODBUS_RX[11];
-
-     //Verify the function code
-    //SYS_CONSOLE_PRINT("Function code Received: %d\r\n", MODBUS_RX[7]);
-    if(!((MODBUS_COMMAND.FunctionCode == ReadHoldingRegister)      ||
-            (MODBUS_COMMAND.FunctionCode == WriteMultipleRegister) ||
-            (MODBUS_COMMAND.FunctionCode == ReadInputRegister)     ||
-            (MODBUS_COMMAND.FunctionCode == WriteSingleCoil)       ||
-            (MODBUS_COMMAND.FunctionCode == WriteSingleRegister)   ||
-            (MODBUS_COMMAND.FunctionCode == ReadCoil)))            
-    {
-        SYS_CONSOLE_MESSAGE("MODBUS ERROR ILLEGAL FUNCTION CODE: \r\n");
-        ModbusError(Illegal_Function_Code);
-        memcpy(MODBUS_TX, MODBUS_RX, 9);
-        iLlegal_Function = 1;
-        return;
-    }
-}
-
-void readHoldingRegister(void)
-{
-    char a;
-
-    //Verify that the data can be sent
-    if((MODBUS_COMMAND.StartAddress.Val > ((int)HOLDING_REG_SIZE - 1)) ||
-        ((MODBUS_COMMAND.StartAddress.Val - 1 + MODBUS_COMMAND.NumberOfRegister.Val) > (int)HOLDING_REG_SIZE))
-    {
-        ModbusError(Illegal_Data_Address);
-        return;
-    }
-
-    //Assemble the data to be sent
-    
-    //Function code
-    MODBUS_RX[7] = MODBUS_COMMAND.FunctionCode;
-
-    MODBUS_RX[8] = (char)MODBUS_COMMAND.NumberOfRegister.Val*2;
-    //Length
-    MODBUS_RX[4] = 0X0;
-    MODBUS_RX[5] = MODBUS_RX[6] + MODBUS_RX[8];
-
-    //change the byte order of HOLDING_REG
-    if (ReadByteReverse)
-    {
-       for(a=0; a<sizeof(HOLDING_REG); a++)
-        {
-            //HOLDING_REG[a] = (uint16_t)((HOLDING_REG[a] & 0xFF) << 8 | (HOLDING_REG[a] & 0xFF00) >> 8);
-        }
-       ReadByteReverse = 0;
-    }
-
-    //Copy MODBUS_RX and HOLdING_REG into MODBUS_TX and send MODBUS_TX as response
-    memcpy(MODBUS_TX, MODBUS_RX, 9);
-    memcpy(MODBUS_TX + 9,
-            HOLDING_REG + MODBUS_COMMAND.StartAddress.v[1] + MODBUS_COMMAND.StartAddress.v[0],
-            sizeof(HOLDING_REG));
-}
-
-void writeHoldingRegister(void)
-{
-    char a;
-
-    //Verify that the data can be sent
-    if((MODBUS_COMMAND.StartAddress.Val > ((int)HOLDING_REG_SIZE - 1)) ||
-        ((MODBUS_COMMAND.StartAddress.Val - 1 + MODBUS_COMMAND.NumberOfRegister.Val) > (int)HOLDING_REG_SIZE))
-    {
-        ModbusError(Illegal_Data_Address);
-        return;
-    }
-
-    //Assemble the data to be sent
-    MODBUS_RX[7] = MODBUS_COMMAND.FunctionCode;
-
-    MODBUS_RX[8] = 0x00; //Byte Count
-    //Length
-    MODBUS_RX[4] = 0X0;
-    MODBUS_RX[5] = 0X6;
-
-
-    //Copy MODBUS_RX into MODBUS_TX and send MODBUS_TX as response
-    memcpy(MODBUS_TX, MODBUS_RX, 12);
-
-    a = MODBUS_RX[12];
-    //Write multiple register values into HOLDING_REG
-    memcpy(HOLDING_REG + MODBUS_COMMAND.StartAddress.v[1] + MODBUS_COMMAND.StartAddress.v[0], MODBUS_RX + 13, a);//sizeof(MODBUS_RX));
-
-    //change the byte order of HOLDING_REG
-    if (WriteByteReverse)
-    {
-       for(a=0; a<sizeof(HOLDING_REG); a++)
-        {
-            //HOLDING_REG[a] = (uint16_t)((HOLDING_REG[a] & 0xFF) << 8 | (HOLDING_REG[a] & 0xFF00) >> 8);
-        }
-       WriteByteReverse = 0;
-    }
-
-
-}
-
-void readInputRegister(void)
-{
-    char a;
-
-    //Verify that the data can be sent
-    if((MODBUS_COMMAND.StartAddress.Val > ((int)INPUT_REG_SIZE - 1)) ||
-        ((MODBUS_COMMAND.StartAddress.Val - 1 + MODBUS_COMMAND.NumberOfRegister.Val) > (int)INPUT_REG_SIZE))
-    {
-        ModbusError(Illegal_Data_Address);
-        return;
-    }
-
-    //Assemble the data to be sent
-    //Function code
-    MODBUS_RX[7] = MODBUS_COMMAND.FunctionCode;
-
-    MODBUS_RX[8] = (char)MODBUS_COMMAND.NumberOfRegister.Val*2;
-    //Length
-    MODBUS_RX[4] = 0X0;
-    MODBUS_RX[5] = MODBUS_RX[6] + MODBUS_RX[8];
-
-    //change the byte order of INPUT_REG
-    if (InputByteReverse)
-    {
-        for(a=0; a<sizeof(INPUT_REG); a++)
-        {
-            //INPUT_REG[a] = (uint16_t)((INPUT_REG[a] & 0xFF) << 8 | (INPUT_REG[a] & 0xFF00) >> 8);
-        }
-       InputByteReverse = 0;
-    }
-
-    //Copy MODBUS_RX and HOLEING_REG into MODBUS_TX and send MODBUS_TX as response
-    memcpy(MODBUS_TX, MODBUS_RX, 9);
-    memcpy(MODBUS_TX + 9,
-            INPUT_REG + MODBUS_COMMAND.StartAddress.v[1] + MODBUS_COMMAND.StartAddress.v[0],
-            sizeof(INPUT_REG));
-}
-
-void writeSingleCoil(void)
-{
-    SYS_CONSOLE_MESSAGE("Write single coil function called\r\n");
-    //uint8_t i;
-    //Assemble the data to be sent
-    //SYS_CONSOLE_PRINT("Modbus Function code to be TX: %d\r\n", MODBUS_COMMAND.FunctionCode);
-    MODBUS_RX[7] = MODBUS_COMMAND.FunctionCode;
-    
-    MODBUS_RX[8] = 0x00;
-    
-    //Length
-    MODBUS_RX[4] = 0X0;
-    MODBUS_RX[5] = 0X6;
-    //SYS_CONSOLE_PRINT(" Size of modbus rx buffer %ul\n", sizeof(MODBUS_RX));
-    //Copy MODBUS_RX into MODBUS_TX and send MODBUS_TX as response
-    memcpy(MODBUS_TX, MODBUS_RX, 12);
-    SYS_CONSOLE_PRINT("Modbus Function code on TX: %d\r\n", MODBUS_TX[MODBUS_FunctionCode]);
-    COIL.Addr = MODBUS_RX[9];
-    COIL.Val = MODBUS_RX[10];
-    output_drive();
-}
-
-//Modbus Error
-void ModbusError(unsigned char ExceptionCode)
-{
-
-    MODBUS_RX[4]=0X00;
-    MODBUS_RX[5]=0X03;
-    MODBUS_RX[MODBUS_FunctionCode]+=0X80;
-    MODBUS_RX[MODBUS_ExceptionCode]=ExceptionCode;
-
-     //Copy MODBUS_RX into MODBUS_TX and send MODBUS_TX as response
-    memcpy(MODBUS_TX, MODBUS_RX, 9);
-
+    // shift starting address to the first bit as per modbus specs since the first byte
+    // is the starting address
+    coil_status_byte = coil_status_byte>>(MODBUS_RX[9] - 0x00FA);
+    SYS_CONSOLE_PRINT("Coil status byte: %X\r\n", coil_status_byte);
 }
 
 void Read_Coils(void)
 {
     SYS_CONSOLE_MESSAGE("Coil status Request..\r\n");
     //Verify that the data can be sent
-    if((MODBUS_COMMAND.StartAddress.Val > ((int)COIL_REG - 1)) ||
-        ((MODBUS_COMMAND.StartAddress.Val - 1 + MODBUS_COMMAND.NumberOfRegister.Val) > (int)COIL_REG))
+    if((MODBUS_COMMAND.StartAddress.Val > 252) ||
+         (MODBUS_COMMAND.StartAddress.Val < 250) ||
+        ((MODBUS_COMMAND.StartAddress.Val) - 1 + MODBUS_COMMAND.NumberOfRegister.Val) > 0x00FC)
     {
         SYS_CONSOLE_MESSAGE("Ilegal data Address..\r\n");
         ModbusError(Illegal_Data_Address);
+        return;
+    }
+    else if(MODBUS_COMMAND.NumberOfRegister.Val>=0x07D0 || MODBUS_COMMAND.NumberOfRegister.Val<=0x0001)
+    {
+        SYS_CONSOLE_MESSAGE("Ilegal Qty of outputs..\r\n");
+        ModbusError(Illegal_Qty);
         return;
     }
     //Assemble data to be sent
@@ -364,6 +104,375 @@ void Read_Coils(void)
         
 }
 
+// Function code 02 - Read Inputs status
+void input_status(void)
+{
+    input_status_byte=0;
+    uint8_t n=MODBUS_RX[11];
+    int i;
+    uint8_t start_addr = MODBUS_RX[9] - 0xA0;
+    //SYS_CONSOLE_PRINT("Starting Addr. %d\r\n", start_addr);
+    for(i=0; i<n; i++)
+    {        
+        input_status_byte |= INPUT_REG[start_addr];
+        start_addr++;
+    }
+    // shift starting address to the first bit as per modbus specs since the first byte
+    // is the starting address
+    input_status_byte = input_status_byte>>(MODBUS_RX[9] - 0x00A0);
+    SYS_CONSOLE_PRINT("Input status byte: %X\r\n", input_status_byte);
+}
+
+void Read_Discrete_Inputs(void)
+{
+    SYS_CONSOLE_MESSAGE("Digital inputs status request..\r\n");
+    //Verify that the data can be sent
+    if((MODBUS_COMMAND.StartAddress.Val > 163) ||
+         (MODBUS_COMMAND.StartAddress.Val < 160) ||
+        ((MODBUS_COMMAND.StartAddress.Val) - 1 + MODBUS_COMMAND.NumberOfRegister.Val) > 0x00A3)
+    {
+        SYS_CONSOLE_MESSAGE("Ilegal data Address..\r\n");
+        ModbusError(Illegal_Data_Address);
+        return;
+    }
+    else if(MODBUS_COMMAND.NumberOfRegister.Val >=0x07D0 || MODBUS_COMMAND.NumberOfRegister.Val <= 0x0001 )
+    {
+        SYS_CONSOLE_MESSAGE("Ilegal Qty Inputs..\r\n");
+        ModbusError(Illegal_Qty);
+        return;
+    }
+    //Assemble data to be sent
+    //Fixed data length of 4bytes since byte count max is 1byte & 
+    //digital input status max is 1byte(4inputs)
+    MODBUS_RX[4]=0x0;
+    MODBUS_RX[5]=0x4;
+    //Byte count: Always 1Byte since there is only 4 inputs(bits)
+    MODBUS_RX[8]=0X1;
+    
+    //Call function to update input status register
+    input_status();
+    //Data: Byte containing the status bits requested
+    MODBUS_RX[9]=input_status_byte;
+    
+    //copy modbus rx buffer to modbus tx buffer
+    //Always copy 10bytes
+    memcpy(MODBUS_TX, MODBUS_RX, 10);
+    
+}
+
+// Function code 03 - Read holding registers
+void readHoldingRegister(void)
+{
+    int a;
+    // Everytime this function is called the reverse hold. reg.
+    // should be set to 0, otherwise the last value would overlap
+    REVERSED_HOLDING_REG[2]=0;
+    REVERSED_HOLDING_REG[3]=0;
+    
+    //Verify that the data can be sent
+    if((MODBUS_COMMAND.StartAddress.Val > 179) ||
+         (MODBUS_COMMAND.StartAddress.Val < 176) ||
+        ((MODBUS_COMMAND.StartAddress.Val) - 1 + MODBUS_COMMAND.NumberOfRegister.Val) > 179)
+    {
+        ModbusError(Illegal_Data_Address);
+        return;
+    }
+    else if(MODBUS_COMMAND.NumberOfRegister.Val >=0x07D0 || MODBUS_COMMAND.NumberOfRegister.Val <= 0x0001 )
+    {
+        SYS_CONSOLE_MESSAGE("Ilegal Qty of Registers..\r\n");
+        ModbusError(Illegal_Qty);
+        return;
+    }
+    
+
+    //Assemble the data to be sent
+    //Function code
+    MODBUS_RX[7] = MODBUS_COMMAND.FunctionCode;
+
+    MODBUS_RX[8] = (char)MODBUS_COMMAND.NumberOfRegister.Val*2;
+    //Length
+    MODBUS_RX[4] = 0X0;
+    MODBUS_RX[5] = MODBUS_RX[6] + MODBUS_RX[8];
+
+    //change the byte order of HOLDING_REG
+    if (ReadByteReverse)
+    {
+       for(a=0; a<4; a++)
+        {
+           
+            REVERSED_HOLDING_REG[a] = (uint16_t)((HOLDING_REG[a] & 0xFF) << 8 | (HOLDING_REG[a] & 0xFF00) >> 8);
+        }
+       //SYS_CONSOLE_MESSAGE("Byte order changed\r\n");
+       //ReadByteReverse = 0;
+    }
+    //SYS_CONSOLE_PRINT("Coil reg Value: %x\r\n", HOLDING_REG[2]);
+    //Copy MODBUS_RX and HOLdING_REG into MODBUS_TX and send MODBUS_TX as response
+    memcpy(MODBUS_TX, MODBUS_RX, 9);
+    // Copy from holding reg. array address up to number of registers
+    memcpy(MODBUS_TX + 9,
+            REVERSED_HOLDING_REG + (MODBUS_COMMAND.StartAddress.Val - 0x00B0),
+            sizeof(HOLDING_REG));
+}
+
+void output_drive(void)
+{
+    int i;
+    HOLDING_REG[2]=0;
+    switch(COIL.Addr)
+    {
+        case 0x00FA:
+            if(COIL.Val == 0xFF)
+            {
+                LED1_On();
+                COIL_REG[0]=1;
+            }
+            else
+            {
+                LED1_Off();
+                COIL_REG[0]=0;
+            }
+            break;
+        case 0x00FB:
+            if(COIL.Val == 0xFF)
+            {
+                LED2_On();
+                COIL_REG[1]=0b00000010;
+            }
+            else
+            {
+                LED2_Off();
+                COIL_REG[1]=0;
+            }
+            break;
+        case 0x00FC:
+            if(COIL.Val == 0xFF)
+            {
+                LED3_On();
+                COIL_REG[2]=0b00000100;
+            }
+            else
+            {
+                LED3_Off();
+                COIL_REG[2]=0;
+            }
+            break;
+    }
+    for(i=0;i<3;i++)
+        HOLDING_REG[2] |= COIL_REG[i];
+    //SYS_CONSOLE_PRINT("Coil reg changed to: %x\r\n", HOLDING_REG[2]);
+    
+}
+
+// Function code 05 - Write single coil
+void writeSingleCoil(void)
+{
+    SYS_CONSOLE_MESSAGE("Write single coil function called\r\n");
+    //Verify data can be sent
+    if((MODBUS_COMMAND.StartAddress.Val > 252) ||
+         (MODBUS_COMMAND.StartAddress.Val < 250))
+    {
+        SYS_CONSOLE_MESSAGE("Ilegal data Address..\r\n");
+        ModbusError(Illegal_Data_Address);
+        return;
+    }
+    else if(!(MODBUS_COMMAND.NumberOfRegister.Val==0x0000 || MODBUS_COMMAND.NumberOfRegister.Val==0xFF00))
+    {
+        SYS_CONSOLE_MESSAGE("Ilegal Output value..\r\n");
+        ModbusError(Illegal_Qty);
+        return;
+    }
+    //Assemble the data to be sent
+    //SYS_CONSOLE_PRINT("Modbus Function code to be TX: %d\r\n", MODBUS_COMMAND.FunctionCode);
+    MODBUS_RX[7] = MODBUS_COMMAND.FunctionCode;
+    
+    MODBUS_RX[8] = 0x00;
+    
+    //Length
+    MODBUS_RX[4] = 0X0;
+    MODBUS_RX[5] = 0X6;
+    //SYS_CONSOLE_PRINT(" Size of modbus rx buffer %ul\n", sizeof(MODBUS_RX));
+    //Copy MODBUS_RX into MODBUS_TX and send MODBUS_TX as response
+    memcpy(MODBUS_TX, MODBUS_RX, 12);
+    COIL.Addr = MODBUS_RX[9];
+    COIL.Val = MODBUS_RX[10];
+    output_drive();
+}
+
+// Function code 06 - Write single register
+void Write_Single_register(void)
+{
+    SYS_CONSOLE_MESSAGE("Write single register function called\r\n");
+    //Verify that the data can be sent
+    if((MODBUS_COMMAND.StartAddress.Val > 179) ||
+         (MODBUS_COMMAND.StartAddress.Val < 176))
+    {
+        ModbusError(Illegal_Data_Address);
+        return;
+    }
+    else if(MODBUS_COMMAND.NumberOfRegister.Val>=0xFFFF || MODBUS_COMMAND.NumberOfRegister.Val<=0x0000)
+    {
+        SYS_CONSOLE_MESSAGE("Ilegal register value..\r\n");
+        ModbusError(Illegal_Qty);
+        return;
+    }
+    //Assemble the data to be sent
+    //SYS_CONSOLE_PRINT("Modbus Function code to be TX: %d\r\n", MODBUS_COMMAND.FunctionCode);
+    MODBUS_RX[7] = MODBUS_COMMAND.FunctionCode;
+    
+    MODBUS_RX[8] = 0x00;
+    
+    //Length
+    MODBUS_RX[4] = 0X0;
+    MODBUS_RX[5] = 0X6;
+    
+    //Copy MODBUS_RX into MODBUS_TX and send MODBUS_TX as response
+    memcpy(MODBUS_TX, MODBUS_RX, 12);
+    REG.Addr2 = MODBUS_COMMAND.StartAddress.Val;
+    REG.Val2 = MODBUS_COMMAND.NumberOfRegister.Val;
+    switch(REG.Addr2)
+    {
+        case 0x00B0:
+            HOLDING_REG[0]=REG.Val2;
+            break;
+        case 0x00B1:
+            HOLDING_REG[1]=REG.Val2;
+            break;
+        case 0x00B2:
+            HOLDING_REG[2]=REG.Val2;
+            break;
+        case 0x00B3:
+            HOLDING_REG[3]=REG.Val2;
+            break;
+    
+    }
+}
+
+void multi_coils_drive(void)
+{
+    COIL.Addr = MODBUS_RX[9]; // Start Address
+    uint8_t n = MODBUS_RX[11]; // Qty of coils to drive
+    uint8_t outputs = MODBUS_RX[13]; //Outputs Byte
+    //SYS_CONSOLE_PRINT("Outputs value is: %d\r\n", outputs);
+    int i;
+    for(i=0; i<n ; i++)
+    {
+        if(outputs&0b00000001)
+        {
+            COIL.Val = 0xFF;
+        }
+        else
+        {
+            COIL.Val = 0x00;
+        }
+        SYS_CONSOLE_PRINT("Coil %d value is %d\r\n", COIL.Addr, COIL.Val);
+        output_drive();
+        COIL.Addr++;
+        outputs = outputs>>1;
+    }           
+    
+}
+
+// Function code 15 - Write multiple coils
+void Write_Multiple_Coils(void)
+{
+    SYS_CONSOLE_MESSAGE("Write multiple coils request..\r\n");
+    //Verify that the data can be sent
+    if((MODBUS_COMMAND.StartAddress.Val > 252) ||
+         (MODBUS_COMMAND.StartAddress.Val < 250) ||
+        ((MODBUS_COMMAND.StartAddress.Val) - 1 + MODBUS_COMMAND.NumberOfRegister.Val) > 0x00FC)
+    {
+        SYS_CONSOLE_MESSAGE("Ilegal data Address..\r\n");
+        ModbusError(Illegal_Data_Address);
+        return;
+    }
+    else if(MODBUS_COMMAND.NumberOfRegister.Val>=0x07D0 || MODBUS_COMMAND.NumberOfRegister.Val<=0x0001)
+    {
+        SYS_CONSOLE_MESSAGE("Ilegal Qty of outputs..\r\n");
+        ModbusError(Illegal_Qty);
+        return;
+    }
+    else if(!(MODBUS_COMMAND.ByteCount == 1))
+    {
+        SYS_CONSOLE_MESSAGE("Ilegal Qty of bytes..\r\n");
+        ModbusError(Illegal_Qty);
+        return;
+    }
+    //Assemble data to be sent
+    
+    //Fixed data length of 4bytes since byte count max is 1byte & 
+    //coils status max is 1byte(3coils)
+    MODBUS_RX[4]=0x0;
+    MODBUS_RX[5]=0x4;
+          
+    //Call function to update coil status register
+    multi_coils_drive();
+    
+    //copy modbus rx buffer to modbus tx buffer
+    //Always copy 10bytes
+    memcpy(MODBUS_TX, MODBUS_RX, 12);
+    
+}
+
+void ProcessReceivedMessage(void)
+{
+
+    //Transaction Identifier
+    MODBUS_COMMAND.TransactionID.v[1] = MODBUS_RX[0];
+    MODBUS_COMMAND.TransactionID.v[0] = MODBUS_RX[1];
+    //Protocol Identifier
+    MODBUS_COMMAND.ProtocolID.v[1] = MODBUS_RX[2];
+    MODBUS_COMMAND.ProtocolID.v[0] = MODBUS_RX[3];
+    //Number of bytes to receive
+    MODBUS_COMMAND.Length = MODBUS_RX[5];
+    //Unit Identifier
+    MODBUS_COMMAND.UnitID = MODBUS_RX[6];
+    //Function code
+    MODBUS_COMMAND.FunctionCode = MODBUS_RX[7];
+    //Address
+    MODBUS_COMMAND.StartAddress.v[1] = MODBUS_RX[8]; //Address Hi
+    MODBUS_COMMAND.StartAddress.v[0] = MODBUS_RX[9]; //Address Lo
+    //Number of Register or Quantity
+    MODBUS_COMMAND.NumberOfRegister.v[1] = MODBUS_RX[10];
+    MODBUS_COMMAND.NumberOfRegister.v[0] = MODBUS_RX[11];
+    
+    // *** This only applies to function code Write Mutiple Registers ***
+    MODBUS_COMMAND.ByteCount = MODBUS_RX[12];
+    MODBUS_COMMAND.OutputsValue.v[1] = MODBUS_RX[13];
+    MODBUS_COMMAND.OutputsValue.v[0] = MODBUS_RX[14];
+
+     //Verify the function code
+    //SYS_CONSOLE_PRINT("Function code Received: %d\r\n", MODBUS_RX[7]);
+    if(!((MODBUS_COMMAND.FunctionCode == ReadHoldingRegister)      ||
+            (MODBUS_COMMAND.FunctionCode == WriteMultipleRegister) ||
+            (MODBUS_COMMAND.FunctionCode == ReadInputRegister)     ||
+            (MODBUS_COMMAND.FunctionCode == WriteSingleCoil)       ||
+            (MODBUS_COMMAND.FunctionCode == WriteSingleRegister)   ||
+            (MODBUS_COMMAND.FunctionCode == ReadCoil)              ||
+            (MODBUS_COMMAND.FunctionCode == ReadDiscreteInputs)    ||
+            (MODBUS_COMMAND.FunctionCode == WriteMultipleCoils)))
+    {
+        SYS_CONSOLE_MESSAGE("MODBUS ERROR ILLEGAL FUNCTION CODE: \r\n");
+        ModbusError(Illegal_Function_Code);
+        memcpy(MODBUS_TX, MODBUS_RX, 9);
+        iLlegal_Function = 1;
+        return;
+    }
+}
+
+//Modbus Error
+void ModbusError(unsigned char ExceptionCode)
+{
+
+    MODBUS_RX[4]=0X00;
+    MODBUS_RX[5]=0X03;
+    MODBUS_RX[MODBUS_FunctionCode]+=0X80;
+    MODBUS_RX[MODBUS_ExceptionCode]=ExceptionCode;
+
+     //Copy MODBUS_RX into MODBUS_TX and send MODBUS_TX as response
+    memcpy(MODBUS_TX, MODBUS_RX, 9);
+
+}
+
 void Modbus_Server(void)
 {
     //Unpack Modbus cliente data
@@ -372,6 +481,37 @@ void Modbus_Server(void)
     //Read the function code
     switch(MODBUS_COMMAND.FunctionCode)
     {
+        case WriteMultipleCoils:
+            //Assemble data
+            Write_Multiple_Coils();
+            
+            //Test if server sends Exception error to the client
+            if ((MODBUS_TX[MODBUS_FunctionCode] == 0X95))
+            {
+                SYS_CONSOLE_MESSAGE("Exception error \r\n");
+                w = 0x09 + MODBUS_TX[8];
+            }
+
+            else
+                w = 12;
+
+            break; 
+            
+        case ReadDiscreteInputs:
+            //Assemble the data
+            Read_Discrete_Inputs();
+
+            //Test if server sends Exception error to the client
+            if ((MODBUS_TX[MODBUS_FunctionCode] == 0X82))
+            {
+                SYS_CONSOLE_MESSAGE("Exception error \r\n");
+                w = 0x09 + MODBUS_TX[8];
+            }
+
+            else
+                w = 10;
+
+            break; 
         case ReadHoldingRegister:
             //Assemble the data
             readHoldingRegister();
@@ -380,13 +520,13 @@ void Modbus_Server(void)
                 w = 0x09 + MODBUS_TX[5];
             }
             
-            else w=9;
+            else w=9 + MODBUS_RX[8];
             
             break;
         
         case WriteMultipleRegister:
             //Assemble the data
-            writeHoldingRegister();
+            //writeHoldingRegister();
 
             //Test if server sends Exception error to the client
             if (!(MODBUS_TX[MODBUS_FunctionCode] == 0X90))
@@ -398,21 +538,7 @@ void Modbus_Server(void)
                 w = 9;
 
             break;
-            
-        case ReadInputRegister:
-            
-            readInputRegister();
 
-            //Test if server sends Exception error to the client
-            if (!(MODBUS_TX[MODBUS_FunctionCode] == 0X84))
-            {
-                w = 0x09 + MODBUS_TX[8];
-            }
-
-            else
-                w = 9;
-
-            break;
         case WriteSingleCoil:  
             
             //Assemble the data
@@ -433,10 +559,10 @@ void Modbus_Server(void)
         case WriteSingleRegister:  
             
             //Assemble the data
-            writeSingleCoil();
+            Write_Single_register();
 
             //Test if server sends Exception error to the client
-            if ((MODBUS_TX[MODBUS_FunctionCode] == 0X85))
+            if ((MODBUS_TX[MODBUS_FunctionCode] == 0X86))
             {
                 SYS_CONSOLE_MESSAGE("Exception error \r\n");
                 w = 0x09 + MODBUS_TX[8];
@@ -465,6 +591,66 @@ void Modbus_Server(void)
                     
 }
 
+void input_drive(GPIO_PIN pin, uintptr_t context)
+{
+    int i;
+    // Reset the holding reg. to 0 since this function reads
+    // every input
+    HOLDING_REG[3]=0;
+    if(SWITCH1_Get()== 0)
+    {
+        SYS_CONSOLE_MESSAGE("switch 1 called\r\n");
+        INPUT_REG[0]=0b00000001;
+    }
+    else if(SWITCH1_Get()==1)
+    {
+        SYS_CONSOLE_MESSAGE("switch 1 cleared\r\n");
+        INPUT_REG[0]=0;
+    }
+    if(SWITCH2_Get()== 0)
+    {
+        SYS_CONSOLE_MESSAGE("switch 2 called\r\n");
+        INPUT_REG[1]=0b00000010;
+    }
+    else if(SWITCH2_Get()==1)
+    {
+        INPUT_REG[1]=0;
+    }
+    if(SWITCH3_Get()== 0)
+    {
+        SYS_CONSOLE_MESSAGE("switch 3 called\r\n");
+        INPUT_REG[2]=0b00000100;
+    }
+    else if(SWITCH3_Get()==1)
+    {
+        INPUT_REG[2]=0;
+    }
+    if(SWITCH4_Get()== 0)
+    {
+        SYS_CONSOLE_MESSAGE("switch 4 called\r\n");
+        INPUT_REG[3]=0b00001000;
+    }
+    else if(SWITCH4_Get()==1)
+    {
+        INPUT_REG[3]=0;
+    }
+    // Read input reg. and update holding reg. input address
+    for(i=0;i<4;i++)
+        HOLDING_REG[3] |= INPUT_REG[i];
+    
+}
+
+void APP_Initialize ( void )
+{
+    /* Place the App state machine in its initial state. */
+    appData.state = APP_STATE_INIT;
+    // Initialize digital inputs interrupts
+    GPIO_PinInterruptEnable(SWITCH1_PIN);
+    GPIO_PinInterruptEnable(SWITCH2_PIN);
+    GPIO_PinInterruptEnable(SWITCH3_PIN);
+    GPIO_PinInterruptEnable(SWITCH4_PIN);
+ }
+
 void APP_Tasks ( void )
 {
     SYS_STATUS          tcpipStat;
@@ -473,7 +659,14 @@ void APP_Tasks ( void )
     IPV4_ADDR           ipAddr;
     int                 i, nNets;
     TCPIP_NET_HANDLE    netH;
-    //SYS_CONSOLE_MESSAGE("Test messagge");
+    
+    // Create interrupts for digital inputs
+    GPIO_PinInterruptCallbackRegister(SWITCH1_PIN, input_drive, (uintptr_t)NULL);
+    GPIO_PinInterruptCallbackRegister(SWITCH2_PIN, input_drive, (uintptr_t)NULL);
+    GPIO_PinInterruptCallbackRegister(SWITCH3_PIN, input_drive, (uintptr_t)NULL);
+    GPIO_PinInterruptCallbackRegister(SWITCH4_PIN, input_drive, (uintptr_t)NULL);
+    
+    
     /* Check the application's current state. */
     switch ( appData.state )
     {
@@ -652,7 +845,7 @@ void APP_Tasks ( void )
                 }
                 else
                 {
-                    SYS_CONSOLE_PRINT("Total number of bytes to sent: %d\r\n", w);
+                    //SYS_CONSOLE_PRINT("# bytes to sent: %d\r\n", w);
                     TCPIP_TCP_ArrayPut(appData.socket, MODBUS_TX, w);
                 }         
 

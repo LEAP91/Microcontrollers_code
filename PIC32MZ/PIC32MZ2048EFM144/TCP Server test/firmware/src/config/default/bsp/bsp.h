@@ -90,22 +90,6 @@
 #define LED1_Get() ((PORTJ >> 7) & 0x1)
 #define LED1_On() (LATJCLR = (1<<7))
 #define LED1_Off() (LATJSET = (1<<7))
-/*** SWITCH Macros for SWITCH4 ***/
-#define SWITCH4_Get() ((PORTC >> 15) & 0x1)
-#define SWITCH4_STATE_PRESSED 0
-#define SWITCH4_STATE_RELEASED 1
-/*** SWITCH Macros for SWITCH1 ***/
-#define SWITCH1_Get() ((PORTJ >> 4) & 0x1)
-#define SWITCH1_STATE_PRESSED 0
-#define SWITCH1_STATE_RELEASED 1
-/*** SWITCH Macros for SWITCH2 ***/
-#define SWITCH2_Get() ((PORTJ >> 5) & 0x1)
-#define SWITCH2_STATE_PRESSED 0
-#define SWITCH2_STATE_RELEASED 1
-/*** SWITCH Macros for SWITCH3 ***/
-#define SWITCH3_Get() ((PORTJ >> 6) & 0x1)
-#define SWITCH3_STATE_PRESSED 0
-#define SWITCH3_STATE_RELEASED 1
 
 
 
