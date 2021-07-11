@@ -728,7 +728,7 @@ void APP_Tasks ( void )
 #if defined(TCPIP_STACK_USE_NBNS)
                     SYS_CONSOLE_PRINT("    Interface %s on host %s - NBNS enabled\r\n", netName, netBiosName);
 #else
-                    SYS_CONSOLE_PRINT("Interface %s on host %s - NBNS disabled\r\n", netName, netBiosName);
+                    SYS_CONSOLE_PRINT("Inter. %s on host %s - NBNS disabled\r\n", netName, netBiosName);
 #endif  // defined(TCPIP_STACK_USE_NBNS)
                     (void)netName;          // avoid compiler warning 
                     (void)netBiosName;      // if SYS_CONSOLE_PRINT is null macro
