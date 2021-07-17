@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Inputs</title>
+    <link rel="stylesheet" href="CSS/format.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <img class="logo" src="imgs/webpage_logo.png" alt="logo">
+        <div class="model">DIO-0001</div>
+        <div id="sidebar">
+            <ul>
+                <li><a href="network-settings.html">Network Settings</a></li>
+                <li><a href="user-settings.html">User Settings</a></li>
+                <li class="current">Digital Inputs</li>
+                <li><a href="digital-outputs.html">Digital Outputs</a></li>
+            </ul>
+        </div>
+        <div id="myform">
+
+            <div class="formgrid-digital-input">
+                <div class="message"></div>
+                <h1></h1>
+                <h1>STATUS</h1>
+                <label for="DI0">Digital Input 1</label>
+                <div class="status" id="DI0"></div>
+                <label for="DI1">Digital Input 2</label>
+                <div class="status" id="DI1"></div>
+                <label for="DI2">Digital Input 3</label>
+                <div class="status" id="DI2"></div>
+                <label for="DI3">Digital Input 4</label>
+                <div class="status" id="DI3"></div>
+                <label for="DI4">Digital Input 5</label>
+                <div class="status" id="DI4"></div>
+                <label for="DI5">Digital Input 6</label>
+                <div class="status" id="DI5"></div>
+                <label for="DI6">Digital Input 7</label>
+                <div class="status" id="DI6"></div>
+                <label for="DI7">Digital Input 8</label>
+                <div class="status" id="DI7"></div>
+                <h1></h1>
+                <h1></h1>
+                <h1></h1>
+                <button onclick="ajax_command()">Read</button>
+                <button>Continous Reading</button>
+                <button>Stop</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        function getXMLValue(xmlData, field) {
+            try {
+                if (xmlData.getElementsByTagName(field[0].firsChild.nodeValue))
+                    return xmlData.getElementsByTagName(field)[0].firsChild.nodeValue;
+                else
+                    return null
+            }
+        }
+        function update_input_status(xlmData) {
+            for (i = 0; i < 8; i++)
+                document.getElementById('DI' + i).style.backgroundColor = (getXMLValue(xmlData, 'led' + 1) == '1') ? '#090' : '#ddd';
+        }
+
+        function ajax_command() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Action to be performed when the document is read;
+                    xlmData = xmlhttp.responseXML;
+                    update_input_status(xlmData);
+                }
+                xhttp.open("GET", "status.xml", true);
+                xhttp.send(null);
+
+
+            }
+    </script>
+</body>
+
+</html>

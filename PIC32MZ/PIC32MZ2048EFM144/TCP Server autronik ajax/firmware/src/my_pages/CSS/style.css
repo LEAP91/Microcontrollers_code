@@ -1,0 +1,74 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+/* Logo Font */
+@font-face {
+    font-family: Neon;
+    src: url(Neon-Heavy.woff);
+}
+body{
+    background-color: rgb(24, 24, 24);
+}
+h1{
+    color: white;
+}
+#logo{
+    text-align: center;
+    font-family: Neon;
+    color: white;
+    font-size: 3rem;
+}
+#sidebar{
+    font-family: "Roboto", sans-serif;
+    margin: 0px;
+    padding: 0px;
+    width: 250px;
+    height: 50%;
+    font-size: 20px;
+    top: 25%;
+    position: absolute;
+    
+}
+#sidebar ul li{
+    list-style: none;
+    padding: 30px 10px;
+    border-bottom: rgb(100, 100, 100) 1px solid;
+    text-align: left;
+}
+
+.settings label{
+    padding-right: 1.1em;
+    color: white;
+}
+.settings {
+    padding-right: 2em;
+    color: cornsilk;
+    background: coral;
+    
+}
+#form{
+    
+    padding-top: 12.5%;
+    padding-left: 40%;
+    display: block;
+    font-family: "Roboto", sans-serif;
+    font-size: 30px;
+}
+#IP_Address, #subnet, #gateway{
+    margin-bottom: 20px;
+}
+#IP_Address label{
+    padding-right: 84px;
+}
+#subnet label{
+    padding-right: 53px;
+}
+.settings input{
+    width: 50px;
+}
+.settings button{
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    width: 100%;
+    margin-top: 50px;
+    font-size: 20px;
+    background: #43A047;
+}

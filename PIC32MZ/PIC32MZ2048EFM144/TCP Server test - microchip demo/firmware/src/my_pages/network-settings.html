@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Settings</title>
+    <link rel="stylesheet" href="CSS/format.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="logo">AUTRONIK</div>
+        <div class="model">DIO-0001</div>
+        <div id="sidebar">
+            <ul>
+                <li class="current">Network Settings</li>
+                <li><a href="user-settings.html">User Settings</a></li>
+                <li><a href="digital-inputs.html">Digital Inputs</a></li>
+                <li><a href="digital-outputs.html">Digital Outputs</a></li>
+            </ul>
+        </div>
+        <form id="myform" action="get">
+
+            <div class="formgrid">
+                <label for="input1">IP Address</label>
+                <input type="number" id="ip_4" name="ip_4" class="forminput" maxlength="3"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <input type="number" id="ip_3" name="ip_3" class="forminput" maxlength="3"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <input type="number" id="ip_2" name="ip_2" class="forminput" maxlength="3"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <input type="number" id="ip_1" name="ip_1" class="forminput" maxlength="3"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <label for="input2">Subnet Mask</label>
+                <input type="number" id="subnet_4" name="subnet_4" class="forminput" maxlength="3"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <input type="number" id="subnet_3" name="subnet_3" class="forminput" maxlength="3"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <input type="number" id="subnet_2" name="subnet_2" class="forminput" maxlength="3"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <input type="number" id="subnet_1" name="subnet_1" class="forminput" maxlength="3"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <label for="input3">Gateway Mask</label>
+                <input type="number" id="gate_4" name="gate_4" class="forminput" maxlength="3"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <input type="number" id="gate_3" name="gate_3" class="forminput" maxlength="3"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <input type="number" id="gate_2" name="gate_2" class="forminput" maxlength="3"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <input type="number" id="gate_1" name="gate_1" class="forminput" maxlength="3"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <label for="socket timeout">Socket timeout</label>
+                <input type="number" id="gate_1" name="gate_1" class="forminput" maxlength="2"
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <div class="minutes" id="minutes">Min</div>
+
+                <h1></h1>
+                <h1></h1>
+                <button type="submit">Save</button>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+
+</html>
