@@ -665,8 +665,6 @@
       <itemPath>../src/custom_http_net_app.c</itemPath>
       <itemPath>../src/mpfs_net_img.c</itemPath>
     </logicalFolder>
-    <logicalFolder name="web_pages" displayName="web_pages" projectFiles="true">
-    </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
