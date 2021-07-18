@@ -52,7 +52,57 @@ THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
   Section:
     Definitions
  ****************************************************************************/
+#ifndef APP_SWITCH_1StateGet
+#define APP_SWITCH_1StateGet() 0
+#endif
 
+#ifndef APP_SWITCH_2StateGet
+#define APP_SWITCH_2StateGet() 0
+#endif
+
+#ifndef APP_SWITCH_3StateGet
+#define APP_SWITCH_3StateGet() 0
+#endif
+
+#ifndef APP_LED_1StateGet
+#define APP_LED_1StateGet() 0
+#endif
+#ifndef APP_LED_2StateGet
+#define APP_LED_2StateGet() 0
+#endif
+#ifndef APP_LED_3StateGet
+#define APP_LED_3StateGet() 0
+#endif
+
+#ifndef APP_LED_1StateSet
+#define APP_LED_1StateSet()
+#endif
+#ifndef APP_LED_2StateSet
+#define APP_LED_2StateSet()
+#endif
+#ifndef APP_LED_3StateSet
+#define APP_LED_3StateSet()
+#endif
+
+#ifndef APP_LED_1StateClear
+#define APP_LED_1StateClear()
+#endif
+#ifndef APP_LED_2StateClear
+#define APP_LED_2StateClear()
+#endif
+#ifndef APP_LED_3StateClear
+#define APP_LED_3StateClear()
+#endif
+
+#ifndef APP_LED_1StateToggle
+#define APP_LED_1StateToggle()
+#endif
+#ifndef APP_LED_2StateToggle
+#define APP_LED_2StateToggle()
+#endif
+#ifndef APP_LED_3StateToggle
+#define APP_LED_3StateToggle()
+#endif
 
 // Use the web page in the Demo App (~2.5kb ROM, ~0b RAM)
 #define HTTP_APP_USE_RECONFIG
@@ -757,10 +807,326 @@ static TCPIP_HTTP_NET_IO_RESULT HTTPPostConfig(TCPIP_HTTP_NET_CONN_HANDLE connHa
     return TCPIP_HTTP_NET_IO_RES_DONE;
 }
 
+#if defined(TCPIP_STACK_USE_SNMP_SERVER)
+static TCPIP_HTTP_NET_IO_RESULT HTTPPostSNMPCommunity(TCPIP_HTTP_NET_CONN_HANDLE connHandle)
+{
+    uint8_t len = 0;
+    uint8_t vCommunityIndex;
+    uint8_t *httpDataBuff;
+    uint16_t httpBuffSize;
 
+    #define SM_CFG_SNMP_READ_NAME   (0u)
+    #define SM_CFG_SNMP_READ_VALUE  (1u)
+
+    httpDataBuff = TCPIP_HTTP_NET_ConnectionDataBufferGet(connHandle);
+    httpBuffSize = TCPIP_HTTP_NET_ConnectionDataBufferSizeGet(connHandle);
+    switch(TCPIP_HTTP_NET_ConnectionPostSmGet(connHandle))
+    {
+        case SM_CFG_SNMP_READ_NAME:
+            // If all parameters have been read, end
+            if(TCPIP_HTTP_NET_ConnectionByteCountGet(connHandle) == 0u)
+            {
+                return TCPIP_HTTP_NET_IO_RES_DONE;
+            }
+
+            // Read a name
+            if(TCPIP_HTTP_NET_ConnectionPostNameRead(connHandle, httpDataBuff, httpBuffSize) == TCPIP_HTTP_NET_READ_INCOMPLETE)
+                return TCPIP_HTTP_NET_IO_RES_NEED_DATA;
+
+            // Move to reading a value, but no break
+            TCPIP_HTTP_NET_ConnectionPostSmSet(connHandle, SM_CFG_SNMP_READ_VALUE);
+
+        case SM_CFG_SNMP_READ_VALUE:
+            // Read a value
+            if(TCPIP_HTTP_NET_ConnectionPostValueRead(connHandle, httpDataBuff + 6, httpBuffSize) == TCPIP_HTTP_NET_READ_INCOMPLETE)
+                return TCPIP_HTTP_NET_IO_RES_NEED_DATA;
+
+            // Default action after this is to read the next name, unless there's an error
+            TCPIP_HTTP_NET_ConnectionPostSmSet(connHandle, SM_CFG_SNMP_READ_NAME);
+
+            // See if this is a known parameter and legal (must be null
+            // terminator in 4th field name byte, string must no greater than
+            // TCPIP_SNMP_COMMUNITY_MAX_LEN bytes long, and TCPIP_SNMP_MAX_COMMUNITY_SUPPORT
+            // must not be violated.
+            vCommunityIndex = httpDataBuff[3] - '0';
+            if(vCommunityIndex >= TCPIP_SNMP_MAX_COMMUNITY_SUPPORT)
+                break;
+            if(httpDataBuff[4] != 0x00u)
+                break;
+            len = strlen((char *)httpDataBuff + 6);
+            if(len > TCPIP_SNMP_COMMUNITY_MAX_LEN)
+            {
+                break;
+            }
+            if(memcmp((void *)httpDataBuff, (const void *)"rcm", 3) == 0)
+            {
+                if(TCPIP_SNMP_ReadCommunitySet(vCommunityIndex,len,httpDataBuff + 6)!=true)
+                    break;
+            }
+            else if(memcmp((void *)httpDataBuff, (const void *)"wcm", 3) == 0)
+            {
+                if(TCPIP_SNMP_WriteCommunitySet(vCommunityIndex,len,httpDataBuff + 6) != true)
+                    break;
+            }
+            else
+            {
+                break;
+            }
+
+            break;
+    }
+
+    return TCPIP_HTTP_NET_IO_RES_WAITING; // Assume we're waiting to process more data
+}
+#endif // #if defined(TCPIP_STACK_USE_SNMP_SERVER)
 #endif // #if defined(HTTP_APP_USE_RECONFIG)
 
+/*****************************************************************************
+  Function:
+    static TCPIP_HTTP_NET_IO_RESULT HTTPPostEmail(void)
 
+  Summary:
+    Processes the e-mail form on email/index.htm
+
+  Description:
+    This function sends an e-mail message using the SMTPC client.
+    If encryption is needed it is done by the SMTPC module communicating with the SMTP server.
+    (the NET_PRES layer has to be configured for encryption support).
+    
+    It demonstrates the use of the SMTPC client, waiting for asynchronous
+    processes in an HTTP callback.
+    
+  Precondition:
+    None
+
+  Parameters:
+    connHandle  - HTTP connection handle
+
+  Return Values:
+    TCPIP_HTTP_NET_IO_RES_DONE - the message has been sent
+    TCPIP_HTTP_NET_IO_RES_WAITING - the function is waiting for the SMTP process to complete
+    TCPIP_HTTP_NET_IO_RES_NEED_DATA - data needed by this function has not yet arrived
+ ****************************************************************************/
+#if (HTTP_APP_USE_EMAIL != 0) 
+// size of an email parameter
+#define HTTP_APP_EMAIL_PARAM_SIZE           30 
+// maximum size of the mail body
+#define HTTP_APP_EMAIL_BODY_SIZE            200 
+// maximum size of the mail attachment
+#define HTTP_APP_EMAIL_ATTACHMENT_SIZE      200 
+
+// handle of the mail message submitted to SMTPC
+static TCPIP_SMTPC_MESSAGE_HANDLE postMailHandle = 0;
+
+// structure describing the post email operation
+typedef struct
+{
+    char*   ptrParam;       // pointer to the current parameter being retrieved
+    int     paramSize;      // size of the buffer to retrieve the parameter
+    int     attachLen;      // length of the attachment buffer
+    bool    mailParamsDone; // flag that signals that all parameters were retrieved
+    TCPIP_SMTPC_ATTACH_BUFFER attachBuffer; // descriptor for the attachment
+    TCPIP_SMTPC_MESSAGE_RESULT mailRes;     // operation outcome
+
+    // storage area
+    char serverName[HTTP_APP_EMAIL_PARAM_SIZE + 1];
+    char username[HTTP_APP_EMAIL_PARAM_SIZE + 1];
+    char password[HTTP_APP_EMAIL_PARAM_SIZE + 1];
+    char mailTo[HTTP_APP_EMAIL_PARAM_SIZE + 1];
+    char serverPort[10 + 1];
+    char mailBody[HTTP_APP_EMAIL_BODY_SIZE + 1];
+    char mailAttachment[HTTP_APP_EMAIL_ATTACHMENT_SIZE];
+
+}HTTP_POST_EMAIL_DCPT;
+
+static HTTP_POST_EMAIL_DCPT postEmail;
+
+// callback for getting the signal of mail completion
+static void postMailCallback(TCPIP_SMTPC_MESSAGE_HANDLE messageHandle, const TCPIP_SMTPC_MESSAGE_REPORT* pMailReport)
+{
+    postEmail.mailRes = pMailReport->messageRes;
+    if(postEmail.mailRes < 0)
+    {
+        SYS_CONSOLE_PRINT("SMTPC mail FAILED! Callback result: %d\r\n", postEmail.mailRes);
+    }
+    else
+    {
+        SYS_CONSOLE_MESSAGE("SMTPC mail SUCCESS!\r\n");
+    }
+}
+
+static TCPIP_HTTP_NET_IO_RESULT HTTPPostEmail(TCPIP_HTTP_NET_CONN_HANDLE connHandle)
+{
+
+    TCPIP_SMTPC_MAIL_MESSAGE mySMTPMessage;
+    char paramName[HTTP_APP_EMAIL_PARAM_SIZE + 1];
+
+    #define SM_EMAIL_INIT                       (0)
+    #define SM_EMAIL_READ_PARAM_NAME            (1)
+    #define SM_EMAIL_READ_PARAM_VALUE           (2)
+    #define SM_EMAIL_SEND_MESSAGE               (3)
+    #define SM_EMAIL_WAIT_RESULT                (4)
+
+    switch(TCPIP_HTTP_NET_ConnectionPostSmGet(connHandle))
+    {
+        case SM_EMAIL_INIT:
+            if(postMailHandle != 0)
+            {   // some other operation on going
+                return TCPIP_HTTP_NET_IO_RES_ERROR;
+            }
+
+
+            memset(&postEmail, 0, sizeof(postEmail));
+            TCPIP_HTTP_NET_ConnectionPostSmSet(connHandle, SM_EMAIL_READ_PARAM_NAME);
+            return TCPIP_HTTP_NET_IO_RES_WAITING;
+
+
+        case SM_EMAIL_READ_PARAM_NAME:
+            // Search for a parameter name in POST data
+            if(TCPIP_HTTP_NET_ConnectionPostNameRead(connHandle, (uint8_t*)paramName, sizeof(paramName)) == TCPIP_HTTP_NET_READ_INCOMPLETE)
+            {
+                return TCPIP_HTTP_NET_IO_RES_NEED_DATA;
+            }
+
+            // Try to match the name value
+            if(!strcmp(paramName, (const char *)"server"))
+            {   // Read the server name
+                postEmail.ptrParam = postEmail.serverName;
+                postEmail.paramSize = sizeof(postEmail.serverName) - 1;
+            }
+            else if(!strcmp(paramName, (const char *)"user"))
+            {   // Read the user name
+                postEmail.ptrParam = postEmail.username;
+                postEmail.paramSize = sizeof(postEmail.username) - 1;
+            }
+            else if(!strcmp(paramName, (const char *)"pass"))
+            {   // Read the password
+                postEmail.ptrParam = postEmail.password;
+                postEmail.paramSize = sizeof(postEmail.password) - 1;
+            }
+            else if(!strcmp(paramName, (const char *)"to"))
+            {   // Read the To string
+                postEmail.ptrParam = postEmail.mailTo;
+                postEmail.paramSize = sizeof(postEmail.mailTo) - 1;
+            }
+            else if(!strcmp(paramName, (const char *)"port"))
+            {   // Read the server port
+                postEmail.ptrParam = postEmail.serverPort;
+                postEmail.paramSize = sizeof(postEmail.serverPort) - 1;
+            }
+            else if(!strcmp(paramName, (const char *)"msg"))
+            {   // Read the server port
+                postEmail.ptrParam = postEmail.mailBody;
+                postEmail.paramSize = sizeof(postEmail.mailBody) - 1;
+                postEmail.mailParamsDone = true;
+            }
+            else
+            {   // unknown parameter
+                postEmail.ptrParam = 0;
+                postEmail.paramSize = 0;
+            }
+
+            // read the parameter now
+            TCPIP_HTTP_NET_ConnectionPostSmSet(connHandle, SM_EMAIL_READ_PARAM_VALUE);
+            return TCPIP_HTTP_NET_IO_RES_WAITING;
+
+
+        case SM_EMAIL_READ_PARAM_VALUE:
+            // Search for a parameter value in POST data
+            if(TCPIP_HTTP_NET_ConnectionPostValueRead(connHandle, (uint8_t*)postEmail.ptrParam, postEmail.paramSize) == TCPIP_HTTP_NET_READ_INCOMPLETE)
+                return TCPIP_HTTP_NET_IO_RES_NEED_DATA;
+
+            // end parameter properly
+            postEmail.ptrParam[postEmail.paramSize] = 0;
+
+            // check if we're done with the parameters
+            TCPIP_HTTP_NET_ConnectionPostSmSet(connHandle, postEmail.mailParamsDone == true ? SM_EMAIL_SEND_MESSAGE : SM_EMAIL_READ_PARAM_NAME);
+            return TCPIP_HTTP_NET_IO_RES_WAITING;
+
+        case SM_EMAIL_SEND_MESSAGE:
+            // prepare the message attachment
+            // output the system status as a CSV file.
+            // Write the header and button strings
+            { // avoid volatile evaluation warnings by using a temp variable
+                int xtch1, xtch2, xtch3;
+                xtch1 = (int)APP_SWITCH_1StateGet() + '0';
+                xtch2 = (int)APP_SWITCH_2StateGet() + '0';
+                xtch3 = (int)APP_SWITCH_3StateGet() + '0';
+                postEmail.attachLen = sprintf(postEmail.mailAttachment, "SYSTEM STATUS\r\nButtons:,%c,%c,%c\r\n", xtch1, xtch2, xtch3 );
+                // Write the header and button strings
+                xtch1 = (int)APP_LED_1StateGet() + '0';
+                xtch2 = (int)APP_LED_2StateGet() + '0';
+                xtch3 = (int)APP_LED_3StateGet() + '0';
+                postEmail.attachLen += sprintf(postEmail.mailAttachment + postEmail.attachLen, "LEDs:,%c,%c,%c\r\n", xtch1, xtch2, xtch3 );
+                // add a potentiometer read: a random string
+                postEmail.attachLen += sprintf(postEmail.mailAttachment + postEmail.attachLen, "Pot:,%u\r\n", (unsigned int)SYS_RANDOM_PseudoGet());
+            }
+
+            // prepare the message itself
+            memset(&mySMTPMessage, 0, sizeof(mySMTPMessage));
+            mySMTPMessage.body = (const uint8_t*)postEmail.mailBody;
+            mySMTPMessage.bodySize = strlen(postEmail.mailBody);
+            mySMTPMessage.smtpServer = postEmail.serverName;
+            mySMTPMessage.serverPort = (uint16_t)atol(postEmail.serverPort);
+            mySMTPMessage.username = postEmail.username;
+            mySMTPMessage.password = postEmail.password;
+            mySMTPMessage.to = postEmail.mailTo;
+            mySMTPMessage.from = "\"SMTP Service\" <mchpboard@picsaregood.com>";
+            mySMTPMessage.subject = "Microchip TCP/IP Stack Status Update";
+
+            // set the buffer attachment
+            postEmail.attachBuffer.attachType = TCPIP_SMTPC_ATTACH_TYPE_TEXT;
+            postEmail.attachBuffer.attachEncode = TCPIP_SMTPC_ENCODE_TYPE_7BIT;
+            postEmail.attachBuffer.attachName = "status.csv";
+            postEmail.attachBuffer.attachBuffer = (const uint8_t*)postEmail.mailAttachment;
+            postEmail.attachBuffer.attachSize = postEmail.attachLen;
+            mySMTPMessage.attachBuffers = &postEmail.attachBuffer;
+            mySMTPMessage.nBuffers = 1;
+            // set the notification function
+            mySMTPMessage.messageCallback = postMailCallback;
+            
+            postMailHandle = TCPIP_SMTPC_MailMessage(&mySMTPMessage, &postEmail.mailRes);
+            if(postMailHandle == 0)
+            {   // failed
+                SYS_CONSOLE_PRINT("SMTPC mail: Failed to submit message: %d!\r\n", postEmail.mailRes);
+            }
+            else
+            {
+                postEmail.mailRes = TCPIP_SMTPC_RES_PENDING;
+                SYS_CONSOLE_MESSAGE("SMTPC mail: Submitted the mail message!\r\n");
+            }
+
+            TCPIP_HTTP_NET_ConnectionPostSmSet(connHandle, SM_EMAIL_WAIT_RESULT);
+            return TCPIP_HTTP_NET_IO_RES_WAITING;
+
+        case SM_EMAIL_WAIT_RESULT:
+            // Wait for status done
+            if(postEmail.mailRes == TCPIP_SMTPC_RES_PENDING)
+            {   // not done yet
+                return TCPIP_HTTP_NET_IO_RES_WAITING;
+            }
+
+            // done
+            postMailHandle = 0;
+
+            if(postEmail.mailRes == TCPIP_SMTPC_RES_OK)
+            {
+                lastSuccess = true;
+            }
+            else
+            {
+                lastFailure = true;
+            }
+
+            // Redirect to the page
+            strcpy((char *)TCPIP_HTTP_NET_ConnectionDataBufferGet(connHandle), "/email/index.htm");
+            TCPIP_HTTP_NET_ConnectionStatusSet(connHandle, TCPIP_HTTP_NET_STAT_REDIRECT);
+            return TCPIP_HTTP_NET_IO_RES_DONE;
+    }
+
+    return TCPIP_HTTP_NET_IO_RES_DONE;
+}
+#endif // (HTTP_APP_USE_EMAIL != 0) 
 
 /****************************************************************************
   Function:
@@ -966,6 +1332,7 @@ uint8_t TCPIP_HTTP_NET_ConnectionUserAuthenticate(TCPIP_HTTP_NET_CONN_HANDLE con
 TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_btn(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
 {
     
+    // Determine which button
     if(vDcpt->nArgs != 0 && vDcpt->dynArgs->argType == TCPIP_HTTP_DYN_ARG_TYPE_INT32)
     {
         int nBtn = vDcpt->dynArgs->argInt32;
@@ -986,11 +1353,19 @@ TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_btn(TCPIP_HTTP_NET_CONN_HANDLE connHan
             default:
                 nBtn = 0;
         }
+        SYS_CONSOLE_PRINT("Btn number: %d\r\n", nBtn);
         // Print the output
-        TCPIP_HTTP_NET_DynamicWriteString(vDcpt,(nBtn ? "1" : "0"), false);
+        TCPIP_HTTP_NET_DynamicWriteString(vDcpt, (nBtn ? "0" : "1"), false);
     }
-    
-     
+    return TCPIP_HTTP_DYN_PRINT_RES_DONE;
+}
+
+TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_led(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
+{
+    return TCPIP_HTTP_DYN_PRINT_RES_DONE;
+}
+TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_pot(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
+{
     return TCPIP_HTTP_DYN_PRINT_RES_DONE;
 }
 

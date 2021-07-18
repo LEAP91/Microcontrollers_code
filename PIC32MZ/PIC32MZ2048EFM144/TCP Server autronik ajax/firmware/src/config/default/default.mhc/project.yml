@@ -1,4 +1,25 @@
 files:
+- generatedChecksum: 305116DFB27D076EA562FB0450D9E67D
+  logicalPath: web_pages/CSS
+  name: CSS\format.css
+  physicalPath: ../../web_pages
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 305116DFB27D076EA562FB0450D9E67D
+- generatedChecksum: 3B00BC43F50CF821AC66EDD3C130F372
+  logicalPath: web_pages/CSS
+  name: CSS\login.css
+  physicalPath: ../../web_pages
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 3B00BC43F50CF821AC66EDD3C130F372
+- generatedChecksum: 9644379AFCD077BA3CADB1C98D7225C6
+  logicalPath: web_pages/CSS
+  name: CSS\style.css
+  physicalPath: ../../web_pages
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 9644379AFCD077BA3CADB1C98D7225C6
 - generatedChecksum: 2DF7C661F71182DC8188521EF1ABAA64
   logicalPath: wolfcrypt
   name: aes.c
@@ -293,6 +314,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 3441EE0EA16D37541179AFCD88D24EE9
+- generatedChecksum: 46A251D3B832AF701D3857F29EC7D3F4
+  logicalPath: web_pages
+  name: digital-inputs.html
+  physicalPath: ../../web_pages
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 46A251D3B832AF701D3857F29EC7D3F4
+- generatedChecksum: 8CC4C5EAB283F25407E09876EA83B1C1
+  logicalPath: web_pages
+  name: digital-outputs.html
+  physicalPath: ../../web_pages
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 8CC4C5EAB283F25407E09876EA83B1C1
 - generatedChecksum: 9830A9B89F5408A1259AB2F5BAEC1A1C
   logicalPath: config/default/library/tcpip/src
   name: dns.c
@@ -510,6 +545,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 62951755A45BA873C9775C77F461A8DF
+- generatedChecksum: 8C38A1DFF7292715A184195467B4EC88
+  logicalPath: web_pages/imgs
+  name: imgs\webpage_logo.png
+  physicalPath: ../../web_pages
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 8C38A1DFF7292715A184195467B4EC88
 - generatedChecksum: 15F3D1196E79AE679869C85DEAF3EA0B
   logicalPath: config/default
   name: initialization.c
@@ -545,6 +587,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: EC7D138490803EC5E5AB6AA691A6ADE2
+- generatedChecksum: 599C5B8B490F714F0E0F452E9BA921E9
+  logicalPath: web_pages
+  name: login.html
+  physicalPath: ../../web_pages
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 599C5B8B490F714F0E0F452E9BA921E9
 - generatedChecksum: null
   logicalPath: ''
   name: main.c
@@ -593,7 +642,7 @@ files:
   physicalPath: ../..
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 66BD327DD2E4AC4A76E2D8580A7F7ECE
+  userChecksum: BDE2ACB3C2707FF9A099208E31C7781D
 - generatedChecksum: E309A74B8FBC0BD4A67A0EA18B305F8E
   logicalPath: config/default/net_pres/pres/src
   name: net_pres.c
@@ -615,6 +664,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 70C641A697B8152F841FA575454EABE6
+- generatedChecksum: E8CB77D5C2AABE11F8CBF9C7366C2A40
+  logicalPath: web_pages
+  name: network-settings.html
+  physicalPath: ../../web_pages
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: E8CB77D5C2AABE11F8CBF9C7366C2A40
 - generatedChecksum: 417DA77DBD58024F50AC993F8D468570
   logicalPath: config/default/library/tcpip/src
   name: oahash.c
@@ -860,6 +916,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 9623CA5186E14AC2A2EAC7C250682BFC
+- generatedChecksum: C5E18DD6E41710452EF3A62541AB9C64
+  logicalPath: web_pages
+  name: status.xml
+  physicalPath: ../../web_pages
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: C5E18DD6E41710452EF3A62541AB9C64
 - generatedChecksum: 47204A328D6218B0241B5993D3198668
   logicalPath: config/default/system/cache
   name: sys_cache.c
@@ -1042,6 +1105,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 2C2FA7E7403519DE845E674E86A776CC
+- generatedChecksum: F52CD3D6C75297E2FE10ACFC40E0A9FA
+  logicalPath: web_pages
+  name: user-settings.html
+  physicalPath: ../../web_pages
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: F52CD3D6C75297E2FE10ACFC40E0A9FA
 - generatedChecksum: 589F903BB9E8BC49A0D781032EBFA915
   logicalPath: wolfcrypt
   name: wc_dsp.c

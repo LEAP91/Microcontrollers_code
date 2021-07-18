@@ -4,7 +4,7 @@
 
 
 project: TCP Server autronik ajax
-creation_date: 2021-07-17T17:02:09.263-05:00[America/Chicago]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2021-07-17T21:06:46.174-05:00[America/Chicago]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mhc_mode: IDE            # [IDE|Standalone|Headless]
 mhc_version: v3.7.2
@@ -13,6 +13,7 @@ plugin_version: v3.6.4        # if MPLAB X plugin only
 compiler: XC32 (2.50)
 
 modules:
+    - {name: "..", version: "unknown"}
     - {name: "core", version: "v3.9.1"}
     - {name: "csp", version: "v3.9.1"}
     - {name: "dev_packs", version: "v3.9.0"}

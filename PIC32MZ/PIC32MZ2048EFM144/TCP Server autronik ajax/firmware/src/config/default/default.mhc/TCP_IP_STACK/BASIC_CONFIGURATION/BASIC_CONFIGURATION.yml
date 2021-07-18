@@ -10,12 +10,12 @@ children:
     attributes: {targetComponentID: TCP/IP STACK, namespace: tcpipStack, id: Core_SysConsole_Dependency,
       targetAttachmentID: 'TCP/IP STACK:tcpipStack:Core_SysConsole_Dependency'}
   - type: Attachment
+    attributes: {namespace: tcpipStack, id: Core_SysConsole_Dependency}
+  - type: Attachment
+    attributes: {namespace: tcpipStack, id: Core_SysConsole_Dependency}
+  - type: Attachment
     attributes: {targetComponentID: drvPic32mEthmac, namespace: tcpipNetConfig_0,
       id: NETCONFIG_MAC_Dependency, targetAttachmentID: libdrvPic32mEthmac}
-  - type: Attachment
-    attributes: {namespace: tcpipStack, id: Core_SysConsole_Dependency}
-  - type: Attachment
-    attributes: {namespace: tcpipStack, id: Core_SysConsole_Dependency}
   - type: Attachment
     attributes: {namespace: tcpipStack, id: Core_SysConsole_Dependency}
   - type: Attachment
