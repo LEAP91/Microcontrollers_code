@@ -48,24 +48,25 @@
                 <h1></h1>
                 <h1></h1>
                 <button onclick="ajax_command()">Read</button>
-                <button>Continous Reading</button>
-                <button>Stop</button>
+                <button id="start">Continous Reading</button>
+                <button id="stop">Stop</button>
             </div>
         </div>
     </div>
     <script type="text/javascript">
 
+
         function getXMLValue(xmlData, field) {
-            console.log("getXML value called");
-            console.log(xmlData);
+            //console.log("getXML value called");
+            //console.log(xmlData);
             try {
                 if (xmlData.getElementsByTagName(field)[0].firstChild.nodeValue) {
-                    console.log(xmlData.getElementsByTagName(field)[0].firstChild.nodeValue);
+                    //console.log(xmlData.getElementsByTagName(field)[0].firstChild.nodeValue);
                     return xmlData.getElementsByTagName(field)[0].firstChild.nodeValue;
                 }
 
                 else {
-                    console.log("nothing");
+                    //console.log("nothing");
                     return null
 
                 }
@@ -73,11 +74,10 @@
 
         }
         function update_input_status(xmlData) {
-            console.log("update called");
+            //console.log("update called");
             for (i = 0; i < 4; i++)
                 document.getElementById('DI' + i).style.backgroundColor = (getXMLValue(xmlData, 'btn' + i) == '1') ? '#090' : '#ddd';
         }
-
         function ajax_command() {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
@@ -90,9 +90,24 @@
             }
             xhttp.open("GET", "status.xml", true);
             xhttp.send(null);
-
-
         }
+
+        startBTN = document.getElementById("start");
+        stopBTN = document.getElementById("stop");
+        interval = null;
+
+        startBTN.onclick = function () {
+            var i = 0;
+            interval = setInterval(function () {
+                ajax_command();  // this is inside your loop
+            }, 200);
+        };
+
+        stopBTN.onclick = function () {
+            clearInterval(interval);
+        };
+
+
     </script>
 </body>
 

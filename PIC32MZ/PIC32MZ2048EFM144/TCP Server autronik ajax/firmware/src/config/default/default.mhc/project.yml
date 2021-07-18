@@ -314,13 +314,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 3441EE0EA16D37541179AFCD88D24EE9
-- generatedChecksum: 46A251D3B832AF701D3857F29EC7D3F4
+- generatedChecksum: 44CD1A4994E4A97FC0DD60DF7C984944
   logicalPath: web_pages
   name: digital-inputs.html
   physicalPath: ../../web_pages
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 46A251D3B832AF701D3857F29EC7D3F4
+  userChecksum: 44CD1A4994E4A97FC0DD60DF7C984944
 - generatedChecksum: 8CC4C5EAB283F25407E09876EA83B1C1
   logicalPath: web_pages
   name: digital-outputs.html
@@ -642,7 +642,7 @@ files:
   physicalPath: ../..
   security: NON_SECURE
   type: SOURCE
-  userChecksum: BDE2ACB3C2707FF9A099208E31C7781D
+  userChecksum: 71D804F4E321536D0C2D9972992472C0
 - generatedChecksum: E309A74B8FBC0BD4A67A0EA18B305F8E
   logicalPath: config/default/net_pres/pres/src
   name: net_pres.c

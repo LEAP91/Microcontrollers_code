@@ -1353,7 +1353,7 @@ TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_btn(TCPIP_HTTP_NET_CONN_HANDLE connHan
             default:
                 nBtn = 0;
         }
-        SYS_CONSOLE_PRINT("Btn number: %d\r\n", nBtn);
+        //SYS_CONSOLE_PRINT("Btn number: %d\r\n", nBtn);
         // Print the output
         TCPIP_HTTP_NET_DynamicWriteString(vDcpt, (nBtn ? "0" : "1"), false);
     }
