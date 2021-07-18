@@ -23,32 +23,32 @@
                 <li class="current">Digital Outputs</li>
             </ul>
         </div>
-
-        <div class="formgrid-digital-output">
+        <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+        <form method="GET" action="digital-outputs.html" class="formgrid-digital-output" target="dummyframe">
             <div></div>
             <label class="toggle-switchy" for="DO-1" data-size="lg" data-label="left" data-style="rounded">
-                <input unchecked type="checkbox" id="DO-1">
+                <input name="DO1" type="checkbox" id="DO-1" value="1">
                 <span class="toggle">
                     <span class="switch"></span>
                 </span>
                 <span class="label">Digital Output 1</span>
             </label>
             <label class="toggle-switchy" for="DO-2" data-size="lg" data-label="left" data-style="rounded">
-                <input unchecked type="checkbox" id="DO-2">
+                <input name="DO2" type="checkbox" id="DO-2" value="1">
                 <span class="toggle">
                     <span class="switch"></span>
                 </span>
                 <span class="label">Digital Output 2</span>
             </label>
             <label class="toggle-switchy" for="DO-3" data-size="lg" data-label="left" data-style="rounded">
-                <input unchecked type="checkbox" id="DO-3">
+                <input name="DO3" type="checkbox" id="DO-3" value="1">
                 <span class="toggle">
                     <span class="switch"></span>
                 </span>
                 <span class="label">Digital Output 3</span>
             </label>
             <label class="toggle-switchy" for="DO-4" data-size="lg" data-label="left" data-style="rounded">
-                <input unchecked type="checkbox" id="DO-4">
+                <input name="DO4" type="checkbox" id="DO-4" value="1">
                 <span class="toggle">
                     <span class="switch"></span>
                 </span>
@@ -57,7 +57,50 @@
             <h1></h1>
             <button type="submit">Update</button>
 
-        </div>
+        </form>
+        <script>
+
+            function getXMLValue(xmlData, field) {
+                //console.log("getXML value called");
+                console.log(xmlData);
+                try {
+                    if (xmlData.getElementsByTagName(field)[0].firstChild.nodeValue) {
+                        //console.log(xmlData.getElementsByTagName(field)[0].firstChild.nodeValue);
+                        return xmlData.getElementsByTagName(field)[0].firstChild.nodeValue;
+                    }
+
+                    else {
+                        //console.log("nothing");
+                        return null
+
+                    }
+                } catch (err) { return null; }
+
+            }
+
+            function update_input_status(xmlData) {
+                //console.log("update called");
+                for (i = 1; i < 5; i++)
+                    document.getElementById('DO-' + i).checked = (getXMLValue(xmlData, 'led' + (i - 1)) == '1') ? 'false' : 'true';
+            }
+
+            function ajax_command() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // Action to be performed when the document is read;
+                        var xmlData = xhttp.responseXML.documentElement;
+                        update_input_status(xmlData);
+                    }
+
+                }
+                xhttp.open("GET", "status.xml", true);
+                xhttp.send(null);
+            }
+            window.onload = function () {
+                ajax_command();
+            }
+        </script>
 
 </body>
 

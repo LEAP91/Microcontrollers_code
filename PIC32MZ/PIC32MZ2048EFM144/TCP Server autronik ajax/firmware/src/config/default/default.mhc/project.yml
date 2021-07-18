@@ -314,20 +314,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 3441EE0EA16D37541179AFCD88D24EE9
-- generatedChecksum: 44CD1A4994E4A97FC0DD60DF7C984944
+- generatedChecksum: 47B7FB03A34A5DB25662EF4273AF034D
   logicalPath: web_pages
   name: digital-inputs.html
   physicalPath: ../../web_pages
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 44CD1A4994E4A97FC0DD60DF7C984944
-- generatedChecksum: 8CC4C5EAB283F25407E09876EA83B1C1
+  userChecksum: 47B7FB03A34A5DB25662EF4273AF034D
+- generatedChecksum: C16E8F002F39A7308AA7738FECC11B30
   logicalPath: web_pages
   name: digital-outputs.html
   physicalPath: ../../web_pages
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 8CC4C5EAB283F25407E09876EA83B1C1
+  userChecksum: C16E8F002F39A7308AA7738FECC11B30
 - generatedChecksum: 9830A9B89F5408A1259AB2F5BAEC1A1C
   logicalPath: config/default/library/tcpip/src
   name: dns.c
@@ -642,7 +642,7 @@ files:
   physicalPath: ../..
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 71D804F4E321536D0C2D9972992472C0
+  userChecksum: E01C5AC7BF7F08119B5008EB9E3575FA
 - generatedChecksum: E309A74B8FBC0BD4A67A0EA18B305F8E
   logicalPath: config/default/net_pres/pres/src
   name: net_pres.c
@@ -916,13 +916,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 9623CA5186E14AC2A2EAC7C250682BFC
-- generatedChecksum: C5E18DD6E41710452EF3A62541AB9C64
+- generatedChecksum: E762964E4D47FCF48B5054246C6DE98A
   logicalPath: web_pages
   name: status.xml
   physicalPath: ../../web_pages
   security: NON_SECURE
   type: SOURCE
-  userChecksum: C5E18DD6E41710452EF3A62541AB9C64
+  userChecksum: E762964E4D47FCF48B5054246C6DE98A
 - generatedChecksum: 47204A328D6218B0241B5993D3198668
   logicalPath: config/default/system/cache
   name: sys_cache.c

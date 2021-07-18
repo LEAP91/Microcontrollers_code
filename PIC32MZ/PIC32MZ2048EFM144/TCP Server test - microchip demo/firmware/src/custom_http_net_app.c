@@ -1468,6 +1468,7 @@ TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_ledSelected(TCPIP_HTTP_NET_CONN_HANDLE
     if(vDcpt->nArgs >= 2 && vDcpt->dynArgs->argType == TCPIP_HTTP_DYN_ARG_TYPE_INT32 && (vDcpt->dynArgs + 1)->argType == TCPIP_HTTP_DYN_ARG_TYPE_STRING)
     {
         int nLed = vDcpt->dynArgs->argInt32;
+        SYS_CONSOLE_PRINT("arguments: %s\r\n",vDcpt->dynArgs[1]);
         int state = 0;
         if(strcmp((vDcpt->dynArgs + 1)->argStr, "true") == 0)
         {

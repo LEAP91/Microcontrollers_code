@@ -5,6 +5,8 @@
         <group>
             <file>file:/C:/Users/user/Desktop/Drive/Engineering/Software/PIC%20microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP%20Server%20autronik%20ajax/firmware/src/app.c</file>
             <file>file:/C:/Users/user/Desktop/Drive/Engineering/Software/PIC%20microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP%20Server%20autronik%20ajax/firmware/src/custom_http_net_app.c</file>
+            <file>file:/C:/Users/user/Desktop/Drive/Engineering/Software/PIC%20microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP%20Server%20autronik%20ajax/firmware/src/config/default/bsp/bsp.h</file>
+            <file>file:/C:/Users/user/Desktop/Drive/Engineering/Software/PIC%20microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP%20Server%20autronik%20ajax/firmware/src/config/default/library/tcpip/http_net.h</file>
             <file>file:/C:/Users/user/Desktop/Drive/Engineering/Software/PIC%20microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP%20Server%20autronik%20ajax/firmware/src/config/default/peripheral/gpio/plib_gpio.h</file>
         </group>
     </open-files>

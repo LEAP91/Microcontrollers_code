@@ -248,7 +248,7 @@ TCPIP_HTTP_NET_IO_RESULT TCPIP_HTTP_NET_ConnectionGetExecute(TCPIP_HTTP_NET_CONN
     const uint8_t *ptr;
     uint8_t *httpDataBuff;
     uint8_t filename[20];
-
+    //SYS_CONSOLE_MESSAGE("connection get execute");
     // Load the file name
     // Make sure uint8_t filename[] above is large enough for your longest name
     SYS_FS_FileNameGet(TCPIP_HTTP_NET_ConnectionFileGet(connHandle), filename, 20);
@@ -256,34 +256,62 @@ TCPIP_HTTP_NET_IO_RESULT TCPIP_HTTP_NET_ConnectionGetExecute(TCPIP_HTTP_NET_CONN
     httpDataBuff = TCPIP_HTTP_NET_ConnectionDataBufferGet(connHandle);
 
     // If its the forms.htm page
-    if(!memcmp(filename, "forms.htm", 9))
+    if(!memcmp(filename, "digital-outputs.html", 19))
     {
         // Seek out each of the four LED strings, and if it exists set the LED states
-        ptr = TCPIP_HTTP_NET_ArgGet(httpDataBuff, (const uint8_t *)"led2");
+        ptr = TCPIP_HTTP_NET_ArgGet(httpDataBuff, (const uint8_t *)"DO1");
         if(ptr)
         {
             if(*ptr == '1')
             {
-                APP_LED_2StateSet();
+                LED1_On();
             }
-            else
-            {
-                APP_LED_2StateClear();
-            }
+            
         }
+        else
+            {
+                LED1_Off();
+            }
 
-        ptr = TCPIP_HTTP_NET_ArgGet(httpDataBuff, (const uint8_t *)"led1");
+        ptr = TCPIP_HTTP_NET_ArgGet(httpDataBuff, (const uint8_t *)"DO2");
         if(ptr)
 		{
             if(*ptr == '1')
             {
-                APP_LED_1StateSet();
+                LED2_On();
             }
-            else
-            {
-                APP_LED_1StateClear();
-            }
+            
         }
+        else
+            {
+                LED2_Off();
+            }
+        ptr = TCPIP_HTTP_NET_ArgGet(httpDataBuff, (const uint8_t *)"DO3");
+        if(ptr)
+		{
+            if(*ptr == '1')
+            {
+                LED3_On();
+            }
+            
+        }
+        else
+            {
+                LED3_Off();
+            }
+        ptr = TCPIP_HTTP_NET_ArgGet(httpDataBuff, (const uint8_t *)"DO4");
+        if(ptr)
+		{
+            if(*ptr == '1')
+            {
+                RGB_LED_G_On();
+            }
+            
+        }
+        else
+            {
+                RGB_LED_G_Off();
+            }
     }
 
     else if(!memcmp(filename, "cookies.htm", 11))
@@ -1336,6 +1364,7 @@ TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_btn(TCPIP_HTTP_NET_CONN_HANDLE connHan
     if(vDcpt->nArgs != 0 && vDcpt->dynArgs->argType == TCPIP_HTTP_DYN_ARG_TYPE_INT32)
     {
         int nBtn = vDcpt->dynArgs->argInt32;
+        
         switch(nBtn)
         {
             case 0:
@@ -1360,13 +1389,92 @@ TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_btn(TCPIP_HTTP_NET_CONN_HANDLE connHan
     return TCPIP_HTTP_DYN_PRINT_RES_DONE;
 }
 
+//TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_out(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
+//{
+//    int nOutput = vDcpt->dynArgs->argInt32;
+//    
+//    int checkbox = 0;
+//    
+//    switch(nOutput)
+//    {
+//            case 0:
+//                if(LED1_Get())
+//                {
+//                    SYS_CONSOLE_PRINT("led status: %d\r\n", LED1_Get());
+//                    checkbox = 0;
+//                }
+//                else
+//                {
+//                    SYS_CONSOLE_PRINT("led status: %d\r\n", LED1_Get());
+//                    checkbox = 1;
+//                }
+//            case 1:
+//                if(LED2_Get())
+//                    checkbox = 0;
+//                else
+//                    checkbox = 1;
+//            case 2:
+//                if(LED3_Get())
+//                    checkbox = 0;
+//                else
+//                    checkbox = 1;
+//            case 3:
+//                if(RGB_LED_G_Get())
+//                    checkbox = 0;
+//                else
+//                    checkbox = 1;
+//            default:
+//                checkbox = 1;
+//            
+//    } 
+//    //SYS_CONSOLE_PRINT("checkbox: %d\r\n", checkbox);
+//    if(checkbox==1)
+//    {
+//        
+//        TCPIP_HTTP_NET_DynamicWriteString(vDcpt, "unchecked", false);
+//    }
+//    else
+//        TCPIP_HTTP_NET_DynamicWriteString(vDcpt, "checked", false);
+//    
+//    return TCPIP_HTTP_DYN_PRINT_RES_DONE;                
+//}
+
+
 TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_led(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
 {
+//    int nLed = vDcpt->dynArgs->argInt32;
+//    SYS_CONSOLE_PRINT("led number: %d\r\n", nLed);
+//    switch(nLed)
+//        {
+//            case 0:
+//                nLed = LED1_Get();
+//                break;
+//            case 1:
+//                nLed = LED2_Get();
+//                break;
+//            case 2:
+//                nLed = LED3_Get();
+//                break;
+//            case 3:
+//                if(RGB_LED_B_Get())
+//                    nLed=0;
+//                else
+//                    nLed=1;
+//                break;
+//            default:
+//                nLed = 0;
+//        }
+//        //SYS_CONSOLE_PRINT("Btn number: %d\r\n", nBtn);
+//        // Print the output
+//        TCPIP_HTTP_NET_DynamicWriteString(vDcpt, (nLed ? "0" : "1"), false);
+   
+       
     return TCPIP_HTTP_DYN_PRINT_RES_DONE;
 }
 TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_pot(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
 {
     return TCPIP_HTTP_DYN_PRINT_RES_DONE;
 }
+
 
 #endif // #if defined(TCPIP_STACK_USE_HTTP_SERVER)
