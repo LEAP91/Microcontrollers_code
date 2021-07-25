@@ -487,6 +487,7 @@
                 <itemPath>../src/config/default/library/tcpip/src/tcpip_packet.c</itemPath>
                 <itemPath>../src/config/default/library/tcpip/src/icmp.c</itemPath>
                 <itemPath>../src/config/default/library/tcpip/src/http_net.c</itemPath>
+                <itemPath>../src/config/default/library/tcpip/src/nbns.c</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
@@ -708,6 +709,7 @@
             <itemPath>../src/config/default/default.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipDhcp.yml</itemPath>
             <itemPath>../src/config/default/default.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipDns.yml</itemPath>
             <itemPath>../src/config/default/default.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipHttpNet.yml</itemPath>
+            <itemPath>../src/config/default/default.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipNbns.yml</itemPath>
             <itemPath>../src/config/default/default.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpip_apps_config.yml</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="BASIC_CONFIGURATION" projectFiles="true">

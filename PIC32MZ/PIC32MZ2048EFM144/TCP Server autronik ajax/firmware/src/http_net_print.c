@@ -59,6 +59,16 @@ static HTTP_APP_DYNVAR_ENTRY HTTP_APP_DynVarTbl[] =
  // varName                      varFnc
 {"led",					TCPIP_HTTP_Print_led},
 {"btn",					TCPIP_HTTP_Print_btn},
+{"out",					TCPIP_HTTP_Print_out},
+{"status_fail",					TCPIP_HTTP_Print_status_fail},
+{"config_ip",					TCPIP_HTTP_Print_config_ip},
+{"config_subnet",					TCPIP_HTTP_Print_config_subnet},
+{"config_gw",					TCPIP_HTTP_Print_config_gw},
+{"config_mac",					TCPIP_HTTP_Print_config_mac},
+{"config_hostname",					TCPIP_HTTP_Print_config_hostname},
+{"config_dhcpchecked",					TCPIP_HTTP_Print_config_dhcpchecked},
+{"reboot",					TCPIP_HTTP_Print_reboot},
+{"rebootaddr",					TCPIP_HTTP_Print_rebootaddr},
 };
 
 // Function that processes the dynamic variables

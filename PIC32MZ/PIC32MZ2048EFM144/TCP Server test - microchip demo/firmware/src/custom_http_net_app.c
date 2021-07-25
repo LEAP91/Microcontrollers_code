@@ -690,6 +690,7 @@ static TCPIP_HTTP_NET_IO_RESULT HTTPPostConfig(TCPIP_HTTP_NET_CONN_HANDLE connHa
 
     // Use current config in non-volatile memory as defaults
     httpDataBuff = TCPIP_HTTP_NET_ConnectionDataBufferGet(connHandle);
+    SYS_CONSOLE_PRINT("HTTP data buff: %c\r\n", httpDataBuff);
     httpBuffSize = TCPIP_HTTP_NET_ConnectionDataBufferSizeGet(connHandle);
 
     // Read all browser POST data

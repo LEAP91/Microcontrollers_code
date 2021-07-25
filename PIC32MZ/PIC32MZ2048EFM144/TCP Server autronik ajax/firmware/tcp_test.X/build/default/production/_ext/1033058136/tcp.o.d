@@ -43,6 +43,7 @@ build/default/production/_ext/1033058136/tcp.o: \
  ../src/config/default/library/tcpip/tcp.h \
  ../src/config/default/library/tcpip/udp.h \
  ../src/config/default/library/tcpip/icmp.h \
+ ../src/config/default/library/tcpip/nbns.h \
  ../src/config/default/library/tcpip/http_net.h \
  ../src/config/default/system/fs/sys_fs.h \
  ../src/config/default/net_pres/pres/net_pres.h \
@@ -58,6 +59,7 @@ build/default/production/_ext/1033058136/tcp.o: \
  ../src/config/default/library/tcpip/src/arp_manager.h \
  ../src/config/default/library/tcpip/src/dns_manager.h \
  ../src/config/default/library/tcpip/src/tcp_manager.h \
+ ../src/config/default/library/tcpip/src/nbns_manager.h \
  ../src/config/default/library/tcpip/src/http_net_manager.h \
  ../src/config/default/library/tcpip/src/udp_manager.h \
  ../src/config/default/library/tcpip/src/lldp_manager.h \
@@ -156,6 +158,8 @@ build/default/production/_ext/1033058136/tcp.o: \
 
 ../src/config/default/library/tcpip/icmp.h:
 
+../src/config/default/library/tcpip/nbns.h:
+
 ../src/config/default/library/tcpip/http_net.h:
 
 ../src/config/default/system/fs/sys_fs.h:
@@ -185,6 +189,8 @@ build/default/production/_ext/1033058136/tcp.o: \
 ../src/config/default/library/tcpip/src/dns_manager.h:
 
 ../src/config/default/library/tcpip/src/tcp_manager.h:
+
+../src/config/default/library/tcpip/src/nbns_manager.h:
 
 ../src/config/default/library/tcpip/src/http_net_manager.h:
 

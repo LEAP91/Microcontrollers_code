@@ -52,6 +52,7 @@ THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
   Section:
     Definitions
  ****************************************************************************/
+uint8_t onload = 1;
 #ifndef APP_SWITCH_1StateGet
 #define APP_SWITCH_1StateGet() 0
 #endif
@@ -106,18 +107,6 @@ THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 
 // Use the web page in the Demo App (~2.5kb ROM, ~0b RAM)
 #define HTTP_APP_USE_RECONFIG
-
-#if !defined( NO_MD5 )        // no MD5 if crypto_config.h says NO_MD5   
-// Use the MD5 Demo web page (~5kb ROM, ~160b RAM)
-#define HTTP_APP_USE_MD5
-#endif
-
-// Use the e-mail demo web page
-#if defined(TCPIP_STACK_USE_SMTPC)
-#define HTTP_APP_USE_EMAIL  1
-#else
-#define HTTP_APP_USE_EMAIL  0
-#endif
 
 /****************************************************************************
 Section:
@@ -248,7 +237,7 @@ TCPIP_HTTP_NET_IO_RESULT TCPIP_HTTP_NET_ConnectionGetExecute(TCPIP_HTTP_NET_CONN
     const uint8_t *ptr;
     uint8_t *httpDataBuff;
     uint8_t filename[20];
-    //SYS_CONSOLE_MESSAGE("connection get execute");
+    SYS_CONSOLE_MESSAGE("connection get execute\r\n");
     // Load the file name
     // Make sure uint8_t filename[] above is large enough for your longest name
     SYS_FS_FileNameGet(TCPIP_HTTP_NET_ConnectionFileGet(connHandle), filename, 20);
@@ -363,8 +352,8 @@ TCPIP_HTTP_NET_IO_RESULT TCPIP_HTTP_NET_ConnectionGetExecute(TCPIP_HTTP_NET_CONN
 TCPIP_HTTP_NET_IO_RESULT TCPIP_HTTP_NET_ConnectionPostExecute(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_NET_USER_CALLBACK *pCBack)
 {
     // Resolve which function to use and pass along
-    uint8_t filename[20];
-
+    uint8_t filename[22];
+    SYS_CONSOLE_MESSAGE("POST EXECUTE CONFIG CALLED\r\n");
     // Load the file name
     // Make sure uint8_t filename[] above is large enough for your longest name
     SYS_FS_FileNameGet(TCPIP_HTTP_NET_ConnectionFileGet(connHandle), filename, sizeof(filename));
@@ -380,7 +369,7 @@ TCPIP_HTTP_NET_IO_RESULT TCPIP_HTTP_NET_ConnectionPostExecute(TCPIP_HTTP_NET_CON
 #endif
 
 #if defined(HTTP_APP_USE_RECONFIG)
-    if(!memcmp(filename, "protect/config.htm", 18))
+    if(!memcmp(filename, "network-settings.html", 21))
         return HTTPPostConfig(connHandle);
     #if defined(TCPIP_STACK_USE_SNMP_SERVER)
     else if(!memcmp(filename, "snmp/snmpconfig.htm", 19))
@@ -530,99 +519,6 @@ static TCPIP_HTTP_NET_IO_RESULT HTTPPostLCD(TCPIP_HTTP_NET_CONN_HANDLE connHandl
     TCPIP_HTTP_NET_IO_RES_WAITING - the function is pausing to continue later
     TCPIP_HTTP_NET_IO_RES_NEED_DATA - data needed by this function has not yet arrived
  ****************************************************************************/
-#if defined(HTTP_APP_USE_MD5)
-static TCPIP_HTTP_NET_IO_RESULT HTTPPostMD5(TCPIP_HTTP_NET_CONN_HANDLE connHandle)
-{
-    static CRYPT_MD5_CTX md5;
-    uint8_t *httpDataBuff;
-    uint32_t lenA, lenB;
-
-    #define SM_MD5_READ_SEPARATOR   (0u)
-    #define SM_MD5_SKIP_TO_DATA     (1u)
-    #define SM_MD5_READ_DATA        (2u)
-    #define SM_MD5_POST_COMPLETE    (3u)
-
-    switch(TCPIP_HTTP_NET_ConnectionPostSmGet(connHandle))
-    {
-        // Just started, so try to find the separator string
-        case SM_MD5_READ_SEPARATOR:
-            // Reset the MD5 calculation
-            CRYPT_MD5_Initialize(&md5);
-
-            // See if a CRLF is in the buffer
-            lenA = TCPIP_HTTP_NET_ConnectionStringFind(connHandle, "\r\n", 0, 0);
-
-            if(lenA == 0xffff)
-            {   // if not, ask for more data
-                return TCPIP_HTTP_NET_IO_RES_NEED_DATA;
-            }
-
-            // If so, figure out where the last byte of data is
-            // Data ends at CRLFseparator--CRLF, so len + 6 bytes
-            TCPIP_HTTP_NET_ConnectionByteCountDec(connHandle, lenA + 6);
-
-            // Read past the CRLF
-            TCPIP_HTTP_NET_ConnectionByteCountDec(connHandle, TCPIP_HTTP_NET_ConnectionRead(connHandle, NULL, lenA + 2));
-
-            // Save the next state (skip to CRLFCRLF)
-            TCPIP_HTTP_NET_ConnectionPostSmSet(connHandle, SM_MD5_SKIP_TO_DATA);
-
-            // No break...continue reading the headers if possible
-
-        // Skip the headers
-        case SM_MD5_SKIP_TO_DATA:
-            // Look for the CRLFCRLF
-            lenA = TCPIP_HTTP_NET_ConnectionStringFind(connHandle, "\r\n\r\n", 0, 0);
-
-            if(lenA != 0xffff)
-            {// Found it, so remove all data up to and including
-                lenA = TCPIP_HTTP_NET_ConnectionRead(connHandle, NULL, lenA + 4);
-                TCPIP_HTTP_NET_ConnectionByteCountDec(connHandle, lenA);
-                TCPIP_HTTP_NET_ConnectionPostSmSet(connHandle, SM_MD5_READ_DATA);
-            }
-            else
-            {// Otherwise, remove as much as possible
-                lenA = TCPIP_HTTP_NET_ConnectionRead(connHandle, NULL, TCPIP_HTTP_NET_ConnectionReadIsReady(connHandle) - 4);
-                TCPIP_HTTP_NET_ConnectionByteCountDec(connHandle, lenA);
-
-                // Return the need more data flag
-                return TCPIP_HTTP_NET_IO_RES_NEED_DATA;
-            }
-
-            // No break if we found the header terminator
-
-        // Read and hash file data
-        case SM_MD5_READ_DATA:
-            // Find out how many bytes are available to be read
-            httpDataBuff = TCPIP_HTTP_NET_ConnectionDataBufferGet(connHandle);
-            lenA = TCPIP_HTTP_NET_ConnectionReadIsReady(connHandle);
-            lenB = TCPIP_HTTP_NET_ConnectionByteCountGet(connHandle);
-            if(lenA > lenB)
-                lenA = lenB;
-
-            while(lenA > 0u)
-            {// Add up to 64 bytes at a time to the sum
-                lenB = TCPIP_HTTP_NET_ConnectionRead(connHandle, httpDataBuff, (lenA < 64u)?lenA:64);
-                TCPIP_HTTP_NET_ConnectionByteCountDec(connHandle, lenB);
-                lenA -= lenB;
-                CRYPT_MD5_DataAdd(&md5,httpDataBuff, lenB);
-            }
-
-            // If we've read all the data
-            if(TCPIP_HTTP_NET_ConnectionByteCountGet(connHandle) == 0u)
-            {// Calculate and copy result data buffer for printout
-                TCPIP_HTTP_NET_ConnectionPostSmSet(connHandle, SM_MD5_POST_COMPLETE);
-                CRYPT_MD5_Finalize(&md5, httpDataBuff);
-                return TCPIP_HTTP_NET_IO_RES_DONE;
-            }
-
-            // Ask for more data
-            return TCPIP_HTTP_NET_IO_RES_NEED_DATA;
-    }
-
-    return TCPIP_HTTP_NET_IO_RES_DONE;
-}
-#endif // #if defined(HTTP_APP_USE_MD5)
 
 /*****************************************************************************
   Function:
@@ -687,7 +583,7 @@ static TCPIP_HTTP_NET_IO_RESULT HTTPPostConfig(TCPIP_HTTP_NET_CONN_HANDLE connHa
     uint32_t byteCount;
     IPV4_ADDR newIPAddress, newMask;
     TCPIP_MAC_ADDR newMACAddr;
-
+    SYS_CONSOLE_MESSAGE("HTTP POST CONFIG CALLED\r\n");
     httpNetData.currNet = 0; // forget the old settings
     httpNetData.netConfig.startFlags = 0;   // assume DHCP is off
 
@@ -796,7 +692,9 @@ static TCPIP_HTTP_NET_IO_RESULT HTTPPostConfig(TCPIP_HTTP_NET_CONN_HANDLE connHa
         }
         else if(!strcmp((char *)httpDataBuff, (const char *)"host"))
         {   // Read new hostname
+            SYS_CONSOLE_MESSAGE("nbs executed\r\n");
             strncpy(httpNetData.nbnsName, (char *)httpDataBuff + 6, sizeof(httpNetData.nbnsName));
+            SYS_CONSOLE_PRINT("nbs: %s\r\n", httpNetData.nbnsName);
         }
         else if(!strcmp((char *)httpDataBuff, (const char *)"dhcp"))
         {// Read new DHCP Enabled flag
@@ -806,9 +704,10 @@ static TCPIP_HTTP_NET_IO_RESULT HTTPPostConfig(TCPIP_HTTP_NET_CONN_HANDLE connHa
 
     if(bConfigFailure == false)
     {
+        SYS_CONSOLE_MESSAGE("parsing complete\r\n");
         // All parsing complete!  Save new settings and force an interface restart
         // Set the interface to restart and display reconnecting information
-        strcpy((char *)httpDataBuff, "/protect/reboot.htm?");
+        strcpy((char *)httpDataBuff, "reboot.html");
         TCPIP_Helper_FormatNetBIOSName((uint8_t *)httpNetData.nbnsName);
         memcpy((void *)(httpDataBuff + 20), httpNetData.nbnsName, 16);
         httpDataBuff[20 + 16] = 0x00; // Force null termination
@@ -823,10 +722,11 @@ static TCPIP_HTTP_NET_IO_RESULT HTTPPostConfig(TCPIP_HTTP_NET_CONN_HANDLE connHa
     }
     else
     {   // Configuration error
+        SYS_CONSOLE_MESSAGE("CONFIG ERROR\r\n");
         lastFailure = true;
         if(httpDataBuff)
         {
-            strcpy((char *)httpDataBuff, "/protect/config.htm");
+            strcpy((char *)httpDataBuff, "network-settings.html");
         }
     }
 
@@ -1389,61 +1289,53 @@ TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_btn(TCPIP_HTTP_NET_CONN_HANDLE connHan
     return TCPIP_HTTP_DYN_PRINT_RES_DONE;
 }
 
-//TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_out(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
-//{
-//    int nOutput = vDcpt->dynArgs->argInt32;
-//    
-//    int checkbox = 0;
-//    
-//    switch(nOutput)
-//    {
-//            case 0:
-//                if(LED1_Get())
-//                {
-//                    SYS_CONSOLE_PRINT("led status: %d\r\n", LED1_Get());
-//                    checkbox = 0;
-//                }
-//                else
-//                {
-//                    SYS_CONSOLE_PRINT("led status: %d\r\n", LED1_Get());
-//                    checkbox = 1;
-//                }
-//            case 1:
-//                if(LED2_Get())
-//                    checkbox = 0;
-//                else
-//                    checkbox = 1;
-//            case 2:
-//                if(LED3_Get())
-//                    checkbox = 0;
-//                else
-//                    checkbox = 1;
-//            case 3:
-//                if(RGB_LED_G_Get())
-//                    checkbox = 0;
-//                else
-//                    checkbox = 1;
-//            default:
-//                checkbox = 1;
-//            
-//    } 
-//    //SYS_CONSOLE_PRINT("checkbox: %d\r\n", checkbox);
-//    if(checkbox==1)
-//    {
-//        
-//        TCPIP_HTTP_NET_DynamicWriteString(vDcpt, "unchecked", false);
-//    }
-//    else
-//        TCPIP_HTTP_NET_DynamicWriteString(vDcpt, "checked", false);
-//    
-//    return TCPIP_HTTP_DYN_PRINT_RES_DONE;                
-//}
+TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_out(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
+{
+    int nOutput = vDcpt->dynArgs->argInt32;
+    
+    int checked = 0;
+    
+    switch(nOutput)
+    {
+            case 0:
+                if(LED1_Get())
+                    checked = false;
+                else
+                    checked = true;
+                break;
+            case 1:
+                if(LED2_Get())
+                    checked = false;
+                else
+                    checked = true;
+                break;
+            case 2:
+                if(LED3_Get())
+                    checked = false;
+                else
+                    checked = true;
+                break;
+            case 3:
+                if(RGB_LED_G_Get())
+                    checked = true;
+                else
+                    checked = false;
+                break;
+            default:
+                checked = 0;
+                break;
+            
+    } 
+    SYS_CONSOLE_PRINT("Output %d is %d\r\n", nOutput, checked);
+    TCPIP_HTTP_NET_DynamicWriteString(vDcpt, (checked ? "true" : "false"), false);
+    return TCPIP_HTTP_DYN_PRINT_RES_DONE;                
+}
 
 
 TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_led(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
 {
 //    int nLed = vDcpt->dynArgs->argInt32;
-//    SYS_CONSOLE_PRINT("led number: %d\r\n", nLed);
+//    
 //    switch(nLed)
 //        {
 //            case 0:
@@ -1464,8 +1356,7 @@ TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_led(TCPIP_HTTP_NET_CONN_HANDLE connHan
 //            default:
 //                nLed = 0;
 //        }
-//        //SYS_CONSOLE_PRINT("Btn number: %d\r\n", nBtn);
-//        // Print the output
+//        
 //        TCPIP_HTTP_NET_DynamicWriteString(vDcpt, (nLed ? "0" : "1"), false);
    
        
@@ -1476,5 +1367,185 @@ TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_pot(TCPIP_HTTP_NET_CONN_HANDLE connHan
     return TCPIP_HTTP_DYN_PRINT_RES_DONE;
 }
 
+TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_config_ip(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
+{
+    IPV4_ADDR ipAddress;
+    char *ipAddStr;
+    HTTP_APP_DYNVAR_BUFFER *pDynBuffer = HTTP_APP_GetDynamicBuffer();
+    if(pDynBuffer == 0)
+    {   // failed to get a buffer; retry
+        return TCPIP_HTTP_DYN_PRINT_RES_AGAIN;
+    }
+
+    ipAddStr = pDynBuffer->data;
+    TCPIP_NET_HANDLE hNet = TCPIP_HTTP_NET_ConnectionNetHandle(connHandle);
+    ipAddress.Val = TCPIP_STACK_NetAddress(hNet);
+
+    TCPIP_Helper_IPAddressToString(&ipAddress, ipAddStr, HTTP_APP_DYNVAR_BUFFER_SIZE);
+    TCPIP_HTTP_NET_DynamicWriteString(vDcpt, ipAddStr, true);
+    return TCPIP_HTTP_DYN_PRINT_RES_DONE;
+}
+
+TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_config_gw(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
+{
+    IPV4_ADDR gwAddress;
+    char *ipAddStr;
+    HTTP_APP_DYNVAR_BUFFER *pDynBuffer = HTTP_APP_GetDynamicBuffer();
+    if(pDynBuffer == 0)
+    {   // failed to get a buffer; retry
+        return TCPIP_HTTP_DYN_PRINT_RES_AGAIN;
+    }
+
+    ipAddStr = pDynBuffer->data;
+    TCPIP_NET_HANDLE hNet = TCPIP_HTTP_NET_ConnectionNetHandle(connHandle);
+    gwAddress.Val = TCPIP_STACK_NetAddressGateway(hNet);
+    TCPIP_Helper_IPAddressToString(&gwAddress, ipAddStr, HTTP_APP_DYNVAR_BUFFER_SIZE);
+    TCPIP_HTTP_NET_DynamicWriteString(vDcpt, ipAddStr, true);
+    return TCPIP_HTTP_DYN_PRINT_RES_DONE;
+}
+
+TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_config_subnet(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
+{
+    IPV4_ADDR ipMask;
+    char *ipAddStr;
+    HTTP_APP_DYNVAR_BUFFER *pDynBuffer = HTTP_APP_GetDynamicBuffer();
+    if(pDynBuffer == 0)
+    {   // failed to get a buffer; retry
+        return TCPIP_HTTP_DYN_PRINT_RES_AGAIN;
+    }
+
+    ipAddStr = pDynBuffer->data;
+    TCPIP_NET_HANDLE hNet = TCPIP_HTTP_NET_ConnectionNetHandle(connHandle);
+    ipMask.Val = TCPIP_STACK_NetMask(hNet);
+    TCPIP_Helper_IPAddressToString(&ipMask, ipAddStr, HTTP_APP_DYNVAR_BUFFER_SIZE);
+    TCPIP_HTTP_NET_DynamicWriteString(vDcpt, ipAddStr, true);
+    return TCPIP_HTTP_DYN_PRINT_RES_DONE;
+}
+
+TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_config_mac(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
+{
+    TCPIP_NET_HANDLE hNet;
+    const TCPIP_MAC_ADDR *pMacAdd;
+    char macAddStr[20];
+    HTTP_APP_DYNVAR_BUFFER *pDynBuffer;
+
+    hNet = TCPIP_HTTP_NET_ConnectionNetHandle(connHandle);
+    pMacAdd = (const TCPIP_MAC_ADDR*)TCPIP_STACK_NetAddressMac(hNet);
+    if(pMacAdd)
+    {
+        TCPIP_Helper_MACAddressToString(pMacAdd, macAddStr, sizeof(macAddStr));
+        pDynBuffer = HTTP_APP_GetDynamicBuffer();
+        if(pDynBuffer == 0)
+        {   // failed to get a buffer; retry
+            return TCPIP_HTTP_DYN_PRINT_RES_AGAIN;
+        }
+        strncpy(pDynBuffer->data, macAddStr, HTTP_APP_DYNVAR_BUFFER_SIZE);
+        TCPIP_HTTP_NET_DynamicWriteString(vDcpt, pDynBuffer->data, true);
+    }
+    else
+    {
+        TCPIP_HTTP_NET_DynamicWriteString(vDcpt, "Failed to get a MAC address", false);
+    }
+
+    return TCPIP_HTTP_DYN_PRINT_RES_DONE;
+}
+
+TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_config_hostname(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
+{
+    TCPIP_NET_HANDLE hNet;
+    HTTP_APP_DYNVAR_BUFFER *pDynBuffer;
+    const char *nbnsName;
+
+    hNet = TCPIP_HTTP_NET_ConnectionNetHandle(connHandle);
+    nbnsName = TCPIP_STACK_NetBIOSName(hNet);
+
+    if(nbnsName == 0)
+    {
+        TCPIP_HTTP_NET_DynamicWriteString(vDcpt, "Failed to get a Host name", false);
+    }
+    else
+    {
+        pDynBuffer = HTTP_APP_GetDynamicBuffer();
+        if(pDynBuffer == 0)
+        {   // failed to get a buffer; retry
+            return TCPIP_HTTP_DYN_PRINT_RES_AGAIN;
+        }
+        strncpy(pDynBuffer->data, nbnsName, HTTP_APP_DYNVAR_BUFFER_SIZE);
+        TCPIP_HTTP_NET_DynamicWriteString(vDcpt, pDynBuffer->data, true);
+    }
+
+    return TCPIP_HTTP_DYN_PRINT_RES_DONE;
+}
+
+TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_status_fail(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
+{
+    const char *statMsg = lastFailure ? "block" : "none";
+    TCPIP_HTTP_NET_DynamicWriteString(vDcpt, statMsg, false);
+    lastFailure = false;
+    return TCPIP_HTTP_DYN_PRINT_RES_DONE;
+}
+
+TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_status_ok(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
+{
+    const char *statMsg = lastFailure ? "none" : "block";
+    TCPIP_HTTP_NET_DynamicWriteString(vDcpt, statMsg, false);
+    lastFailure = false;
+    return TCPIP_HTTP_DYN_PRINT_RES_DONE;
+}
+
+TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_config_dhcpchecked(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
+{
+
+    TCPIP_NET_HANDLE hNet;
+
+    hNet = TCPIP_HTTP_NET_ConnectionNetHandle(connHandle);
+
+    if(TCPIP_DHCP_IsEnabled(hNet))
+    {
+        TCPIP_HTTP_NET_DynamicWriteString(vDcpt, "checked", false);
+    }
+    return TCPIP_HTTP_DYN_PRINT_RES_DONE;
+}
+
+TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_reboot(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
+{
+
+    // This is not so much a print function, but causes the interface to restart
+    // when the configuration is changed.  If called via an AJAX call, this
+    // will gracefully restart the interface and bring it back online immediately
+    SYS_CONSOLE_MESSAGE("Reboot function called\r\n");
+    if(httpNetData.currNet != 0)
+    {   // valid data
+        httpNetData.netConfig.interface = httpNetData.ifName;
+        httpNetData.netConfig.hostName = httpNetData.nbnsName;
+        httpNetData.netConfig.macAddr = httpNetData.ifMacAddr;
+        httpNetData.netConfig.ipAddr = httpNetData.ipAddr;
+        httpNetData.netConfig.ipMask = httpNetData.ipMask;
+        httpNetData.netConfig.gateway = httpNetData.gwIP;
+        httpNetData.netConfig.priDNS = httpNetData.dns1IP;
+        httpNetData.netConfig.secondDNS = httpNetData.dns2IP;
+        httpNetData.netConfig.powerMode = TCPIP_STACK_IF_POWER_FULL;
+        // httpNetData.netConfig.startFlags should be already set;
+        httpNetData.netConfig.pMacObject = TCPIP_STACK_MACObjectGet(httpNetData.currNet);
+
+        TCPIP_STACK_NetDown(httpNetData.currNet);
+        TCPIP_STACK_NetUp(httpNetData.currNet, &httpNetData.netConfig);
+    }
+    return TCPIP_HTTP_DYN_PRINT_RES_DONE;
+}
+
+TCPIP_HTTP_DYN_PRINT_RES TCPIP_HTTP_Print_rebootaddr(TCPIP_HTTP_NET_CONN_HANDLE connHandle, const TCPIP_HTTP_DYN_VAR_DCPT *vDcpt)
+{   // This is the expected address of the board upon rebooting
+    const char *rebootAddr = (const char *)TCPIP_HTTP_NET_ConnectionDataBufferGet(connHandle);
+
+    HTTP_APP_DYNVAR_BUFFER *pDynBuffer = HTTP_APP_GetDynamicBuffer();
+    if(pDynBuffer == 0)
+    {   // failed to get a buffer; retry
+        return TCPIP_HTTP_DYN_PRINT_RES_AGAIN;
+    }
+    strncpy(pDynBuffer->data, rebootAddr, HTTP_APP_DYNVAR_BUFFER_SIZE);
+    TCPIP_HTTP_NET_DynamicWriteString(vDcpt, pDynBuffer->data, true);
+    return TCPIP_HTTP_DYN_PRINT_RES_DONE;
+}
 
 #endif // #if defined(TCPIP_STACK_USE_HTTP_SERVER)

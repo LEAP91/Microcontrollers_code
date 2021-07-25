@@ -170,22 +170,20 @@ children:
       - type: Boolean
         attributes: {id: enabled}
         children:
-        - {type: Value, value: 'false'}
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
-        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
-            Server test - copia/firmware/src/my_pages/CSS/style.css}
+        - {type: Value, value: CSS\style.css}
       - type: String
         attributes: {id: project}
         children:
-        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
-            Server test - copia/firmware/src/my_pages/CSS/}
+        - {type: Value, value: web_pages\CSS\}
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
-            Server test - copia/firmware/src/my_pages/CSS/style.css}
+        - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/CSS/style.css'}
   - type: File
     attributes: {id: WEBPAGE_LIST_FILE11}
     children:
@@ -194,22 +192,20 @@ children:
       - type: Boolean
         attributes: {id: enabled}
         children:
-        - {type: Value, value: 'false'}
+        - {type: Value, value: 'true'}
       - type: String
         attributes: {id: name}
         children:
-        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
-            Server test - copia/firmware/src/my_pages/CSS/Neon-Heavy.woff}
+        - {type: Value, value: imgs\webpage_logo.png}
       - type: String
         attributes: {id: project}
         children:
-        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
-            Server test - copia/firmware/src/my_pages/CSS/}
+        - {type: Value, value: web_pages\imgs\}
       - type: String
         attributes: {id: source}
         children:
-        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
-            Server test - copia/firmware/src/my_pages/CSS/Neon-Heavy.woff}
+        - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/imgs/webpage_logo.png'}
   - type: File
     attributes: {id: WEBPAGE_LIST_FILE12}
     children:
@@ -1006,7 +1002,7 @@ children:
       - type: String
         attributes: {id: name}
         children:
-        - {type: Value, value: status.xml}
+        - {type: Value, value: reboot.cgi}
       - type: String
         attributes: {id: project}
         children:
@@ -1015,7 +1011,7 @@ children:
         attributes: {id: source}
         children:
         - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
-            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/status.xml'}
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/reboot.cgi'}
   - type: File
     attributes: {id: WEBPAGE_LIST_FILE40}
     children:
@@ -1308,7 +1304,7 @@ children:
       - type: String
         attributes: {id: name}
         children:
-        - {type: Value, value: user-settings.html}
+        - {type: Value, value: reboot.html}
       - type: String
         attributes: {id: project}
         children:
@@ -1317,7 +1313,7 @@ children:
         attributes: {id: source}
         children:
         - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
-            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/user-settings.html'}
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/reboot.html'}
   - type: File
     attributes: {id: WEBPAGE_LIST_FILE50}
     children:
@@ -1610,16 +1606,16 @@ children:
       - type: String
         attributes: {id: name}
         children:
-        - {type: Value, value: CSS\format.css}
+        - {type: Value, value: status.xml}
       - type: String
         attributes: {id: project}
         children:
-        - {type: Value, value: web_pages\CSS\}
+        - {type: Value, value: web_pages\}
       - type: String
         attributes: {id: source}
         children:
         - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
-            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/CSS/format.css'}
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/status.xml'}
   - type: File
     attributes: {id: WEBPAGE_LIST_FILE60}
     children:
@@ -1912,16 +1908,16 @@ children:
       - type: String
         attributes: {id: name}
         children:
-        - {type: Value, value: CSS\login.css}
+        - {type: Value, value: user-settings.html}
       - type: String
         attributes: {id: project}
         children:
-        - {type: Value, value: web_pages\CSS\}
+        - {type: Value, value: web_pages\}
       - type: String
         attributes: {id: source}
         children:
         - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
-            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/CSS/login.css'}
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/user-settings.html'}
   - type: File
     attributes: {id: WEBPAGE_LIST_FILE70}
     children:
@@ -2214,7 +2210,7 @@ children:
       - type: String
         attributes: {id: name}
         children:
-        - {type: Value, value: CSS\style.css}
+        - {type: Value, value: CSS\format.css}
       - type: String
         attributes: {id: project}
         children:
@@ -2223,7 +2219,7 @@ children:
         attributes: {id: source}
         children:
         - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
-            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/CSS/style.css'}
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/CSS/format.css'}
   - type: File
     attributes: {id: WEBPAGE_LIST_FILE80}
     children:
@@ -2516,16 +2512,16 @@ children:
       - type: String
         attributes: {id: name}
         children:
-        - {type: Value, value: imgs\webpage_logo.png}
+        - {type: Value, value: CSS\login.css}
       - type: String
         attributes: {id: project}
         children:
-        - {type: Value, value: web_pages\imgs\}
+        - {type: Value, value: web_pages\CSS\}
       - type: String
         attributes: {id: source}
         children:
         - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
-            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/imgs/webpage_logo.png'}
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/CSS/login.css'}
   - type: File
     attributes: {id: WEBPAGE_LIST_FILE90}
     children:

@@ -25,7 +25,6 @@
         <div id="myform">
 
             <div class="formgrid-digital-input">
-                <div class="message"></div>
                 <h1></h1>
                 <h1>STATUS</h1>
                 <label for="DI0">Digital Input 1</label>
@@ -97,6 +96,8 @@
         interval = null;
 
         startBTN.onclick = function () {
+            document.getElementById("start").style.background = 'green';
+            document.getElementById("stop").style.background = '#4CAF50';
             var i = 0;
             interval = setInterval(function () {
                 ajax_command();  // this is inside your loop
@@ -104,6 +105,8 @@
         };
 
         stopBTN.onclick = function () {
+            document.getElementById("stop").style.background = 'green';
+            document.getElementById("start").style.background = '#4CAF50';
             clearInterval(interval);
         };
 

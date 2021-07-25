@@ -45,6 +45,7 @@ build/default/production/_ext/1171490990/initialization.o: \
  ../src/config/default/library/tcpip/tcp.h \
  ../src/config/default/library/tcpip/udp.h \
  ../src/config/default/library/tcpip/icmp.h \
+ ../src/config/default/library/tcpip/nbns.h \
  ../src/config/default/library/tcpip/http_net.h \
  ../src/config/default/system/fs/sys_fs.h \
  ../src/config/default/net_pres/pres/net_pres.h \
@@ -180,6 +181,8 @@ build/default/production/_ext/1171490990/initialization.o: \
 ../src/config/default/library/tcpip/udp.h:
 
 ../src/config/default/library/tcpip/icmp.h:
+
+../src/config/default/library/tcpip/nbns.h:
 
 ../src/config/default/library/tcpip/http_net.h:
 
