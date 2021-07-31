@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project>                                  
+  <executable name="dist/default/debug/tcp_test.X.debug.elf">                 
+    <memory name="program">                 
+      <units>bytes</units>                 
+      <length>2098304</length>                 
+      <used>130372</used>                     
+      <free>1967932</free>                     
+    </memory>                              
+    <memory name="data">              
+      <units>bytes</units>                 
+      <length>525184</length>                 
+      <used>4508</used>                     
+      <free>520676</free>                     
+    </memory>                              
+  </executable>                            
+</project>                                 

@@ -22,13 +22,14 @@
             </ul>
         </div>
         <form id="myform" action="get">
-
+            <div class="message_ok" style="display: ~status_ok~">!User settings saved correctly
+            </div>
             <div class="formgrid-login">
-                <div class="message"></div>
+
                 <label for="Username">Username</label>
-                <input type="text" maxlength="16" id="username">
+                <input type="text" maxlength="15" id="username" style="text-align: left;" value="~username~">
                 <label for="password">Password</label>
-                <input type="text" maxlength="16" id="password">
+                <input type="text" maxlength="15" id="password" style="text-align: left;" value="~password~">
                 <button type="submit">Save</button>
             </div>
         </form>

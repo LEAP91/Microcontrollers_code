@@ -57,8 +57,6 @@
 static HTTP_APP_DYNVAR_ENTRY HTTP_APP_DynVarTbl[] = 
 {
  // varName                      varFnc
-{"led",					TCPIP_HTTP_Print_led},
-{"btn",					TCPIP_HTTP_Print_btn},
 {"out",					TCPIP_HTTP_Print_out},
 {"status_fail",					TCPIP_HTTP_Print_status_fail},
 {"config_ip",					TCPIP_HTTP_Print_config_ip},
@@ -69,6 +67,7 @@ static HTTP_APP_DYNVAR_ENTRY HTTP_APP_DynVarTbl[] =
 {"config_dhcpchecked",					TCPIP_HTTP_Print_config_dhcpchecked},
 {"reboot",					TCPIP_HTTP_Print_reboot},
 {"rebootaddr",					TCPIP_HTTP_Print_rebootaddr},
+{"in",					TCPIP_HTTP_Print_in},
 };
 
 // Function that processes the dynamic variables
@@ -152,7 +151,7 @@ void HTTP_APP_Initialize(void)
         .dynamicAck = TCPIP_HTTP_NET_DynAcknowledge,                    // Acknowledgment function for when the dynamic variable processing is completed
         .eventReport = TCPIP_HTTP_NET_EventReport,                      // HTTP Event notification callback
 
-        .ssiNotify = TCPIP_HTTP_NET_SSINotification,                    // SSI command calback
+        //.ssiNotify = TCPIP_HTTP_NET_SSINotification,                    // SSI command calback
     };
 
     TCPIP_HTTP_NET_USER_HANDLE httpH = TCPIP_HTTP_NET_UserHandlerRegister(&appHttpCBack);

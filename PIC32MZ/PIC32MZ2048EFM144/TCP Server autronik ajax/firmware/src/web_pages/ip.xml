@@ -1,0 +1,5 @@
+<response>
+<reboot>~reboot~</reboot>
+<host>~rebootaddr~</host>
+<ip>~new_ip~</ip>
+</response>
