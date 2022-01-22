@@ -65,6 +65,7 @@ void GPIO_Initialize ( void )
     /* PORTA Initialization */
 
     /* PORTB Initialization */
+    ODCBSET = 0x380; /* Open Drain Enable */
     LATB = 0x380; /* Initial Latch Value */
     TRISBCLR = 0x380; /* Direction Control */
     ANSELBCLR = 0x380; /* Digital Mode Enable */

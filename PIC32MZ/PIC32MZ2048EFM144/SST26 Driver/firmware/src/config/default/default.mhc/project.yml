@@ -6,6 +6,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
+- generatedChecksum: 479D3F2FF6900275CD72549F38CD37F7
+  logicalPath: config/default/driver/sst26
+  name: drv_sst26.c
+  physicalPath: driver/sst26/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 479D3F2FF6900275CD72549F38CD37F7
 - generatedChecksum: D230A6B646D2E78CEAA6AA924E04FCA0
   logicalPath: config/default
   name: exceptions.c
@@ -13,20 +20,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: D230A6B646D2E78CEAA6AA924E04FCA0
-- generatedChecksum: E7B53D128677D986F21751CF4AAA1F73
+- generatedChecksum: F74473BB214C41033976EFE0E0721B61
   logicalPath: config/default
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: E7B53D128677D986F21751CF4AAA1F73
-- generatedChecksum: 3FCD8096364D59D93B414CF5F742EC74
+  userChecksum: 9C27E5CA2BFFE8352DBD5DA4753F95E6
+- generatedChecksum: 913D8625AA8DC729C857CE3F37FB05B7
   logicalPath: config/default
   name: interrupts.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 3FCD8096364D59D93B414CF5F742EC74
+  userChecksum: 913D8625AA8DC729C857CE3F37FB05B7
 - generatedChecksum: null
   logicalPath: ''
   name: main.c
@@ -34,13 +41,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: 348E1BD972633E1AFDBDCCD133C30C5B
+- generatedChecksum: 2DFA7367F1DFA82E5ADAB501A83ADD59
   logicalPath: config/default/peripheral/clk
   name: plib_clk.c
   physicalPath: peripheral/clk
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 348E1BD972633E1AFDBDCCD133C30C5B
+  userChecksum: 2DFA7367F1DFA82E5ADAB501A83ADD59
 - generatedChecksum: ABBC8DF44507DCD3729AA5006FBF5DD6
   logicalPath: config/default/peripheral/evic
   name: plib_evic.c
@@ -55,6 +62,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 635712A6C846987470EFFCF3EABB8A0D
+- generatedChecksum: A2E207D459736D20CF2C38D551EE1A99
+  logicalPath: config/default/peripheral/sqi
+  name: plib_sqi1.c
+  physicalPath: peripheral/sqi
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: A2E207D459736D20CF2C38D551EE1A99
 - generatedChecksum: 7CF384BA3D08C83EE890FC405110EDA1
   logicalPath: config/default/peripheral/uart
   name: plib_uart2.c
@@ -139,20 +153,20 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: null
-- generatedChecksum: 4855B5EA5BE394CEACBC41B6FEAD2183
+- generatedChecksum: 92F8D1032C771950CBE1F91DEBEDCAB0
   logicalPath: config/default
   name: configuration.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 4855B5EA5BE394CEACBC41B6FEAD2183
-- generatedChecksum: 753F8200DCA74DD3B84750DDFF0D6DE8
+  userChecksum: 92F8D1032C771950CBE1F91DEBEDCAB0
+- generatedChecksum: 7DC428578BCA24EF5ED46E0DAAD22FBB
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 753F8200DCA74DD3B84750DDFF0D6DE8
+  userChecksum: 7DC428578BCA24EF5ED46E0DAAD22FBB
 - generatedChecksum: E189C26B2269F8DE46033CCD0621958D
   logicalPath: config/default
   name: device.h
@@ -174,6 +188,27 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: CC7DFCC51CD25171A3E400E18969354F
+- generatedChecksum: 8EAE086FFBCC60C4343BAA26620B1204
+  logicalPath: config/default/driver/sst26
+  name: drv_sst26.h
+  physicalPath: driver/sst26
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 8EAE086FFBCC60C4343BAA26620B1204
+- generatedChecksum: D712283D4ED135C84E162B40760A9C23
+  logicalPath: config/default/driver/sst26
+  name: drv_sst26_definitions.h
+  physicalPath: driver/sst26
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: D712283D4ED135C84E162B40760A9C23
+- generatedChecksum: D0F58EA0E69F1EC3040F9EB3C64B9737
+  logicalPath: config/default/driver/sst26
+  name: drv_sst26_local.h
+  physicalPath: driver/sst26/src
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: D0F58EA0E69F1EC3040F9EB3C64B9737
 - generatedChecksum: 4CF4A86296482D5331331BA301C20BB2
   logicalPath: config/default
   name: interrupts.h
@@ -223,6 +258,20 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 54C7DA9C884BCFD60B766E43D4E18640
+- generatedChecksum: 83A29BB1714DD4AF71B7176C4A487262
+  logicalPath: config/default/peripheral/sqi
+  name: plib_sqi1.h
+  physicalPath: peripheral/sqi
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 83A29BB1714DD4AF71B7176C4A487262
+- generatedChecksum: BA2AAEA19E581F59C1E78E73982F7C78
+  logicalPath: config/default/peripheral/sqi
+  name: plib_sqi_common.h
+  physicalPath: peripheral/sqi
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: BA2AAEA19E581F59C1E78E73982F7C78
 - generatedChecksum: 86D499749C924875389705AA3D0C9FD7
   logicalPath: config/default/peripheral/uart
   name: plib_uart2.h

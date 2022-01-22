@@ -5,8 +5,8 @@
  */
 /* ************************************************************************** */
 
-#ifndef _Dev_Board   /* Guard against multiple inclusion */
-#define _Dev_Board
+#ifndef _DEV_BOARD_H   /* Guard against multiple inclusion */
+#define _DEV_BOARD_H 
 #include "config/default/peripheral/gpio/plib_gpio.h"
 
 #define LED1_ON LED1_Clear();

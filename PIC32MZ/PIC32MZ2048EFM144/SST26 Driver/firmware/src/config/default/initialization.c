@@ -77,7 +77,7 @@
 #pragma config DMTINTV =    WIN_127_128
 #pragma config FSOSCEN =    OFF
 #pragma config IESO =       OFF
-#pragma config POSCMOD =    OFF
+#pragma config POSCMOD =    EC
 #pragma config OSCIOFNC =   OFF
 #pragma config FCKSM =      CSECME
 #pragma config WDTPS =      PS1048576
@@ -94,7 +94,7 @@
 #pragma config FPLLICLK =   PLL_FRC
 #pragma config FPLLMULT =   MUL_50
 #pragma config FPLLODIV =   DIV_2
-#pragma config UPLLFSEL =   FREQ_24MHZ
+#pragma config UPLLFSEL =   FREQ_12MHZ
 
 /*** DEVCFG3 ***/
 #pragma config USERID =     0xffff
@@ -119,6 +119,19 @@
 // Section: Driver Initialization Data
 // *****************************************************************************
 // *****************************************************************************
+// <editor-fold defaultstate="collapsed" desc="DRV_SST26 Initialization Data">
+
+const DRV_SST26_PLIB_INTERFACE drvSST26PlibAPI = {
+    .DMATransfer       = SQI1_DMATransfer,
+    .RegisterCallback  = SQI1_RegisterCallback,
+};
+
+const DRV_SST26_INIT drvSST26InitData =
+{
+    .sst26Plib      = &drvSST26PlibAPI,
+};
+// </editor-fold>
+
 
 
 // *****************************************************************************
@@ -223,11 +236,13 @@ void SYS_Initialize ( void* data )
 
 	UART2_Initialize();
 
-
+    SQI1_Initialize();
 
     sysObj.sysConsole0 = SYS_CONSOLE_Initialize(SYS_CONSOLE_INDEX_0, (SYS_MODULE_INIT *)&sysConsole0Init);
 
     sysObj.sysDebug = SYS_DEBUG_Initialize(SYS_DEBUG_INDEX_0, (SYS_MODULE_INIT*)&debugInit);
+    
+    sysObj.drvSST26 = DRV_SST26_Initialize((SYS_MODULE_INDEX)DRV_SST26_INDEX, (SYS_MODULE_INIT *)&drvSST26InitData);
 
 
 

@@ -104,6 +104,14 @@ extern "C" {
 // Section: Driver Configuration
 // *****************************************************************************
 // *****************************************************************************
+/* SST26 Driver Instance Configuration */
+#define DRV_SST26_INDEX                 0
+#define DRV_SST26_CLIENTS_NUMBER        1
+#define DRV_SST26_START_ADDRESS         0x0
+#define DRV_SST26_PAGE_SIZE             256
+#define DRV_SST26_ERASE_BUFFER_SIZE     4096
+#define DRV_SST26_BUFF_DESC_NUMBER      32
+
 
 
 // *****************************************************************************

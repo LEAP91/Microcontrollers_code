@@ -36,8 +36,7 @@ int main ( void )
     LED1_ON;
     LED2_ON;
     LED3_ON;
-     
-       
+           
     while ( true );
     {
         /* Maintain state machines of all polled MPLAB Harmony modules. */

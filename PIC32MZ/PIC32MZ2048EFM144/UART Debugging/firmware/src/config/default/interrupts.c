@@ -61,7 +61,6 @@
 
 
 void CHANGE_NOTICE_C_InterruptHandler( void );
-void CHANGE_NOTICE_J_InterruptHandler( void );
 
 
 
@@ -69,11 +68,6 @@ void CHANGE_NOTICE_J_InterruptHandler( void );
 void __ISR(_CHANGE_NOTICE_C_VECTOR, ipl1SRS) CHANGE_NOTICE_C_Handler (void)
 {
     CHANGE_NOTICE_C_InterruptHandler();
-}
-
-void __ISR(_CHANGE_NOTICE_J_VECTOR, ipl1SRS) CHANGE_NOTICE_J_Handler (void)
-{
-    CHANGE_NOTICE_J_InterruptHandler();
 }
 
 

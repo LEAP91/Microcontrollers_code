@@ -76,7 +76,7 @@
 #pragma config DMTINTV =    WIN_127_128
 #pragma config FSOSCEN =    OFF
 #pragma config IESO =       OFF
-#pragma config POSCMOD =    OFF
+#pragma config POSCMOD =    EC
 #pragma config OSCIOFNC =   OFF
 #pragma config FCKSM =      CSECME
 #pragma config WDTPS =      PS1048576
@@ -93,7 +93,7 @@
 #pragma config FPLLICLK =   PLL_FRC
 #pragma config FPLLMULT =   MUL_50
 #pragma config FPLLODIV =   DIV_2
-#pragma config UPLLFSEL =   FREQ_24MHZ
+#pragma config UPLLFSEL =   FREQ_12MHZ
 
 /*** DEVCFG3 ***/
 #pragma config USERID =     0xffff

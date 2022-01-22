@@ -56,7 +56,6 @@ void EVIC_Initialize( void )
 
     /* Set up priority and subpriority of enabled interrupts */
     IPC30SET = 0x4 | 0x0;  /* CHANGE_NOTICE_C:  Priority 1 / Subpriority 0 */
-    IPC31SET = 0x40000 | 0x0;  /* CHANGE_NOTICE_J:  Priority 1 / Subpriority 0 */
 
 
 

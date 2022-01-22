@@ -126,8 +126,6 @@
 #define SW1_InputEnable()       (TRISJSET = (1<<4))
 #define SW1_Get()               ((PORTJ >> 4) & 0x1)
 #define SW1_PIN                  GPIO_PIN_RJ4
-#define SW1_InterruptEnable()   (CNENJSET = (1<<4))
-#define SW1_InterruptDisable()  (CNENJCLR = (1<<4))
 
 /*** Macros for SW2 pin ***/
 #define SW2_Set()               (LATJSET = (1<<5))
@@ -137,8 +135,6 @@
 #define SW2_InputEnable()       (TRISJSET = (1<<5))
 #define SW2_Get()               ((PORTJ >> 5) & 0x1)
 #define SW2_PIN                  GPIO_PIN_RJ5
-#define SW2_InterruptEnable()   (CNENJSET = (1<<5))
-#define SW2_InterruptDisable()  (CNENJCLR = (1<<5))
 
 /*** Macros for SW3 pin ***/
 #define SW3_Set()               (LATJSET = (1<<6))
@@ -148,8 +144,6 @@
 #define SW3_InputEnable()       (TRISJSET = (1<<6))
 #define SW3_Get()               ((PORTJ >> 6) & 0x1)
 #define SW3_PIN                  GPIO_PIN_RJ6
-#define SW3_InterruptEnable()   (CNENJSET = (1<<6))
-#define SW3_InterruptDisable()  (CNENJCLR = (1<<6))
 
 /*** Macros for LED1 pin ***/
 #define LED1_Set()               (LATJSET = (1<<7))

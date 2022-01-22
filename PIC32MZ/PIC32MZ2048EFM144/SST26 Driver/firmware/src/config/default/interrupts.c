@@ -66,6 +66,7 @@ void CHANGE_NOTICE_J_InterruptHandler( void );
 void UART2_FAULT_InterruptHandler( void );
 void UART2_RX_InterruptHandler( void );
 void UART2_TX_InterruptHandler( void );
+void SQI1_InterruptHandler( void );
 
 
 
@@ -101,6 +102,7 @@ void __ISR(_FLASH_CONTROL_VECTOR, ipl1SRS) FLASH_CONTROL_Handler (void)
 
 void __ISR(_SQI1_VECTOR, ipl1SRS) SQI1_Handler (void)
 {
+    SQI1_InterruptHandler();
 }
 
 

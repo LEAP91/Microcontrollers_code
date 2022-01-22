@@ -45,6 +45,8 @@
 // *****************************************************************************
 #include "definitions.h"
 #include "device.h"
+#include "Dev_Board.h"
+
 
 
 
@@ -76,7 +78,7 @@
 #pragma config DMTINTV =    WIN_127_128
 #pragma config FSOSCEN =    OFF
 #pragma config IESO =       OFF
-#pragma config POSCMOD =    OFF
+#pragma config POSCMOD =    EC
 #pragma config OSCIOFNC =   OFF
 #pragma config FCKSM =      CSECME
 #pragma config WDTPS =      PS1048576
@@ -93,7 +95,7 @@
 #pragma config FPLLICLK =   PLL_FRC
 #pragma config FPLLMULT =   MUL_50
 #pragma config FPLLODIV =   DIV_2
-#pragma config UPLLFSEL =   FREQ_24MHZ
+#pragma config UPLLFSEL =   FREQ_12MHZ
 
 /*** DEVCFG3 ***/
 #pragma config USERID =     0xffff
@@ -164,8 +166,7 @@ void SYS_Initialize ( void* data )
 
     /* Start out with interrupts disabled before configuring any modules */
     __builtin_disable_interrupts();
-
-  
+   
     CLK_Initialize();
     
     /* Configure Prefetch, Wait States and ECC */
@@ -176,6 +177,12 @@ void SYS_Initialize ( void* data )
 
 
 	GPIO_Initialize();
+    LED1_OFF;
+    LED2_OFF;
+    LED3_OFF;
+    GREEN_OFF;
+    RED_OFF;
+    BLUE_OFF;
 
 	UART2_Initialize();
 

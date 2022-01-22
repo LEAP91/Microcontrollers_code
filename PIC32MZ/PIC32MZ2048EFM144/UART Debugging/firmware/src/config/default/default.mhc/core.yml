@@ -4,6 +4,13 @@ attributes: {id: core}
 children:
 - type: Symbols
   children:
+  - type: Integer
+    attributes: {id: ADCHS_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
   - type: String
     attributes: {id: BSP_PIN_100_MODE}
     children:
@@ -138,6 +145,13 @@ children:
       - type: User
         attributes: {value: DIGITAL}
   - type: String
+    attributes: {id: BSP_PIN_117_OD}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'True'}
+  - type: String
     attributes: {id: BSP_PIN_118_MODE}
     children:
     - type: Values
@@ -215,6 +229,13 @@ children:
       - type: User
         attributes: {value: DIGITAL}
   - type: String
+    attributes: {id: BSP_PIN_126_OD}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'True'}
+  - type: String
     attributes: {id: BSP_PIN_127_MODE}
     children:
     - type: Values
@@ -248,7 +269,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: 'True'}
+        attributes: {value: ''}
   - type: String
     attributes: {id: BSP_PIN_131_FUNCTION_NAME}
     children:
@@ -276,14 +297,14 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: 'True'}
+        attributes: {value: ''}
   - type: String
     attributes: {id: BSP_PIN_132_CN}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: 'True'}
+        attributes: {value: ''}
   - type: String
     attributes: {id: BSP_PIN_132_FUNCTION_NAME}
     children:
@@ -311,14 +332,14 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: 'True'}
+        attributes: {value: ''}
   - type: String
     attributes: {id: BSP_PIN_133_CN}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: 'True'}
+        attributes: {value: ''}
   - type: String
     attributes: {id: BSP_PIN_133_FUNCTION_NAME}
     children:
@@ -346,7 +367,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: 'True'}
+        attributes: {value: ''}
   - type: String
     attributes: {id: BSP_PIN_134_DIR}
     children:
@@ -382,6 +403,13 @@ children:
       children:
       - type: User
         attributes: {value: DIGITAL}
+  - type: String
+    attributes: {id: BSP_PIN_134_OD}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'True'}
   - type: String
     attributes: {id: BSP_PIN_134_PD}
     children:
@@ -551,6 +579,13 @@ children:
       - type: User
         attributes: {value: DIGITAL}
   - type: String
+    attributes: {id: BSP_PIN_38_OD}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'True'}
+  - type: String
     attributes: {id: BSP_PIN_45_MODE}
     children:
     - type: Values
@@ -600,6 +635,13 @@ children:
       - type: User
         attributes: {value: DIGITAL}
   - type: String
+    attributes: {id: BSP_PIN_47_OD}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'True'}
+  - type: String
     attributes: {id: BSP_PIN_48_DIR}
     children:
     - type: Values
@@ -634,6 +676,13 @@ children:
       children:
       - type: User
         attributes: {value: DIGITAL}
+  - type: String
+    attributes: {id: BSP_PIN_48_OD}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'True'}
   - type: String
     attributes: {id: BSP_PIN_51_MODE}
     children:
@@ -851,6 +900,74 @@ children:
       children:
       - type: User
         attributes: {value: DIGITAL}
+  - type: File
+    attributes: {id: CACHE_HEADER_H}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+  - type: File
+    attributes: {id: CACHE_LOCAL_H}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+  - type: File
+    attributes: {id: CACHE_PIC32MZ_H}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+  - type: File
+    attributes: {id: CACHE_SOURCE_PIC32MZ_C}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+  - type: File
+    attributes: {id: CACHE_SOURCE_PIC32MZ_S}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+  - type: File
+    attributes: {id: CACHE_SYSTEM_DEF_H}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+  - type: Integer
+    attributes: {id: CAN1_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: CAN2_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
   - type: Boolean
     attributes: {id: CHANGE_NOTICE_C_INTERRUPT_ENABLE}
     children:
@@ -885,30 +1002,207 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: 'true'}
+        attributes: {id: core, value: 'false'}
   - type: Boolean
     attributes: {id: CHANGE_NOTICE_J_INTERRUPT_ENABLE_UPDATE}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: 'false'}
+        attributes: {id: core, value: 'true'}
   - type: String
     attributes: {id: CHANGE_NOTICE_J_INTERRUPT_HANDLER}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: CHANGE_NOTICE_J_InterruptHandler}
+        attributes: {id: core, value: CHANGE_NOTICE_J_Handler}
   - type: Boolean
     attributes: {id: CHANGE_NOTICE_J_INTERRUPT_HANDLER_LOCK}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: 'true'}
+        attributes: {id: core, value: 'false'}
+  - type: Integer
+    attributes: {id: CMP1_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: CMP2_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
   - type: KeyValueSet
     attributes: {id: COMPILER_CHOICE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Combo
+    attributes: {id: CONFIG_POSCMOD}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: EC}
+  - type: Integer
+    attributes: {id: CONFIG_PRECON_PFMWS}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '3'}
+  - type: Integer
+    attributes: {id: CONFIG_SYS_CLK_CONFIG_PRIMARY_XTAL}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '12000000'}
+  - type: String
+    attributes: {id: CONFIG_SYS_CLK_PBCLK1_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '100000000'}
+  - type: String
+    attributes: {id: CONFIG_SYS_CLK_PBCLK2_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '100000000'}
+  - type: String
+    attributes: {id: CONFIG_SYS_CLK_PBCLK3_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '100000000'}
+  - type: String
+    attributes: {id: CONFIG_SYS_CLK_PBCLK4_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '100000000'}
+  - type: String
+    attributes: {id: CONFIG_SYS_CLK_PBCLK5_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '100000000'}
+  - type: String
+    attributes: {id: CONFIG_SYS_CLK_PBCLK7_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '200000000'}
+  - type: String
+    attributes: {id: CONFIG_SYS_CLK_PBCLK8_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '100000000'}
+  - type: String
+    attributes: {id: CONFIG_SYS_CLK_REFCLK1_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '0'}
+  - type: String
+    attributes: {id: CONFIG_SYS_CLK_REFCLK2_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '0'}
+  - type: String
+    attributes: {id: CONFIG_SYS_CLK_REFCLK3_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '0'}
+  - type: String
+    attributes: {id: CONFIG_SYS_CLK_REFCLK4_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '0'}
+  - type: Combo
+    attributes: {id: CONFIG_UPLLFSEL}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: FREQ_12MHZ}
+  - type: String
+    attributes: {id: CPU_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '200000000'}
+  - type: Integer
+    attributes: {id: CRYPTO_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: CVR_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Boolean
+    attributes: {id: DATA_CACHE_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: 'true'}
+  - type: File
+    attributes: {id: DEVICE_CACHE_H}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+  - type: Integer
+    attributes: {id: DMAC_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '200000000'}
+  - type: Integer
+    attributes: {id: EBI_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: ETH_CLOCK_FREQUENCY}
     children:
     - type: Values
       children:
@@ -941,21 +1235,28 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: 'true'}
+        attributes: {id: core, value: 'false'}
   - type: Boolean
     attributes: {id: EVIC_126_HANDLER_LOCK}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: 'true'}
+        attributes: {id: core, value: 'false'}
   - type: String
     attributes: {id: EVIC_126_INTERRUPT_HANDLER}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: CHANGE_NOTICE_J_InterruptHandler}
+        attributes: {id: core, value: CHANGE_NOTICE_J_Handler}
+  - type: Boolean
+    attributes: {id: EVIC_132_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
   - type: Boolean
     attributes: {id: EVIC_145_ENABLE}
     children:
@@ -1019,6 +1320,111 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: UART2_TX_Handler}
+  - type: Integer
+    attributes: {id: I2C1_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: I2C2_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: I2C3_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: I2C4_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: I2C5_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: ICAP1_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: ICAP2_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: ICAP3_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: ICAP4_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: ICAP5_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: ICAP6_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: ICAP7_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: ICAP8_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: ICAP9_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Boolean
+    attributes: {id: INSTRUCTION_CACHE_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: 'true'}
   - type: String
     attributes: {id: KEIL_STACK_HEAP_SIZE}
     children:
@@ -1026,6 +1432,69 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: '0x1200'}
+  - type: Integer
+    attributes: {id: OCMP1_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: OCMP2_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: OCMP3_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: OCMP4_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: OCMP5_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: OCMP6_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: OCMP7_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: OCMP8_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: OCMP9_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
   - type: Hex
     attributes: {id: PMD5_REG_VALUE}
     children:
@@ -1047,6 +1516,111 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: '5242880'}
+  - type: Integer
+    attributes: {id: PMP_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: REFO1_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '200000000'}
+  - type: Integer
+    attributes: {id: REFO2_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '200000000'}
+  - type: Integer
+    attributes: {id: REFO3_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '200000000'}
+  - type: Integer
+    attributes: {id: REFO4_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '200000000'}
+  - type: Integer
+    attributes: {id: RNG_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: RTCC_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: SPI1_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: SPI2_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: SPI3_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: SPI4_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: SPI5_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: SPI6_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: SQI1_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: String
+    attributes: {id: SYS_CLK_FREQ}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '200000000'}
   - type: Hex
     attributes: {id: SYS_PORT_B_ANSEL}
     children:
@@ -1056,6 +1630,13 @@ children:
         attributes: {id: core, value: '896'}
   - type: Hex
     attributes: {id: SYS_PORT_B_LAT}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '896'}
+  - type: Hex
+    attributes: {id: SYS_PORT_B_ODC}
     children:
     - type: Values
       children:
@@ -1123,7 +1704,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '112'}
+        attributes: {id: core, value: '0'}
   - type: Hex
     attributes: {id: SYS_PORT_J_CNPD}
     children:
@@ -1137,16 +1718,23 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '112'}
+        attributes: {id: core, value: '0'}
   - type: Boolean
     attributes: {id: SYS_PORT_J_CN_USED}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: 'true'}
+        attributes: {id: core, value: 'false'}
   - type: Hex
     attributes: {id: SYS_PORT_J_LAT}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '136'}
+  - type: Hex
+    attributes: {id: SYS_PORT_J_ODC}
     children:
     - type: Values
       children:
@@ -1175,6 +1763,13 @@ children:
         attributes: {id: core, value: '136'}
   - type: Hex
     attributes: {id: SYS_PORT_K_LAT}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '128'}
+  - type: Hex
+    attributes: {id: SYS_PORT_K_ODC}
     children:
     - type: Values
       children:
@@ -1239,6 +1834,76 @@ children:
       children:
       - type: User
         attributes: {value: RPG9}
+  - type: Integer
+    attributes: {id: TMR1_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: TMR2_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: TMR3_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: TMR4_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: TMR5_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: TMR6_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: TMR7_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: TMR8_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: TMR9_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: UART1_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
   - type: Boolean
     attributes: {id: UART2_CLOCK_ENABLE}
     children:
@@ -1337,6 +2002,55 @@ children:
       children:
       - type: Dynamic
         attributes: {id: uart2, value: 'false'}
+  - type: Integer
+    attributes: {id: UART3_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: UART4_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: UART5_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: UART6_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '0'}
+  - type: Integer
+    attributes: {id: USB_CLOCK_FREQUENCY}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: '100000000'}
+  - type: Boolean
+    attributes: {id: USB_INTERRUPT_ENABLE_UPDATE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: 'true'}
+  - type: Boolean
+    attributes: {id: USE_CACHE_MAINTENANCE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
   - type: Boolean
     attributes: {id: USE_PPS_INPUT_0}
     children:
@@ -1359,4 +2073,4 @@ children:
       - type: Dynamic
         attributes: {id: core, value: '0'}
 - type: ElementPosition
-  attributes: {x: '240', y: '20', id: core}
+  attributes: {x: '242', y: '24', id: core}

@@ -25,16 +25,14 @@
 #include <stddef.h>                     // Defines NULL
 #include <stdbool.h>                    // Defines true
 #include <stdlib.h>                     // Defines EXIT_FAILURE
-#include "definitions.h"                // SYS function prototypes
-#include "Dev_Board.h"    
+#include "definitions.h"
+#include "Dev_Board.h"                // SYS function prototypes
+ 
 
 #define RX_BUFFER_SIZE 256
 
 char messageStart[] = "**** uart test ****\r\n";
-char newline[] = "\r\n";
-char errorMessage[] = "\r\n**** UART error has occurred ****\r\n";
-char receiveBuffer[RX_BUFFER_SIZE] = {};
-char data = 0;
+//char receiveBuffer[RX_BUFFER_SIZE] = {};
 
 int main ( void )
 {
@@ -42,15 +40,12 @@ int main ( void )
     SYS_Initialize ( NULL );
 
     UART2_Write(&messageStart, sizeof(messageStart));
-    LED1_ON;
-    LED2_ON;
-    LED3_ON;
-     
-       
-    while ( true );
+
+    while ( true )
     {
         /* Maintain state machines of all polled MPLAB Harmony modules. */
-        SYS_Tasks ( );
+        //SYS_Tasks ( );
+        //LED1_ON;
     }
 
     /* Execution should not come here during normal operation */

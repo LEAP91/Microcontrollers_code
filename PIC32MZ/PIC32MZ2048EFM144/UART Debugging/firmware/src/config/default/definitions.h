@@ -51,6 +51,7 @@
 #include "peripheral/uart/plib_uart2.h"
 #include "peripheral/clk/plib_clk.h"
 #include "peripheral/gpio/plib_gpio.h"
+#include "peripheral/cache/plib_cache.h"
 #include "peripheral/evic/plib_evic.h"
 
 // DOM-IGNORE-BEGIN
