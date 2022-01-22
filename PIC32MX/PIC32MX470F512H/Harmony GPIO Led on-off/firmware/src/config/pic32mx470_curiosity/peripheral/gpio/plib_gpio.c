@@ -44,11 +44,6 @@
 #include "plib_gpio.h"
 
 
-/* Array to store callback objects of each configured interrupt */
-GPIO_PIN_CALLBACK_OBJ portPinCbObj[1];
-
-/* Array to store number of interrupts in each PORT Channel + previous interrupt count */
-uint8_t portNumCb[6 + 1] = { 0, 0, 0, 1, 1, 1, 1, };
 
 /******************************************************************************
   Function:
@@ -62,41 +57,39 @@ uint8_t portNumCb[6 + 1] = { 0, 0, 0, 1, 1, 1, 1, };
 */
 void GPIO_Initialize ( void )
 {
+    AD1PCFGSET = 0x80; /* Digital Mode Enable */
+
     /* PORTB Initialization */
 
     /* PORTC Initialization */
 
     /* PORTD Initialization */
-    CNPUDSET = 0x40; /* Pull-Up Enable */
-    /* Change Notice Enable */
-    CNCONDSET = _CNCOND_ON_MASK;
-    PORTD;
-    IEC1SET = _IEC1_CNDIE_MASK;
 
     /* PORTE Initialization */
     LATE = 0x0; /* Initial Latch Value */
     TRISECLR = 0x10; /* Direction Control */
-    ANSELECLR = 0x10; /* Digital Mode Enable */
 
     /* PORTF Initialization */
 
     /* PORTG Initialization */
 
 
+    /* Change Notice Enable */
+    CNCONSET = _CNCON_ON_MASK;
+    IEC1SET = _IEC1_CNIE_MASK;
 
-    /* PPS Input Remapping */
+    uint8_t i, bitPosition;
+    uint32_t latestPortValue, mask;
 
-    /* PPS Output Remapping */
-
-
-    uint32_t i;
-    /* Initialize Interrupt Pin data structures */
-    portPinCbObj[0 + 0].pin = GPIO_PIN_RD6;
-    
-    for(i=0; i<1; i++)
+    /* save the initial pin value for CN pins */
+    for(i = 0; i < TOTAL_NUM_OF_INT_USED; i++)
     {
-        portPinCbObj[i].callback = NULL;
+        latestPortValue = *(volatile uint32_t *)(&PORTB + ((cnPinObj[i].gpioPin >> 4) * 0x10));
+        bitPosition = cnPinObj[i].gpioPin % 16;
+        mask = 1 << bitPosition;
+        cnPinObj[i].prevPinValue = (bool)((latestPortValue & mask) >> bitPosition);
     }
+
 }
 
 // *****************************************************************************
@@ -129,7 +122,7 @@ void GPIO_Initialize ( void )
 */
 uint32_t GPIO_PortRead(GPIO_PORT port)
 {
-    return (*(volatile uint32_t *)(&PORTB + (port * 0x40)));
+    return (*(volatile uint32_t *)(&PORTB + (port * 0x10)));
 }
 
 // *****************************************************************************
@@ -144,7 +137,7 @@ uint32_t GPIO_PortRead(GPIO_PORT port)
 */
 void GPIO_PortWrite(GPIO_PORT port, uint32_t mask, uint32_t value)
 {
-    *(volatile uint32_t *)(&LATB + (port * 0x40)) = (*(volatile uint32_t *)(&LATB + (port * 0x40)) & (~mask)) | (mask & value);
+    *(volatile uint32_t *)(&LATB + (port * 0x10)) = (*(volatile uint32_t *)(&LATB + (port * 0x10)) & (~mask)) | (mask & value);
 }
 
 // *****************************************************************************
@@ -159,7 +152,7 @@ void GPIO_PortWrite(GPIO_PORT port, uint32_t mask, uint32_t value)
 */
 uint32_t GPIO_PortLatchRead(GPIO_PORT port)
 {
-    return (*(volatile uint32_t *)(&LATB + (port * 0x40)));
+    return (*(volatile uint32_t *)(&LATB + (port * 0x10)));
 }
 
 // *****************************************************************************
@@ -174,7 +167,7 @@ uint32_t GPIO_PortLatchRead(GPIO_PORT port)
 */
 void GPIO_PortSet(GPIO_PORT port, uint32_t mask)
 {
-    *(volatile uint32_t *)(&LATBSET + (port * 0x40)) = mask;
+    *(volatile uint32_t *)(&LATBSET + (port * 0x10)) = mask;
 }
 
 // *****************************************************************************
@@ -189,7 +182,7 @@ void GPIO_PortSet(GPIO_PORT port, uint32_t mask)
 */
 void GPIO_PortClear(GPIO_PORT port, uint32_t mask)
 {
-    *(volatile uint32_t *)(&LATBCLR + (port * 0x40)) = mask;
+    *(volatile uint32_t *)(&LATBCLR + (port * 0x10)) = mask;
 }
 
 // *****************************************************************************
@@ -204,7 +197,7 @@ void GPIO_PortClear(GPIO_PORT port, uint32_t mask)
 */
 void GPIO_PortToggle(GPIO_PORT port, uint32_t mask)
 {
-    *(volatile uint32_t *)(&LATBINV + (port * 0x40))= mask;
+    *(volatile uint32_t *)(&LATBINV + (port * 0x10))= mask;
 }
 
 // *****************************************************************************
@@ -219,7 +212,7 @@ void GPIO_PortToggle(GPIO_PORT port, uint32_t mask)
 */
 void GPIO_PortInputEnable(GPIO_PORT port, uint32_t mask)
 {
-    *(volatile uint32_t *)(&TRISBSET + (port * 0x40)) = mask;
+    *(volatile uint32_t *)(&TRISBSET + (port * 0x10)) = mask;
 }
 
 // *****************************************************************************
@@ -234,136 +227,10 @@ void GPIO_PortInputEnable(GPIO_PORT port, uint32_t mask)
 */
 void GPIO_PortOutputEnable(GPIO_PORT port, uint32_t mask)
 {
-    *(volatile uint32_t *)(&TRISBCLR + (port * 0x40)) = mask;
+    *(volatile uint32_t *)(&TRISBCLR + (port * 0x10)) = mask;
 }
 
-// *****************************************************************************
-/* Function:
-    void GPIO_PortInterruptEnable(GPIO_PORT port, uint32_t mask)
 
-  Summary:
-    Enables IO interrupt on selected IO pins of a port.
-
-  Remarks:
-    See plib_gpio.h for more details.
-*/
-void GPIO_PortInterruptEnable(GPIO_PORT port, uint32_t mask)
-{
-    *(volatile uint32_t *)(&CNENBSET + (port * 0x40)) = mask;
-}
-
-// *****************************************************************************
-/* Function:
-    void GPIO_PortInterruptDisable(GPIO_PORT port, uint32_t mask)
-
-  Summary:
-    Disables IO interrupt on selected IO pins of a port.
-
-  Remarks:
-    See plib_gpio.h for more details.
-*/
-void GPIO_PortInterruptDisable(GPIO_PORT port, uint32_t mask)
-{
-    *(volatile uint32_t *)(&CNENBCLR + (port * 0x40)) = mask;
-}
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: GPIO APIs which operates on one pin at a time
-// *****************************************************************************
-// *****************************************************************************
-
-// *****************************************************************************
-/* Function:
-    bool GPIO_PinInterruptCallbackRegister(
-        GPIO_PIN pin,
-        const GPIO_PIN_CALLBACK callback,
-        uintptr_t context
-    );
-
-  Summary:
-    Allows application to register callback for configured pin.
-
-  Remarks:
-    See plib_gpio.h for more details.
-*/
-bool GPIO_PinInterruptCallbackRegister(
-    GPIO_PIN pin,
-    const GPIO_PIN_CALLBACK callback,
-    uintptr_t context
-)
-{
-    uint8_t i;
-    uint8_t portIndex;
-
-    portIndex = pin >> 4;
-
-    for(i = portNumCb[portIndex]; i < portNumCb[portIndex +1]; i++)
-    {
-        if (portPinCbObj[i].pin == pin)
-        {
-            portPinCbObj[i].callback = callback;
-            portPinCbObj[i].context  = context;
-            return true;
-        }
-    }
-    return false;
-}
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Local Function Implementation
-// *****************************************************************************
-// *****************************************************************************
-
-
-// *****************************************************************************
-/* Function:
-    void CHANGE_NOTICE_D_InterruptHandler(void)
-
-  Summary:
-    Interrupt Handler for change notice interrupt for channel D.
-
-  Remarks:
-	It is an internal function, user should not call it directly.
-*/
-void CHANGE_NOTICE_D_InterruptHandler(void)
-{
-    uint8_t i;
-    uint32_t status;
-
-    status  = CNSTATD;
-    status &= CNEND;
-
-    PORTD;
-    IFS1CLR = _IFS1_CNDIF_MASK;
-
-    /* Check pending events and call callback if registered */
-    for(i = 0; i < 1; i++)
-    {
-        if((status & (1 << (portPinCbObj[i].pin & 0xF))) && (portPinCbObj[i].callback != NULL))
-        {
-            portPinCbObj[i].callback (portPinCbObj[i].pin, portPinCbObj[i].context);
-        }
-    }
-}
-
-/* Function:
-    void CHANGE_NOTICE_InterruptHandler(void)
-
-  Summary:
-    Interrupt Handler for change notice interrupt.
-
-  Remarks:
-	It is an internal function called from ISR, user should not call it directly.
-*/
-void CHANGE_NOTICE_InterruptHandler(void)
-{
-    if(IFS1bits.CNDIF)
-    {
-        CHANGE_NOTICE_D_InterruptHandler();
-    }
-}
 
 /*******************************************************************************
  End of File

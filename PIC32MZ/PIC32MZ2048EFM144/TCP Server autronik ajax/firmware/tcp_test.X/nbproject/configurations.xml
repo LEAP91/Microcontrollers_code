@@ -977,6 +977,11 @@
         <property key="programoptions.uselvpprogramming" value="false"/>
         <property key="voltagevalue" value="3.25"/>
       </PICkit3PlatformTool>
+      <Tool>
+        <property key="memories.programmemory.ranges" value="1d000000-1d1fffff"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/Users/user/Desktop/Drive/Engineering/Software/PIC microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/tcp_test.X/debug/default/tcp_test_ptg"/>
+      </Tool>
       <pkob4hybrid>
         <property key="memories.programmemory.ranges" value="1d000000-1d1fffff"/>
         <property key="programmerToGoFilePath"

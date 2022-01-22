@@ -70,8 +70,6 @@
 #define SWITCH_InputEnable()       (TRISDSET = (1<<6))
 #define SWITCH_Get()               ((PORTD >> 6) & 0x1)
 #define SWITCH_PIN                  GPIO_PIN_RD6
-#define SWITCH_InterruptEnable()   (CNENDSET = (1<<6))
-#define SWITCH_InterruptDisable()  (CNENDCLR = (1<<6))
 
 /*** Macros for LED pin ***/
 #define LED_Set()               (LATESET = (1<<4))
@@ -174,6 +172,8 @@ typedef enum
     GPIO_PIN_RF3 = 67,
     GPIO_PIN_RF4 = 68,
     GPIO_PIN_RF5 = 69,
+    GPIO_PIN_RG2 = 82,
+    GPIO_PIN_RG3 = 83,
     GPIO_PIN_RG6 = 86,
     GPIO_PIN_RG7 = 87,
     GPIO_PIN_RG8 = 88,
@@ -185,7 +185,30 @@ typedef enum
 
 } GPIO_PIN;
 
-typedef  void (*GPIO_PIN_CALLBACK) ( GPIO_PIN pin, uintptr_t context);
+typedef enum
+{
+  CN0_PIN = 1 << 0,
+  CN1_PIN = 1 << 1,
+  CN2_PIN = 1 << 2,
+  CN3_PIN = 1 << 3,
+  CN4_PIN = 1 << 4,
+  CN5_PIN = 1 << 5,
+  CN6_PIN = 1 << 6,
+  CN7_PIN = 1 << 7,
+  CN8_PIN = 1 << 8,
+  CN9_PIN = 1 << 9,
+  CN10_PIN = 1 << 10,
+  CN11_PIN = 1 << 11,
+  CN12_PIN = 1 << 12,
+  CN13_PIN = 1 << 13,
+  CN14_PIN = 1 << 14,
+  CN15_PIN = 1 << 15,
+  CN16_PIN = 1 << 16,
+  CN17_PIN = 1 << 17,
+  CN18_PIN = 1 << 18,
+}CN_PIN;
+
+typedef  void (*GPIO_PIN_CALLBACK) ( CN_PIN cnPin, uintptr_t context);
 
 void GPIO_Initialize(void);
 
@@ -211,9 +234,9 @@ void GPIO_PortInputEnable(GPIO_PORT port, uint32_t mask);
 
 void GPIO_PortOutputEnable(GPIO_PORT port, uint32_t mask);
 
-void GPIO_PortInterruptEnable(GPIO_PORT port, uint32_t mask);
+void GPIO_PinInterruptEnable(CN_PIN cnPin);
 
-void GPIO_PortInterruptDisable(GPIO_PORT port, uint32_t mask);
+void GPIO_PinInterruptDisable(CN_PIN cnPin);
 
 // *****************************************************************************
 // *****************************************************************************
@@ -223,11 +246,17 @@ void GPIO_PortInterruptDisable(GPIO_PORT port, uint32_t mask);
 
 typedef struct {
 
-    /* target pin */
-    GPIO_PIN                 pin;
+    /* CN Pin number */
+    CN_PIN                  cnPin;
+
+    /* Corresponding GPIO pin name */
+    GPIO_PIN                gpioPin;
+
+    /* previous port pin value, need to be stored to check if it has changed later */
+    bool                    prevPinValue;
 
     /* Callback for event on target pin*/
-    GPIO_PIN_CALLBACK        callback;
+    GPIO_PIN_CALLBACK       callback;
 
     /* Callback Context */
     uintptr_t               context;
@@ -280,18 +309,8 @@ static inline void GPIO_PinOutputEnable(GPIO_PIN pin)
     GPIO_PortOutputEnable((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
 }
 
-static inline void GPIO_PinInterruptEnable(GPIO_PIN pin)
-{
-    GPIO_PortInterruptEnable((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
-}
-
-static inline void GPIO_PinInterruptDisable(GPIO_PIN pin)
-{
-    GPIO_PortInterruptDisable((GPIO_PORT)(pin>>4), 0x1 << (pin & 0xF));
-}
-
 bool GPIO_PinInterruptCallbackRegister(
-    GPIO_PIN pin,
+    CN_PIN cnPin,
     const   GPIO_PIN_CALLBACK callBack,
     uintptr_t context
 );

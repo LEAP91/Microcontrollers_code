@@ -56,7 +56,6 @@
 
 /*** DEVCFG0 ***/
 #pragma config DEBUG =      OFF
-#pragma config JTAGEN =     OFF
 #pragma config ICESEL =     ICS_PGx2
 #pragma config PWP =        OFF
 #pragma config BWP =        OFF
@@ -65,7 +64,7 @@
 
 /*** DEVCFG1 ***/
 #pragma config FNOSC =      FRCPLL
-#pragma config FPBDIV =     DIV_2
+#pragma config FPBDIV =     DIV_1
 #pragma config FSOSCEN =    OFF
 #pragma config IESO =       ON
 #pragma config POSCMOD =    OFF
@@ -73,24 +72,22 @@
 #pragma config FCKSM =      CSDCMD
 #pragma config WDTPS =      PS1048576
 #pragma config FWDTEN =     OFF
-#pragma config WINDIS =     OFF
-#pragma config FWDTWINSZ =  WINSZ_25
 
 
 /*** DEVCFG2 ***/
 #pragma config FPLLIDIV =   DIV_2
-#pragma config FPLLMUL =    MUL_24
+#pragma config FPLLMUL =    MUL_20
 #pragma config FPLLODIV =   DIV_1
 #pragma config UPLLEN =     OFF
 #pragma config UPLLIDIV =   DIV_2
 
 /*** DEVCFG3 ***/
 #pragma config FSRSSEL =    PRIORITY_7
-#pragma config FVBUSONIO =  ON
+#pragma config FVBUSONIO =  OFF
 #pragma config USERID =     0xffff
-#pragma config PMDL1WAY =   ON
-#pragma config IOL1WAY =    ON
-#pragma config FUSBIDIO =   ON
+#pragma config FUSBIDIO =   OFF
+#pragma config FMIIEN =     OFF
+#pragma config FETHIO =     OFF
 
 
 
@@ -160,6 +157,8 @@ void SYS_Initialize ( void* data )
     /* Set the SRAM wait states to zero */
     BMXCONbits.BMXWSDRM = 0;
 
+    /* Configure Debug Data Port */
+    DDPCONbits.JTAGEN = 0;
 
 
 
@@ -171,7 +170,7 @@ void SYS_Initialize ( void* data )
 
     EVIC_Initialize();
 
-	/* Enable global interrupts */
+    /* Enable global interrupts */
     __builtin_enable_interrupts();
 
 
