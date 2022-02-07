@@ -1,0 +1,2806 @@
+format_version: v1.0
+type: UniqueComponent
+attributes: {id: tcpipHttpNet}
+children:
+- type: Symbols
+  children:
+  - type: Boolean
+    attributes: {id: TCPIP_HTTP_NET_CUSTOM_TEMPLATE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'false'}
+  - type: Boolean
+    attributes: {id: TCPIP_HTTP_NET_CUSTOM_TEMPLATE_SL}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tcpipHttpNet, value: 'true'}
+  - type: String
+    attributes: {id: TCPIP_HTTP_NET_DEFAULT_FILE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: digital-inputs.html}
+  - type: KeyValueSet
+    attributes: {id: TCPIP_HTTP_NET_DEST_WEBPAGE_DIRECTORY_PATH}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'false'}
+  - type: Boolean
+    attributes: {id: TCPIP_HTTP_NET_FILE_UPLOAD_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: String
+    attributes: {id: TCPIP_HTTP_NET_FILE_UPLOAD_NAME}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: mpfsupload}
+  - type: Integer
+    attributes: {id: TCPIP_HTTP_NET_HEAP_SIZE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tcpipHttpNet, value: '4944'}
+  - type: Integer
+    attributes: {id: TCPIP_HTTP_NET_MPFS_NVM_NUM}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+  - type: String
+    attributes: {id: TCPIP_HTTP_NET_MPFS_NVM_PATH}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+  - type: String
+    attributes: {id: TCPIP_HTTP_NET_MPFS_NVM_VOL}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+  - type: String
+    attributes: {id: TCPIP_HTTP_NET_WEBPAGE_DIRECTORY_PATH}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'false'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'C:\Users\user\Desktop\Drive\Engineering\Software\PIC
+            microcontrolers\PIC32MZ\PIC32MZ2048EFM144\TCP Server autronik ajax\firmware\src\my_pages'}
+  - type: String
+    attributes: {id: TCPIP_HTTP_NET_WEB_DIR}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: /mnt/mchpSite1/}
+  - type: Comment
+    attributes: {id: TCPIP_WEBPAGE_FILES_COUNT_COMMENT}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'false'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE0}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: digital-inputs.html}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/digital-inputs.html'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE1}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: digital-outputs.html}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/digital-outputs.html'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE10}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: CSS\style.css}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\CSS\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/CSS/style.css'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE11}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: imgs\webpage_logo.png}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\imgs\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/imgs/webpage_logo.png'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE12}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/logging.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/logging.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE13}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/chacha20_poly1305.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/chacha20_poly1305.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE14}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/ed448.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/ed448.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE15}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/settings.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/settings.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE16}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/ge_operations.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/ge_operations.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE17}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/curve448.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/curve448.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE18}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/tfm.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/tfm.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE19}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/ed25519.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/ed25519.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE2}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: login.html}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/login.html'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE20}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/asn.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/asn.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE21}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/wolfevent.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/wolfevent.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE22}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/random.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/random.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE23}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/sha3.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/sha3.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE24}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/misc.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/misc.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE25}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/hc128.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/hc128.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE26}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/cpuid.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/cpuid.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE27}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/poly1305.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/poly1305.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE28}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/integer.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/integer.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE29}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/ecc.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/ecc.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE3}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: network-settings.html}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/network-settings.html'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE30}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/cryptocb.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/cryptocb.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE31}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/types.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/types.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE32}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/compress.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/compress.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE33}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/md4.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/md4.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE34}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/pkcs7.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/pkcs7.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE35}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/arc4.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/arc4.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE36}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/fips_test.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/fips_test.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE37}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/wc_pkcs11.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/wc_pkcs11.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE38}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/pkcs12.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/pkcs12.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE39}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/des3.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/des3.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE4}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: reboot.cgi}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/reboot.cgi'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE40}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/sha.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/sha.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE41}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/chacha.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/chacha.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE42}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/coding.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/coding.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE43}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/md2.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/md2.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE44}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/blake2.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/blake2.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE45}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/pwdbased.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/pwdbased.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE46}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/sp.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/sp.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE47}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/wolfmath.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/wolfmath.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE48}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/pkcs11.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/pkcs11.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE49}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/md5.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/md5.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE5}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: reboot.html}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/reboot.html'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE50}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/hmac.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/hmac.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE51}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/sha256.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/sha256.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE52}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/signature.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/signature.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE53}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/sha512.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/sha512.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE54}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/error-crypt.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/error-crypt.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE55}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/wc_encrypt.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/wc_encrypt.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE56}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/wc_port.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/wc_port.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE57}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/mem_track.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/mem_track.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE58}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/blake2-impl.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/blake2-impl.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE59}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/ripemd.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/ripemd.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE6}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: status.xml}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/status.xml'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE60}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/visibility.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/visibility.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE61}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/fe_448.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/fe_448.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE62}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/hash.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/hash.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE63}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/cmac.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/cmac.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE64}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/dsa.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/dsa.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE65}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/srp.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/srp.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE66}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/rabbit.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/rabbit.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE67}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/ge_448.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/ge_448.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE68}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/mpi_class.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/mpi_class.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE69}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/aes.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/aes.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE7}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: user-settings.html}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/user-settings.html'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE70}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/idea.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/idea.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE71}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/rc2.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/rc2.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE72}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/mpi_superclass.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/mpi_superclass.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE73}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/curve25519.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/curve25519.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE74}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/fe_operations.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/fe_operations.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE75}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/camellia.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/camellia.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE76}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/sp_int.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/sp_int.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE77}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/asn_public.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/asn_public.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE78}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/blake2-int.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/blake2-int.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE79}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/selftest.h}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/selftest.h}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE8}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: CSS\format.css}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\CSS\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/CSS/format.css'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE80}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/idea.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/idea.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE81}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/sha512.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/sha512.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE82}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/md4.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/md4.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE83}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/fe_448.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/fe_448.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE84}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/ripemd.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/ripemd.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE85}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/dsa.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/dsa.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE86}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/random.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/random.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE87}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/arc4.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/arc4.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE88}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/curve25519.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/curve25519.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE89}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/pkcs7.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/pkcs7.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE9}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: CSS\login.css}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\CSS\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Desktop/Drive/Engineering/Software/PIC
+            microcontrolers/PIC32MZ/PIC32MZ2048EFM144/TCP Server autronik ajax/firmware/src/my_pages/CSS/login.css'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE90}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_int.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_int.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE91}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_c32.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_c32.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE92}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/hash.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/hash.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE93}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/fe_low_mem.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/fe_low_mem.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE94}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_c64.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/sp_c64.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE95}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/pwdbased.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/pwdbased.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE96}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/misc.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/misc.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE97}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/curve448.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/curve448.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE98}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/signature.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/signature.c}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE99}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: dest}
+        children:
+        - {type: Value, value: ../../web_pages}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/aes.c}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages/home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/}
+      - type: Boolean
+        attributes: {id: relative}
+        children:
+        - {type: Value, value: 'false'}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: /home/luis/Documents/Software/Microcontrollers_code/PIC32MZ/PIC32MZ2048EFM144/TCP
+            Server test - copia/firmware/src/third_party/wolfssl/wolfssl/wolfcrypt/src/aes.c}
+- type: ElementPosition
+  attributes: {x: '580', y: '20', id: tcpipHttpNet}

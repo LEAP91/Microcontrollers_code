@@ -20,9 +20,7 @@ void APP_Initialize ( void )
     appData.state = APP_STATE_WAIT_UART_CONSOLE_CONFIGURED;
     for (i = 0; i < BUFFER_SIZE; i++)
         appData.writeBuffer[i] = i;
-    
-    BLUE_ON;
-    
+   
 }
 
 
@@ -96,7 +94,7 @@ void APP_Tasks ( void )
             {
                 appData.state = APP_STATE_ERROR;
             }
-            SYS_CONSOLE_MESSAGE("Flash earse success..\r\n");
+            SYS_CONSOLE_MESSAGE("Flash erase success..\r\n");
             appData.state = APP_STATE_ERASE_WAIT;
 
             break;
@@ -201,6 +199,7 @@ void APP_Tasks ( void )
             if (!memcmp(appData.writeBuffer, appData.readBuffer, BUFFER_SIZE))
             {
                 appData.state = APP_STATE_SUCCESS;
+                SYS_CONSOLE_Print(appData.consoleHandle, "Buffer content= %d\r\n", appData.readBuffer[2]);
             }
             else
             {
@@ -213,7 +212,7 @@ void APP_Tasks ( void )
         case APP_STATE_SUCCESS:
         {
             DRV_SST26_Close(appData.handle);
-            SYS_CONSOLE_MESSAGE("Success....!\r\n");
+            //SYS_CONSOLE_MESSAGE("Success....!\r\n");
             GREEN_ON;
             
             break;

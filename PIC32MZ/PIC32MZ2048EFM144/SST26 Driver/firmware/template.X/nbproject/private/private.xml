@@ -5,9 +5,7 @@
         <group>
             <file>file:/C:/Users/user/Desktop/Drive/Engineering/Software/PIC%20microcontrolers/PIC32MZ/PIC32MZ2048EFM144/SST26%20Driver/firmware/src/app.c</file>
             <file>file:/C:/Users/user/Desktop/Drive/Engineering/Software/PIC%20microcontrolers/PIC32MZ/PIC32MZ2048EFM144/SST26%20Driver/firmware/src/app.h</file>
-            <file>file:/C:/Users/user/Desktop/Drive/Engineering/Software/PIC%20microcontrolers/PIC32MZ/PIC32MZ2048EFM144/SST26%20Driver/firmware/src/Dev_Board.h</file>
-            <file>file:/C:/Users/user/Desktop/Drive/Engineering/Software/PIC%20microcontrolers/PIC32MZ/PIC32MZ2048EFM144/SST26%20Driver/firmware/src/main.c</file>
-            <file>file:/C:/Users/user/Desktop/Drive/Engineering/Software/PIC%20microcontrolers/PIC32MZ/PIC32MZ2048EFM144/SST26%20Driver/firmware/src/config/default/peripheral/uart/plib_uart2.c</file>
+            <file>file:/C:/Users/user/Desktop/Drive/Engineering/Software/PIC%20microcontrolers/PIC32MZ/PIC32MZ2048EFM144/SST26%20Driver/firmware/src/config/default/system/console/src/sys_console.c</file>
         </group>
     </open-files>
 </project-private>
