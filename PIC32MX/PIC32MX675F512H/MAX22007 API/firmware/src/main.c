@@ -4,9 +4,9 @@
 #include <stdlib.h>                     // Defines EXIT_FAILURE
 #include "definitions.h"                // SYS function prototypes
 
-#define RX_BUFFER_SIZE 256
+//#define RX_BUFFER_SIZE 256
 
-char messageStart[] = "**** uart test ****\r\n";
+//char messageStart[] = "**** uart test ****\r\n";
 
 // *****************************************************************************
 // *****************************************************************************

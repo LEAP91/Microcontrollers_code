@@ -68,6 +68,45 @@ typedef struct
 
 } APP_DATA;
 
+typedef enum 
+{
+    // All Registers
+    REVISION_ID = 0x00,
+    STATUS_INTERRUPTS = 0x01,
+    INTERRUPT_ENABLE = 0x02,
+    CONFIGURATION = 0x03,
+    CONTROL = 0x04,
+    CHANNEL_MODE = 0x05,
+    SOFT_RESET = 0x06,
+    CHANNEL0_DATA = 0x07,
+    CHANNEL1_DATA = 0x08,
+    CHANNEL2_DATA = 0x09,
+    CHANNEL3_DATA = 0x0a,
+    GPIO_CONTROL = 0x0b,
+    GPIO_DATA = 0x0c,
+    GPI_EDGE_CTRL = 0x0d,
+    GPI_EDGE_STATUS = 0x0e,
+            
+}Register_address;
+
+typedef enum 
+{
+    high_impedance = 0,
+    AO_10V = 1,
+    AO_20mA = 2,
+    out_of_range1 = 3,
+            
+}AOut_Mode;
+
+
+
+void MAX22007_Mode_Set(uint8_t Channel, AOut_Mode mode);
+uint16_t MAX22007_convert_Voltage_to_LSB (float voltage);
+uint16_t MAX22007_convert_Current_to_LSB (float current_mA);
+void MAX22007_Set_DAC(uint8_t Channel, uint16_t LSB_code);
+void MAX22007_write_register(Register_address address, uint16_t data);
+uint32_t MAX22007_read_register(Register_address address);
+
 void APP_Initialize ( void );
 
 void APP_Tasks( void );

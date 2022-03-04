@@ -22,9 +22,6 @@ extern "C" {
 
 
     uint8_t crc8_MAXIM(uint8_t *data, uint8_t len);
-    uint8_t Byte_shift(uint8_t data);
-    void crc_processing(uint8_t *dac_ptr);
-    void revision_id(uint8_t *dac_cmd_ptr);
 
 
     /* Provide C++ Compatibility */
