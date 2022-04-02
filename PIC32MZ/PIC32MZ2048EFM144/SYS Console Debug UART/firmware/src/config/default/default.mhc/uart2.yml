@@ -10,7 +10,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: uart2, value: '216'}
+        attributes: {id: uart2, value: '12'}
   - type: KeyValueSet
     attributes: {id: UART_BRGH}
     children:
@@ -34,7 +34,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: uart2, value: '100000000'}
+        attributes: {id: uart2, value: '6000000'}
   - type: File
     attributes: {id: UART_HEADER}
     children:

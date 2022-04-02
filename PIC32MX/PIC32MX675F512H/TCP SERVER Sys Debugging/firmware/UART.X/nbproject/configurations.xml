@@ -960,8 +960,6 @@
         <property key="memories.programmemory.ranges" value="1d000000-1d07ffff"/>
         <property key="memories.rww" value="true"/>
         <property key="poweroptions.powerenable" value="false"/>
-        <property key="programmerToGoFilePath"
-                  value="C:/Users/user/Desktop/Drive/Engineering/Software/PIC microcontrolers/PIC32MX/PIC32MX675F512H/TCP SERVER Sys Debugging/firmware/UART.X/debug/default/UART_ptg"/>
         <property key="programmerToGoImageName" value="UART_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>

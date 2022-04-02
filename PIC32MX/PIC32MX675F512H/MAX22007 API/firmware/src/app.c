@@ -80,15 +80,13 @@ uint32_t MAX22007_read_register(Register_address address)
     dac_cmd[0] = 0x00;
     dac_cmd[1] = 0x00;
     dac_cmd[2] = 0x00;
-    rxBuffer[0] = 0;
-    rxBuffer[1] = 0;
-    rxBuffer[2] = 0;
-    rxBuffer[3] = 0;
+
     //SYS_CONSOLE_MESSAGE("Read register function called\n\r");
     if (crc_Enabled == false)
     {
         dac_cmd[4] = (address<<1) + 0x01;
         memcpy(txBuffer, dac_cmd, 4);
+        while(SPI4_IsBusy());
         SPI4_WriteRead(&txBuffer, 4, &rxBuffer, 4);
         while(SPI4_IsBusy());
 
@@ -97,17 +95,18 @@ uint32_t MAX22007_read_register(Register_address address)
     {
         dac_cmd[3] = (address<<1) + 0x01;
         memcpy(txBuffer, dac_cmd, 4);
+        
+        while(SPI4_IsBusy());
         SPI4_WriteRead(&txBuffer, 4, &rxBuffer, 4);
         while(SPI4_IsBusy());
+        
         crc_Buffer[0] = (address<<1) + 0x01;
         crc_Buffer[1] = rxBuffer[2];
         crc_Buffer[2] = rxBuffer[1];
         
         crc_result = rxBuffer[0];
         crc_calc =  crc8_MAXIM(crc_ptr, 3);// read the CRC
-        SYS_CONSOLE_PRINT("crc calculation: %X\n\r", crc_calc);
-        SYS_CONSOLE_PRINT("crc result: %X\n\r", crc_result);
-        SYS_CONSOLE_PRINT("rx buffer: %X %X %X %X\n\r", rxBuffer[0], rxBuffer[1], rxBuffer[2], rxBuffer[3]);
+
         if (crc_calc != crc_result)
         {
             SYS_CONSOLE_MESSAGE("Wrong CRC val\n\r");
@@ -116,7 +115,7 @@ uint32_t MAX22007_read_register(Register_address address)
 
     }
     result =  (((uint16_t)rxBuffer[1])<<8) + (rxBuffer[2]); //Get 16 bit register result
-    SYS_CONSOLE_PRINT("Read register result: %X\n\r", result);
+
     return result;
     
 }
@@ -153,8 +152,10 @@ void MAX22007_write_register(Register_address address, uint16_t data)
         dac_cmd[0] = crc8_MAXIM(crc_ptr, 3);
       
         memcpy(txBuffer, dac_cmd, 4);
-        SYS_CONSOLE_PRINT("tx Bufferr: %X %X %X %X\n\r", txBuffer[3],txBuffer[2],txBuffer[1], txBuffer[0]);
+
+        while(SPI4_IsBusy());
         reqAccepted = SPI4_Write(&txBuffer, 4);
+        while(SPI4_IsBusy());
         while(!reqAccepted);
         
     }
@@ -173,7 +174,7 @@ void MAX22007_Mode_Set(uint8_t Channel, AOut_Mode mode)
     //SYS_CONSOLE_MESSAGE("Mode set called...\n\r");
     // Set AO Mode (Register 0x05: CHANNEL_MODE)
     uint16_t previous_mode = MAX22007_read_register(CHANNEL_MODE);
-    SYS_CONSOLE_PRINT("Previous CH mode: %X\n\r", previous_mode);
+
     uint16_t new_mode = (uint16_t) previous_mode;
     switch (Channel)
     {
@@ -245,7 +246,7 @@ void MAX22007_Mode_Set(uint8_t Channel, AOut_Mode mode)
             }
             break;
     }
-    SYS_CONSOLE_PRINT("New CH mode: %X\n\r", new_mode);
+
     MAX22007_write_register(CHANNEL_MODE, new_mode);
 }
 
@@ -273,8 +274,8 @@ uint16_t MAX22007_convert_Voltage_to_LSB (float voltage)
     if (voltage < 0) { return 0xfffe; } // return out of range value to highlight there was an error
     // convert voltage to LSB value
     result = (voltage / phy_AO_10V_factor);
-    SYS_CONSOLE_PRINT("LSB factor: %X\n\r", phy_AO_10V_factor);
-    SYS_CONSOLE_PRINT("LSB Result: %X\n\r", result);
+    //SYS_CONSOLE_PRINT("LSB factor: %X\n\r", phy_AO_10V_factor);
+    //SYS_CONSOLE_PRINT("LSB Result: %X\n\r", result);
     new_hex_value = (uint16_t) result;
     return new_hex_value;
 }
@@ -381,26 +382,21 @@ void APP_Tasks ( void )
         case APP_STATE_DEMONSTRATE_DEBUG_APIS:
         {    
             SYS_CONSOLE_MESSAGE("Debug Console Configred...\n\r");
+            
             appData.state = APP_STATE_WRITE_DAC;
             break;
         } 
         case APP_STATE_WRITE_DAC:
         {    
             
-            //MAX22007_write_register (CONFIGURATION, 0xf000); // Set all Latch bits
+            MAX22007_write_register (CONFIGURATION, 0xf001); // Set all Latch bits
             
-            //MAX22007_Mode_Set(0, AO_10V); // setup Channel 0 to Voltage Mode
+            MAX22007_Mode_Set(0, AO_10V); // setup Channel 0 to Voltage Mode
             
-            DAC_LSB_value = MAX22007_convert_Voltage_to_LSB ((float) 3.0); // get integer value for 5.0 Volt
-            SYS_CONSOLE_PRINT("LSB Value: %X\n\r", DAC_LSB_value);
+            DAC_LSB_value = MAX22007_convert_Voltage_to_LSB ((float) 10.0); // get integer value for 5.0 Volt
+            
             MAX22007_Set_DAC(0, DAC_LSB_value); // write this 5V value to Channel 0
-
-            //MAX22007_Mode_Set(0, AO_10V); // setup Channel 0 to Voltage Mode
-            //MAX22007_read_register(CHANNEL_MODE);
-            //MAX22007_write_register (CHANNEL0_DATA, 0x6660);
-            //MAX22007_read_register(CONFIGURATION);
-            //MAX22007_write_register(CHANNEL_MODE, 0x0f00);
-            //*SYS_CONSOLE_PRINT("DAC revision ID: %X %X %X\n\r", rxBuffer[0],rxBuffer[1],rxBuffer[2]);
+            
             appData.state = APP_STATE_IDLE;
             break;
         } 

@@ -73,10 +73,10 @@
 #pragma config CP =         OFF
 
 /*** DEVCFG1 ***/
-#pragma config FNOSC =      SPLL
+#pragma config FNOSC =      POSC
 #pragma config DMTINTV =    WIN_127_128
 #pragma config FSOSCEN =    OFF
-#pragma config IESO =       OFF
+#pragma config IESO =       ON
 #pragma config POSCMOD =    EC
 #pragma config OSCIOFNC =   OFF
 #pragma config FCKSM =      CSECME
@@ -89,11 +89,11 @@
 #pragma config FDMTEN =     OFF
 
 /*** DEVCFG2 ***/
-#pragma config FPLLIDIV =   DIV_1
+#pragma config FPLLIDIV =   DIV_3
 #pragma config FPLLRNG =    RANGE_5_10_MHZ
-#pragma config FPLLICLK =   PLL_FRC
-#pragma config FPLLMULT =   MUL_50
-#pragma config FPLLODIV =   DIV_2
+#pragma config FPLLICLK =   PLL_POSC
+#pragma config FPLLMULT =   MUL_94
+#pragma config FPLLODIV =   DIV_4
 #pragma config UPLLFSEL =   FREQ_12MHZ
 
 /*** DEVCFG3 ***/
@@ -214,7 +214,7 @@ void SYS_Initialize ( void* data )
     
     /* Configure Prefetch, Wait States and ECC */
     PRECONbits.PREFEN = 3;
-    PRECONbits.PFMWS = 3;
+    PRECONbits.PFMWS = 0;
     CFGCONbits.ECCCON = 3;
 
 

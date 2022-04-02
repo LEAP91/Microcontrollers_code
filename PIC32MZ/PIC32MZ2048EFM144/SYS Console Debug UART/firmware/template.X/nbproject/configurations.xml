@@ -505,6 +505,11 @@
                   value="Press to select which tool pack to use"/>
         <property key="voltagevalue" value="3.4"/>
       </pk4hybrid>
+      <pkob4hybrid>
+        <property key="memories.programmemory.ranges" value="1d000000-1d1fffff"/>
+        <property key="programmerToGoFilePath"
+                  value="C:/Users/user/Desktop/Drive/Engineering/Software/PIC microcontrolers/PIC32MZ/PIC32MZ2048EFM144/SYS Console Debug UART/firmware/template.X/debug/default/template_ptg"/>
+      </pkob4hybrid>
     </conf>
   </confs>
 </configurationDescriptor>

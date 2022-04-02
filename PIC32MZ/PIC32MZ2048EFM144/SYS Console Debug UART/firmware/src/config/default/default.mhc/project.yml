@@ -13,13 +13,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: D230A6B646D2E78CEAA6AA924E04FCA0
-- generatedChecksum: 09C496C03317F306A03E975F1D73DF49
+- generatedChecksum: D46F3423734536D4705796A094872011
   logicalPath: config/default
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 09C496C03317F306A03E975F1D73DF49
+  userChecksum: D46F3423734536D4705796A094872011
 - generatedChecksum: 3FCD8096364D59D93B414CF5F742EC74
   logicalPath: config/default
   name: interrupts.c
@@ -55,13 +55,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 635712A6C846987470EFFCF3EABB8A0D
-- generatedChecksum: 7CF384BA3D08C83EE890FC405110EDA1
+- generatedChecksum: 706033AE6F9F669A0238FE7CFC28E9FF
   logicalPath: config/default/peripheral/uart
   name: plib_uart2.c
   physicalPath: peripheral/uart
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 7CF384BA3D08C83EE890FC405110EDA1
+  userChecksum: 706033AE6F9F669A0238FE7CFC28E9FF
 - generatedChecksum: 20C22A19D5DC74DEBFC4CCCA83B6F603
   logicalPath: config/default/system/console
   name: sys_console.c
@@ -146,13 +146,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 4855B5EA5BE394CEACBC41B6FEAD2183
-- generatedChecksum: 753F8200DCA74DD3B84750DDFF0D6DE8
+- generatedChecksum: BF16D07010378E8FDFE19A84AD9DF017
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 753F8200DCA74DD3B84750DDFF0D6DE8
+  userChecksum: BF16D07010378E8FDFE19A84AD9DF017
 - generatedChecksum: E189C26B2269F8DE46033CCD0621958D
   logicalPath: config/default
   name: device.h
@@ -223,13 +223,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 54C7DA9C884BCFD60B766E43D4E18640
-- generatedChecksum: 86D499749C924875389705AA3D0C9FD7
+- generatedChecksum: 25421ECEF5712C5BE7C34ACA9A8C79DB
   logicalPath: config/default/peripheral/uart
   name: plib_uart2.h
   physicalPath: peripheral/uart
   security: NON_SECURE
   type: HEADER
-  userChecksum: 86D499749C924875389705AA3D0C9FD7
+  userChecksum: 25421ECEF5712C5BE7C34ACA9A8C79DB
 - generatedChecksum: 91611515A95D92B82B7F4064C16D122B
   logicalPath: config/default/peripheral/uart
   name: plib_uart_common.h

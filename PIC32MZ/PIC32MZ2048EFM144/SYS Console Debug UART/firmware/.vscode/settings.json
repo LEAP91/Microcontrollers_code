@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "configuration.h": "c",
+        "dev_board.h": "c",
+        "definitions.h": "c"
+    }
+}

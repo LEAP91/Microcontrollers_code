@@ -4,11 +4,11 @@
 
 
 project: SYS Console Debug UART
-creation_date: 2022-01-22T10:39:48.611-06:00[America/Chicago]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2022-03-12T17:13:49.125-06:00[America/Chicago]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mhc_mode: IDE            # [IDE|Standalone|Headless]
 mhc_version: v3.7.2
-mplabx_version: v6.00        # if MPLAB X plugin only
+mplabx_version: v5.45        # if MPLAB X plugin only
 plugin_version: v3.6.4        # if MPLAB X plugin only
 compiler: XC32 (2.50)
 

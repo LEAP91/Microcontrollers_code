@@ -64,11 +64,11 @@
 
 
 /*** DEVCFG1 ***/
-#pragma config FNOSC =      PRIPLL
+#pragma config FNOSC =      FRCPLL
 #pragma config FPBDIV =     DIV_1
 #pragma config FSOSCEN =    OFF
 #pragma config IESO =       ON
-#pragma config POSCMOD =    XT
+#pragma config POSCMOD =    OFF
 #pragma config OSCIOFNC =   OFF
 #pragma config FCKSM =      CSDCMD
 #pragma config WDTPS =      PS1048576
@@ -77,16 +77,16 @@
 
 /*** DEVCFG2 ***/
 #pragma config FPLLIDIV =   DIV_2
-#pragma config FPLLMUL =    MUL_20
-#pragma config FPLLODIV =   DIV_1
+#pragma config FPLLMUL =    MUL_24
+#pragma config FPLLODIV =   DIV_8
 #pragma config UPLLEN =     OFF
 #pragma config UPLLIDIV =   DIV_2
 
 /*** DEVCFG3 ***/
 #pragma config FSRSSEL =    PRIORITY_7
-#pragma config FVBUSONIO =  ON
+#pragma config FVBUSONIO =  OFF
 #pragma config USERID =     0xffff
-#pragma config FUSBIDIO =   ON
+#pragma config FUSBIDIO =   OFF
 #pragma config FMIIEN =     OFF
 #pragma config FETHIO =     OFF
 
