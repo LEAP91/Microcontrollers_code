@@ -36,14 +36,20 @@
 #include "tcpip/tcpip.h"
 #include "definitions.h"
 // DOM-IGNORE-BEGIN
-#ifdef __cplusplus  // Provide C++ Compatibility
+#ifdef __cplusplus // Provide C++ Compatibility
 
-extern "C" {
+extern "C"
+{
 
 #endif
 
-typedef enum
-{
+#define APP_SYS_FS_NVM_VOL "/dev/nvma1"
+#define APP_SYS_FS_MOUNT_POINT "/mnt/mchpSite1"
+#define APP_SYS_FS_TYPE MPFS2
+#define APP_SYS_FS_TYPE_STRING "MPFS2"
+
+  typedef enum
+  {
     APP_STATE_WAIT_UART_CONSOLE_CONFIGURED = 0,
     APP_STATE_GET_CONSOLE_HANDLE,
     APP_STATE_DEMONSTRATE_DEBUG_APIS,
@@ -57,6 +63,10 @@ typedef enum
     APP_TCPIP_WAIT_INIT,
 
     /* In this state, the application waits for a IP Address */
+    APP_STATE_INIT,
+
+    APP_MOUNT_DISK,
+
     APP_TCPIP_WAIT_FOR_IP,
 
     APP_TCPIP_OPENING_SERVER,
@@ -69,31 +79,35 @@ typedef enum
 
     APP_TCPIP_ERROR,
 
-} APP_STATES;
+  } APP_STATES;
 
-typedef struct
-{
+  typedef struct
+  {
     TCP_SOCKET socket;
     /* The application's current state */
     APP_STATES state;
     SYS_CONSOLE_HANDLE consoleHandle;
     /* TODO: Define any additional data used by the application. */
 
-} APP_DATA;
+  } APP_DATA;
 
-void APP_Initialize ( void );
+  void APP_Initialize(void);
+  void input_drive(void);
 
-void APP_Tasks( void );
+  void APP_Tasks(void);
 
-//DOM-IGNORE-BEGIN
+    #if defined(TCPIP_STACK_USE_HTTP_NET_SERVER)
+    #include "http_net_print.h"
+    #endif
+
+// DOM-IGNORE-BEGIN
 #ifdef __cplusplus
 }
 #endif
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
 #endif /* _APP_H */
 
 /*******************************************************************************
  End of File
  */
-

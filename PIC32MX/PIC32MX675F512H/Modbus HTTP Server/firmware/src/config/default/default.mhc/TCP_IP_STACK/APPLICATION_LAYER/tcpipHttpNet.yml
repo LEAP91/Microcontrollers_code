@@ -1,0 +1,416 @@
+format_version: v1.0
+type: UniqueComponent
+attributes: {id: tcpipHttpNet}
+children:
+- type: Symbols
+  children:
+  - type: Boolean
+    attributes: {id: TCPIP_HTTP_NET_CUSTOM_TEMPLATE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: Boolean
+    attributes: {id: TCPIP_HTTP_NET_CUSTOM_TEMPLATE_SL}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tcpipHttpNet, value: 'true'}
+  - type: String
+    attributes: {id: TCPIP_HTTP_NET_DEFAULT_FILE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: digital-inputs.html}
+  - type: Boolean
+    attributes: {id: TCPIP_HTTP_NET_FILE_UPLOAD_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: String
+    attributes: {id: TCPIP_HTTP_NET_FILE_UPLOAD_NAME}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: mpfsupload}
+  - type: Integer
+    attributes: {id: TCPIP_HTTP_NET_HEAP_SIZE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tcpipHttpNet, value: '4944'}
+  - type: Integer
+    attributes: {id: TCPIP_HTTP_NET_MPFS_NVM_NUM}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+  - type: String
+    attributes: {id: TCPIP_HTTP_NET_MPFS_NVM_PATH}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: /mnt/mchpSite1}
+  - type: String
+    attributes: {id: TCPIP_HTTP_NET_MPFS_NVM_VOL}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: /dev/nvma1}
+  - type: String
+    attributes: {id: TCPIP_HTTP_NET_WEBPAGE_DIRECTORY_PATH}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'C:\Users\user\Documents\my_pages'}
+  - type: String
+    attributes: {id: TCPIP_HTTP_NET_WEB_DIR}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: /mnt/mchpSite1/}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE0}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: digital-inputs.html}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Documents/my_pages/digital-inputs.html'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE1}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: digital-outputs.html}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Documents/my_pages/digital-outputs.html'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE10}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: imgs\webpage_logo.png}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\imgs\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Documents/my_pages/imgs/webpage_logo.png'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE11}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE12}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE13}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE14}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE15}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE16}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE17}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE18}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE19}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE2}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: network-settings.html}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Documents/my_pages/network-settings.html'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE20}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE21}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE22}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'false'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE3}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: reboot.cgi}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Documents/my_pages/reboot.cgi'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE4}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: reboot.html}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Documents/my_pages/reboot.html'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE5}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: status.xml}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Documents/my_pages/status.xml'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE6}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: user-settings.html}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Documents/my_pages/user-settings.html'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE7}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: CSS\format.css}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\CSS\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Documents/my_pages/CSS/format.css'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE8}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: CSS\login.css}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\CSS\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Documents/my_pages/CSS/login.css'}
+  - type: File
+    attributes: {id: WEBPAGE_LIST_FILE9}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: enabled}
+        children:
+        - {type: Value, value: 'true'}
+      - type: String
+        attributes: {id: name}
+        children:
+        - {type: Value, value: CSS\style.css}
+      - type: String
+        attributes: {id: project}
+        children:
+        - {type: Value, value: web_pages\CSS\}
+      - type: String
+        attributes: {id: source}
+        children:
+        - {type: Value, value: 'C:/Users/user/Documents/my_pages/CSS/style.css'}
+- type: ElementPosition
+  attributes: {x: '580', y: '20', id: tcpipHttpNet}

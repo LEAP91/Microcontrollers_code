@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "system_definitions.h": "c",
+        "definitions.h": "c",
+        "app.h": "c",
+        "tcpip.h": "c",
+        "drv_memory.h": "c",
+        "plib_spi4_master.h": "c",
+        "device.h": "c",
+        "stdbool.h": "c",
+        "isoface_drivers.h": "c",
+        "modbustcpserver.h": "c"
+    }
+}

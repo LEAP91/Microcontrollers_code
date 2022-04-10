@@ -74,9 +74,14 @@ void SYS_Tasks ( void )
     /* Maintain system services */
     
 
+SYS_FS_Tasks();
+
+
 
     /* Maintain Device Drivers */
-    DRV_MIIM_Tasks(sysObj.drvMiim);
+    DRV_MEMORY_Tasks(sysObj.drvMemory0);
+
+DRV_MIIM_Tasks(sysObj.drvMiim);
 
 
 
@@ -84,6 +89,10 @@ void SYS_Tasks ( void )
     /* Maintain Middleware & Other Libraries */
     
 TCPIP_STACK_Task(sysObj.tcpip);
+
+
+
+NET_PRES_Tasks(sysObj.netPres);
 
 
 

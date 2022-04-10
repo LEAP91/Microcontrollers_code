@@ -49,10 +49,14 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include "crypto/crypto.h"
+#include "peripheral/spi/spi_master/plib_spi4_master.h"
+#include "driver/memory/drv_memory.h"
 #include "peripheral/nvm/plib_nvm.h"
 #include "system/time/sys_time.h"
 #include "peripheral/coretimer/plib_coretimer.h"
+#include "driver/memory/drv_memory_nvm.h"
 #include "peripheral/uart/plib_uart1.h"
+#include "peripheral/spi/spi_master/plib_spi2_master.h"
 #include "library/tcpip/tcpip.h"
 #include "driver/ethmac/drv_ethmac.h"
 #include "driver/miim/drv_miim.h"
@@ -65,6 +69,13 @@
 #include "peripheral/gpio/plib_gpio.h"
 #include "peripheral/evic/plib_evic.h"
 #include "wolfssl/wolfcrypt/port/pic32/crypt_wolfcryptcb.h"
+#include "net_pres/pres/net_pres.h"
+#include "net_pres/pres/net_pres_encryptionproviderapi.h"
+#include "net_pres/pres/net_pres_transportapi.h"
+#include "net_pres/pres/net_pres_socketapi.h"
+#include "system/fs/sys_fs.h"
+#include "system/fs/sys_fs_media_manager.h"
+#include "system/fs/mpfs/mpfs.h"
 #include "system/console/sys_console.h"
 #include "system/console/src/sys_console_uart_definitions.h"
 #include "app.h"
@@ -193,6 +204,7 @@ Remarks:
 typedef struct
 {
     SYS_MODULE_OBJ  sysTime;
+    SYS_MODULE_OBJ  drvMemory0;
     SYS_MODULE_OBJ  sysConsole0;
 
 
@@ -200,6 +212,8 @@ typedef struct
 
     SYS_MODULE_OBJ  drvMiim;
     SYS_MODULE_OBJ  sysDebug;
+
+    SYS_MODULE_OBJ  netPres;
 
 
 } SYSTEM_OBJECTS;

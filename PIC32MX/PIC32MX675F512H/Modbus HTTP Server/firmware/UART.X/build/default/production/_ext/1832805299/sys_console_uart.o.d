@@ -21,12 +21,21 @@ build/default/production/_ext/1832805299/sys_console_uart.o: \
  ../src/config/default/system/console/src/sys_console_uart_definitions.h \
  ../src/config/default/definitions.h \
  ../src/config/default/crypto/crypto.h \
+ ../src/config/default/peripheral/spi/spi_master/plib_spi4_master.h \
+ ../src/config/default/peripheral/spi/spi_master/plib_spi_master_common.h \
+ ../src/config/default/driver/memory/drv_memory.h \
+ ../src/config/default/driver/memory/drv_memory_definitions.h \
+ ../src/config/default/system/system_media.h \
+ ../src/config/default/driver/memory/src/drv_memory_local.h \
+ ../src/config/default/driver/memory/drv_memory.h \
  ../src/config/default/peripheral/nvm/plib_nvm.h \
  ../src/config/default/system/time/sys_time.h \
  ../src/config/default/system/time/sys_time_definitions.h \
  ../src/config/default/peripheral/coretimer/plib_coretimer.h \
+ ../src/config/default/driver/memory/drv_memory_nvm.h \
  ../src/config/default/peripheral/uart/plib_uart1.h \
  ../src/config/default/peripheral/uart/plib_uart_common.h \
+ ../src/config/default/peripheral/spi/spi_master/plib_spi2_master.h \
  ../src/config/default/library/tcpip/tcpip.h \
  ../src/config/default/library/tcpip/tcpip_common_ports.h \
  ../src/config/default/library/tcpip/tcpip_mac.h \
@@ -42,6 +51,12 @@ build/default/production/_ext/1832805299/sys_console_uart.o: \
  ../src/config/default/library/tcpip/tcp.h \
  ../src/config/default/library/tcpip/udp.h \
  ../src/config/default/library/tcpip/icmp.h \
+ ../src/config/default/library/tcpip/nbns.h \
+ ../src/config/default/library/tcpip/http_net.h \
+ ../src/config/default/system/fs/sys_fs.h \
+ ../src/config/default/net_pres/pres/net_pres.h \
+ ../src/config/default/system_config.h \
+ ../src/config/default/configuration.h \
  ../src/config/default/library/tcpip/lldp.h \
  ../src/config/default/driver/ethmac/drv_ethmac.h \
  ../src/config/default/driver/ethphy/drv_ethphy.h \
@@ -59,9 +74,20 @@ build/default/production/_ext/1832805299/sys_console_uart.o: \
  ../src/config/default/peripheral/gpio/plib_gpio.h \
  ../src/config/default/peripheral/evic/plib_evic.h \
  ../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_wolfcryptcb.h \
+ ../src/config/default/net_pres/pres/net_pres.h \
+ ../src/config/default/net_pres/pres/net_pres_encryptionproviderapi.h \
+ ../src/config/default/net_pres/pres/net_pres.h \
+ ../src/config/default/net_pres/pres/net_pres_transportapi.h \
+ ../src/config/default/net_pres/pres/net_pres_socketapi.h \
+ ../src/config/default/net_pres/pres/net_pres_socketapiconversion.h \
+ ../src/config/default/net_pres/pres/net_pres_socketapi.h \
+ ../src/config/default/system/fs/sys_fs.h \
+ ../src/config/default/system/fs/sys_fs_media_manager.h \
+ ../src/config/default/system/fs/mpfs/mpfs.h \
  ../src/config/default/system/console/sys_console.h \
  ../src/config/default/system/console/src/sys_console_uart_definitions.h \
- ../src/app.h ../src/config/default/library/tcpip/tcpip.h
+ ../src/app.h ../src/config/default/library/tcpip/tcpip.h \
+ ../src/http_net_print.h
 
 ../src/config/default/system/console/sys_console.h:
 
@@ -109,6 +135,20 @@ build/default/production/_ext/1832805299/sys_console_uart.o: \
 
 ../src/config/default/crypto/crypto.h:
 
+../src/config/default/peripheral/spi/spi_master/plib_spi4_master.h:
+
+../src/config/default/peripheral/spi/spi_master/plib_spi_master_common.h:
+
+../src/config/default/driver/memory/drv_memory.h:
+
+../src/config/default/driver/memory/drv_memory_definitions.h:
+
+../src/config/default/system/system_media.h:
+
+../src/config/default/driver/memory/src/drv_memory_local.h:
+
+../src/config/default/driver/memory/drv_memory.h:
+
 ../src/config/default/peripheral/nvm/plib_nvm.h:
 
 ../src/config/default/system/time/sys_time.h:
@@ -117,9 +157,13 @@ build/default/production/_ext/1832805299/sys_console_uart.o: \
 
 ../src/config/default/peripheral/coretimer/plib_coretimer.h:
 
+../src/config/default/driver/memory/drv_memory_nvm.h:
+
 ../src/config/default/peripheral/uart/plib_uart1.h:
 
 ../src/config/default/peripheral/uart/plib_uart_common.h:
+
+../src/config/default/peripheral/spi/spi_master/plib_spi2_master.h:
 
 ../src/config/default/library/tcpip/tcpip.h:
 
@@ -150,6 +194,18 @@ build/default/production/_ext/1832805299/sys_console_uart.o: \
 ../src/config/default/library/tcpip/udp.h:
 
 ../src/config/default/library/tcpip/icmp.h:
+
+../src/config/default/library/tcpip/nbns.h:
+
+../src/config/default/library/tcpip/http_net.h:
+
+../src/config/default/system/fs/sys_fs.h:
+
+../src/config/default/net_pres/pres/net_pres.h:
+
+../src/config/default/system_config.h:
+
+../src/config/default/configuration.h:
 
 ../src/config/default/library/tcpip/lldp.h:
 
@@ -185,6 +241,26 @@ build/default/production/_ext/1832805299/sys_console_uart.o: \
 
 ../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_wolfcryptcb.h:
 
+../src/config/default/net_pres/pres/net_pres.h:
+
+../src/config/default/net_pres/pres/net_pres_encryptionproviderapi.h:
+
+../src/config/default/net_pres/pres/net_pres.h:
+
+../src/config/default/net_pres/pres/net_pres_transportapi.h:
+
+../src/config/default/net_pres/pres/net_pres_socketapi.h:
+
+../src/config/default/net_pres/pres/net_pres_socketapiconversion.h:
+
+../src/config/default/net_pres/pres/net_pres_socketapi.h:
+
+../src/config/default/system/fs/sys_fs.h:
+
+../src/config/default/system/fs/sys_fs_media_manager.h:
+
+../src/config/default/system/fs/mpfs/mpfs.h:
+
 ../src/config/default/system/console/sys_console.h:
 
 ../src/config/default/system/console/src/sys_console_uart_definitions.h:
@@ -192,3 +268,5 @@ build/default/production/_ext/1832805299/sys_console_uart.o: \
 ../src/app.h:
 
 ../src/config/default/library/tcpip/tcpip.h:
+
+../src/http_net_print.h:

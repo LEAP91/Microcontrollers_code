@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Settings</title>
+    <link rel="stylesheet" href="CSS/format.css">
+</head>
+
+<body>
+    <div class="container">
+        <img class="logo" src="imgs/webpage_logo.png" alt="logo">
+        <div class="model">DIO-0001</div>
+        <div id="sidebar">
+            <ul>
+                <li class="current">Network Settings</li>
+                <li><a href="digital-inputs.html">Digital Inputs</a></li>
+                <li><a href="digital-outputs.html">Digital Outputs</a></li>
+            </ul>
+        </div>
+
+        <form id="myform" method="post" name="myform" action="network-settings.html">
+
+            <div class="formgrid">
+                <div class="message_error" style="display: ~status_fail~">!ERROR: A field input has incorrect settings
+                </div>
+
+                <label for="ip">IP Address</label>
+                <input type="text" name="ip" class="forminput" maxlength="15" value="~config_ip~">
+                <label for="sub">Subnet Mask</label>
+                <input type="text" name="sub" class="forminput" maxlength="15" value="~config_subnet~">
+                <label for="gw">Gateway Mask</label>
+                <input type="text" name="gw" class="forminput" maxlength="15" value="~config_gw~">
+                <label for="mac">MAC Address</label>
+                <input type="text" name="mac" class="forminput" maxlength="17" value="~config_mac~">
+                <label for="host">Device Name</label>
+                <input type="text" name="host" maxlength="15" class="forminput" value="~config_hostname~">
+                <label for="dhcp">Enable DHCP</label>
+                <input class="check" type="checkbox" name="dhcp" value="1" onclick="configIPBoxes()"
+                    ~config_dhcpchecked~>
+
+
+
+                <h1></h1>
+                <button type="submit">Save</button>
+            </div>
+        </form>
+
+    </div>
+    <script language="javascript">
+
+        function configIPBoxes() {
+            e = document.forms.myform;
+            st = e.dhcp.checked;
+            e.ip.disabled = st;
+            e.gw.disabled = st;
+            e.sub.disabled = st;
+        }
+        configIPBoxes();
+    </script>
+</body>
+
+</html>
