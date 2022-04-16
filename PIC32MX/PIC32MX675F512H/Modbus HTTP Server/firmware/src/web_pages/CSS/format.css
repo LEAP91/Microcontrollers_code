@@ -140,7 +140,7 @@ input::-webkit-inner-spin-button{
 
 .formgrid-digital-input{
     display: grid;
-    grid-template-columns: 135px 130px 130px 50px 50px;
+    grid-template-columns: 145px 130px 130px 50px 50px;
     grid-template-rows: 30px 30px 30px 30px 30px 30px 30px 30px 30px 80px 80px;
     height: 100%;
     box-sizing: border-box;

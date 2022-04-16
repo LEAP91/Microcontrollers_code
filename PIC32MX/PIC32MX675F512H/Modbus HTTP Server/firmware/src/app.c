@@ -49,7 +49,7 @@ uint16_t INPUT_REG[INPUT_REG_SIZE] =
         0, // 165
         0, // 166
         0  // 167
-};
+};         // Saves the value of each input
 
 uint16_t REVERSED_HOLDING_REG[HOLDING_REG_SIZE]; // Mirrors the holding reg. to reverse bytes
 
@@ -76,15 +76,15 @@ void Read_Coils(void)
 {
     SYS_CONSOLE_MESSAGE("Coil status Request..\r\n");
     // Verify that the data can be sent
-    if ((MODBUS_COMMAND.StartAddress.Val > 252) ||
+    if ((MODBUS_COMMAND.StartAddress.Val > 253) ||
         (MODBUS_COMMAND.StartAddress.Val < 250) ||
-        ((MODBUS_COMMAND.StartAddress.Val) - 1 + MODBUS_COMMAND.NumberOfRegister.Val) > 0x00FC)
+        ((MODBUS_COMMAND.StartAddress.Val) - 1 + MODBUS_COMMAND.NumberOfRegister.Val) > 0x00FD)
     {
         SYS_CONSOLE_MESSAGE("Ilegal data Address..\r\n");
         ModbusError(Illegal_Data_Address);
         return;
     }
-    else if (MODBUS_COMMAND.NumberOfRegister.Val >= 0x07D0 || MODBUS_COMMAND.NumberOfRegister.Val <= 0x0001)
+    else if (MODBUS_COMMAND.NumberOfRegister.Val >= 0x07D0 || MODBUS_COMMAND.NumberOfRegister.Val < 0x0001)
     {
         SYS_CONSOLE_MESSAGE("Ilegal Qty of outputs..\r\n");
         ModbusError(Illegal_Qty);
@@ -134,15 +134,15 @@ void Read_Discrete_Inputs(void)
 {
     SYS_CONSOLE_MESSAGE("Digital inputs status request..\r\n");
     // Verify that the data can be sent
-    if ((MODBUS_COMMAND.StartAddress.Val > 163) ||
+    if ((MODBUS_COMMAND.StartAddress.Val > 167) ||
         (MODBUS_COMMAND.StartAddress.Val < 160) ||
-        ((MODBUS_COMMAND.StartAddress.Val) - 1 + MODBUS_COMMAND.NumberOfRegister.Val) > 0x00A3)
+        ((MODBUS_COMMAND.StartAddress.Val) - 1 + MODBUS_COMMAND.NumberOfRegister.Val) > 0x00A7)
     {
         SYS_CONSOLE_MESSAGE("Ilegal data Address..\r\n");
         ModbusError(Illegal_Data_Address);
         return;
     }
-    else if (MODBUS_COMMAND.NumberOfRegister.Val >= 0x07D0 || MODBUS_COMMAND.NumberOfRegister.Val <= 0x0001)
+    else if (MODBUS_COMMAND.NumberOfRegister.Val >= 0x07D0 || MODBUS_COMMAND.NumberOfRegister.Val < 0x0001)
     {
         SYS_CONSOLE_MESSAGE("Ilegal Qty Inputs..\r\n");
         ModbusError(Illegal_Qty);
@@ -183,7 +183,7 @@ void readHoldingRegister(void)
         ModbusError(Illegal_Data_Address);
         return;
     }
-    else if (MODBUS_COMMAND.NumberOfRegister.Val >= 0x07D0 || MODBUS_COMMAND.NumberOfRegister.Val <= 0x0001)
+    else if (MODBUS_COMMAND.NumberOfRegister.Val >= 0x07D0 || MODBUS_COMMAND.NumberOfRegister.Val < 0x0001)
     {
         SYS_CONSOLE_MESSAGE("Ilegal Qty of Registers..\r\n");
         ModbusError(Illegal_Qty);
@@ -210,7 +210,10 @@ void readHoldingRegister(void)
         // SYS_CONSOLE_MESSAGE("Byte order changed\r\n");
         // ReadByteReverse = 0;
     }
-    // SYS_CONSOLE_PRINT("Coil reg Value: %x\r\n", HOLDING_REG[2]);
+    SYS_CONSOLE_PRINT("Coil reg Value: %x\r\n", HOLDING_REG[2]);
+    SYS_CONSOLE_PRINT("reversed reg Value: %x\r\n", REVERSED_HOLDING_REG[2]);
+    SYS_CONSOLE_PRINT("input reg Value: %x\r\n", HOLDING_REG[3]);
+
     // Copy MODBUS_RX and HOLdING_REG into MODBUS_TX and send MODBUS_TX as response
     memcpy(MODBUS_TX, MODBUS_RX, 9);
     // Copy from holding reg. array address up to number of registers
@@ -265,18 +268,18 @@ void output_drive(void)
         if (COIL.Val == 0xFF)
         {
             outputs(3, 1);
-            COIL_REG[2] = 0b00000100;
+            COIL_REG[3] = 0b00001000;
         }
         else
         {
             outputs(3, 0);
-            COIL_REG[2] = 0;
+            COIL_REG[3] = 0;
         }
         break;
     }
-    for (i = 0; i < 3; i++)
+    for (i = 0; i < 4; i++)
         HOLDING_REG[2] |= COIL_REG[i];
-    // SYS_CONSOLE_PRINT("Coil reg changed to: %x\r\n", HOLDING_REG[2]);
+    SYS_CONSOLE_PRINT("Coil reg changed to: %x\r\n", HOLDING_REG[2]);
 }
 
 // Function code 05 - Write single coil
@@ -391,15 +394,15 @@ void Write_Multiple_Coils(void)
 {
     SYS_CONSOLE_MESSAGE("Write multiple coils request..\r\n");
     // Verify that the data can be sent
-    if ((MODBUS_COMMAND.StartAddress.Val > 252) ||
+    if ((MODBUS_COMMAND.StartAddress.Val > 253) ||
         (MODBUS_COMMAND.StartAddress.Val < 250) ||
-        ((MODBUS_COMMAND.StartAddress.Val) - 1 + MODBUS_COMMAND.NumberOfRegister.Val) > 0x00FC)
+        ((MODBUS_COMMAND.StartAddress.Val) - 1 + MODBUS_COMMAND.NumberOfRegister.Val) > 0x00FD)
     {
         SYS_CONSOLE_MESSAGE("Ilegal data Address..\r\n");
         ModbusError(Illegal_Data_Address);
         return;
     }
-    else if (MODBUS_COMMAND.NumberOfRegister.Val >= 0x07D0 || MODBUS_COMMAND.NumberOfRegister.Val <= 0x0001)
+    else if (MODBUS_COMMAND.NumberOfRegister.Val >= 0x07D0 || MODBUS_COMMAND.NumberOfRegister.Val < 0x0001)
     {
         SYS_CONSOLE_MESSAGE("Ilegal Qty of outputs..\r\n");
         ModbusError(Illegal_Qty);
@@ -569,22 +572,22 @@ void Modbus_Server(void)
 
         break;
 
-    case WriteSingleRegister:
+        /*     case WriteSingleRegister:
 
-        // Assemble the data
-        Write_Single_register();
+                // Assemble the data
+                Write_Single_register();
 
-        // Test if server sends Exception error to the client
-        if ((MODBUS_TX[MODBUS_FunctionCode] == 0X86))
-        {
-            SYS_CONSOLE_MESSAGE("Exception error \r\n");
-            w = 0x09 + MODBUS_TX[8];
-        }
+                // Test if server sends Exception error to the client
+                if ((MODBUS_TX[MODBUS_FunctionCode] == 0X86))
+                {
+                    SYS_CONSOLE_MESSAGE("Exception error \r\n");
+                    w = 0x09 + MODBUS_TX[8];
+                }
 
-        else
-            w = 12;
+                else
+                    w = 12;
 
-        break;
+                break; */
 
     case ReadCoil:
         // Assemble the data
@@ -604,7 +607,7 @@ void Modbus_Server(void)
 void input_drive(void)
 {
     int i, j;
-    uint8_t bit =1;
+    uint8_t bit = 1;
     // Reset the holding reg. to 0 since this function reads
     // every input
     HOLDING_REG[3] = 0;
@@ -622,8 +625,11 @@ void input_drive(void)
     }
 
     // Read input reg. and update holding reg. input address
-    for (i = 0; i < 4; i++)
+    for (i = 0; i < 8; i++)
+    {
         HOLDING_REG[3] |= INPUT_REG[i];
+        SYS_CONSOLE_PRINT("input register val %X\r\n", INPUT_REG[i]);
+    }
 }
 
 void APP_Initialize(void)
@@ -760,12 +766,12 @@ void APP_Tasks(void)
 
     case APP_TCPIP_OPENING_SERVER:
     {
-        SYS_CONSOLE_PRINT("Waiting for Client Connection on port: %d\r\n", MODBUS_PORT);
+        // SYS_CONSOLE_PRINT("Waiting for Client Connection on port: %d\r\n", MODBUS_PORT);
         appData.socket = TCPIP_TCP_ServerOpen(IP_ADDRESS_TYPE_IPV4, MODBUS_PORT, 0);
         if (appData.socket == INVALID_SOCKET)
         {
             // LED3_On();
-            SYS_CONSOLE_MESSAGE("Couldn't open server socket\r\n");
+            // SYS_CONSOLE_MESSAGE("Couldn't open server socket\r\n");
             break;
         }
 
