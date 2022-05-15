@@ -69,13 +69,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: A2E207D459736D20CF2C38D551EE1A99
-- generatedChecksum: 7CF384BA3D08C83EE890FC405110EDA1
+- generatedChecksum: A09CF03ED95249FF522DED93F20C8851
   logicalPath: config/default/peripheral/uart
   name: plib_uart2.c
   physicalPath: peripheral/uart
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 7CF384BA3D08C83EE890FC405110EDA1
+  userChecksum: A09CF03ED95249FF522DED93F20C8851
 - generatedChecksum: 20C22A19D5DC74DEBFC4CCCA83B6F603
   logicalPath: config/default/system/console
   name: sys_console.c
