@@ -88,7 +88,5 @@ void CLK_Initialize( void )
     /* Code for fuse settings can be found in "initialization.c" */
     
 
-    /* Wait for PLL to be locked */
-    while(!OSCCONbits.SLOCK);
 
 }

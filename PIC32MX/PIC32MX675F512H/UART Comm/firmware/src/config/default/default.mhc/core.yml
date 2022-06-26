@@ -12,34 +12,6 @@ children:
       - type: Dynamic
         attributes: {id: core, value: '0'}
   - type: String
-    attributes: {id: BSP_PIN_48_DIR}
-    children:
-    - type: Values
-      children:
-      - type: User
-        attributes: {value: Out}
-  - type: String
-    attributes: {id: BSP_PIN_48_FUNCTION_NAME}
-    children:
-    - type: Values
-      children:
-      - type: User
-        attributes: {value: GPIO_RC14}
-  - type: String
-    attributes: {id: BSP_PIN_48_FUNCTION_TYPE}
-    children:
-    - type: Values
-      children:
-      - type: User
-        attributes: {value: GPIO}
-  - type: String
-    attributes: {id: BSP_PIN_48_LAT}
-    children:
-    - type: Values
-      children:
-      - type: User
-        attributes: {value: ''}
-  - type: String
     attributes: {id: BSP_PIN_5_FUNCTION_TYPE}
     children:
     - type: Values
@@ -80,7 +52,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '2'}
+        attributes: {id: core, value: '0'}
       - type: User
         attributes: {value: '2'}
   - type: Combo
@@ -96,7 +68,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: PRIPLL}
+        attributes: {value: FRC}
   - type: Combo
     attributes: {id: CONFIG_FPBDIV}
     children:
@@ -145,14 +117,14 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: 'ON'}
+        attributes: {value: 'OFF'}
   - type: Combo
     attributes: {id: CONFIG_FVBUSONIO}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: 'ON'}
+        attributes: {value: 'OFF'}
   - type: Combo
     attributes: {id: CONFIG_IESO}
     children:
@@ -173,21 +145,21 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: XT}
+        attributes: {value: 'OFF'}
   - type: String
     attributes: {id: CONFIG_SYS_CLK_PBCLK_FREQ}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '80000000'}
+        attributes: {value: '8000000'}
   - type: String
     attributes: {id: CPU_CLOCK_FREQUENCY}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '80000000'}
+        attributes: {id: core, value: '8000000'}
   - type: Integer
     attributes: {id: CVR_CLOCK_FREQUENCY}
     children:
@@ -202,6 +174,27 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: '0'}
+  - type: Boolean
+    attributes: {id: EVIC_24_2_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: 'false'}
+  - type: Boolean
+    attributes: {id: EVIC_24_2_HANDLER_LOCK}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: 'false'}
+  - type: String
+    attributes: {id: EVIC_24_2_INTERRUPT_HANDLER}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: UART_1_Handler}
   - type: Boolean
     attributes: {id: EVIC_31_2_ENABLE}
     children:
@@ -425,7 +418,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '80000000'}
+        attributes: {value: '8000000'}
   - type: Hex
     attributes: {id: SYS_PORT_C_LAT}
     children:
@@ -439,7 +432,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '16384'}
+        attributes: {id: core, value: '0'}
   - type: Integer
     attributes: {id: TMR1_CLOCK_FREQUENCY}
     children:
@@ -502,7 +495,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '80000000'}
+        attributes: {id: core, value: '8000000'}
   - type: Integer
     attributes: {id: UART4_CLOCK_FREQUENCY}
     children:
@@ -524,6 +517,13 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: '0'}
+  - type: Boolean
+    attributes: {id: UART_1_INTERRUPT_ENABLE_UPDATE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: 'true'}
   - type: Boolean
     attributes: {id: UART_3_INTERRUPT_ENABLE}
     children:

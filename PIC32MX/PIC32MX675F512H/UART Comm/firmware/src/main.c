@@ -20,7 +20,7 @@ int main ( void )
     SYS_Initialize ( NULL );
     
     UART3_Write(&messageStart, sizeof(messageStart));
-    GPIO_RC14_Set();
+    //GPIO_RC14_Set();
     //GPIO_RC14_Clear();
     while ( true )
     {

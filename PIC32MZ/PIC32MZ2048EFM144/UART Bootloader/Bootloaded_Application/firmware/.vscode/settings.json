@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "sys_debug.h": "c",
+        "stdbool.h": "c"
+    }
+}

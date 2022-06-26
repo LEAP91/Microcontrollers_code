@@ -62,15 +62,6 @@
 // *****************************************************************************
 
 
-/*** Macros for GPIO_RC14 pin ***/
-#define GPIO_RC14_Set()               (LATCSET = (1<<14))
-#define GPIO_RC14_Clear()             (LATCCLR = (1<<14))
-#define GPIO_RC14_Toggle()            (LATCINV= (1<<14))
-#define GPIO_RC14_OutputEnable()      (TRISCCLR = (1<<14))
-#define GPIO_RC14_InputEnable()       (TRISCSET = (1<<14))
-#define GPIO_RC14_Get()               ((PORTC >> 14) & 0x1)
-#define GPIO_RC14_PIN                  GPIO_PIN_RC14
-
 
 // *****************************************************************************
 /* GPIO Port

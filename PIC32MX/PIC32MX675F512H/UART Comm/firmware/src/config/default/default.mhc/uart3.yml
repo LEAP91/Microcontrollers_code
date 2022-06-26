@@ -10,7 +10,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: uart3, value: '173'}
+        attributes: {id: uart3, value: '16'}
   - type: Comment
     attributes: {id: UART_BAUD_ERROR_COMMENT}
     children:
@@ -43,7 +43,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: uart3, value: '80000000'}
+        attributes: {id: uart3, value: '8000000'}
   - type: Boolean
     attributes: {id: UART_INTERRUPT_MODE_ENABLE}
     children:
@@ -73,4 +73,4 @@ children:
       - type: Dynamic
         attributes: {id: uart3, value: '8'}
 - type: ElementPosition
-  attributes: {x: '32', y: '74', id: uart3}
+  attributes: {x: '49', y: '100', id: uart3}
