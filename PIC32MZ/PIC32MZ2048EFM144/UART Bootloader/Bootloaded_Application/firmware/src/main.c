@@ -22,32 +22,29 @@
 // *****************************************************************************
 // *****************************************************************************
 
-#include <stddef.h>                     // Defines NULL
-#include <stdbool.h>                    // Defines true
-#include <stdlib.h>                     // Defines EXIT_FAILURE
+#include <stddef.h>  // Defines NULL
+#include <stdbool.h> // Defines true
+#include <stdlib.h>  // Defines EXIT_FAILURE
 #include "definitions.h"
-#include "Dev_Board.h"                // SYS function prototypes
+// SYS function prototypes
 
-int main ( void )
+int main(void)
 {
-    /* Initialize all modules */
-    SYS_Initialize ( NULL );
-   
-    while ( true )
-    {
-        /* Maintain state machines of all polled MPLAB Harmony modules. */
-        SYS_Tasks ( );
-        
-        
-    }
+  /* Initialize all modules */
+  RED_ON;
+  SYS_Initialize(NULL);
+  LED3_ON;
+  while (true)
+  {
+    /* Maintain state machines of all polled MPLAB Harmony modules. */
+    SYS_Tasks();
+  }
 
-    /* Execution should not come here during normal operation */
+  /* Execution should not come here during normal operation */
 
-    return ( EXIT_FAILURE );
+  return (EXIT_FAILURE);
 }
-
 
 /*******************************************************************************
  End of File
 */
-

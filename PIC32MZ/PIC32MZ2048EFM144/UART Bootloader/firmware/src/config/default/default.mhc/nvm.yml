@@ -27,4 +27,4 @@ children:
         children:
         - {type: Value, value: btl_MEMORY_dependency}
 - type: ElementPosition
-  attributes: {x: '225', y: '371', id: nvm}
+  attributes: {x: '260', y: '370', id: nvm}

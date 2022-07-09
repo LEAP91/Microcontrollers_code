@@ -13,13 +13,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 4BBDE3B7B0DAEE2CA5A8F519001D5BFF
-- generatedChecksum: ADB399FB6D3504078119521EF86FFE33
+- generatedChecksum: A36FEF643D2914140378475D9684C9D2
   logicalPath: config/default
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: ADB399FB6D3504078119521EF86FFE33
+  userChecksum: A36FEF643D2914140378475D9684C9D2
 - generatedChecksum: F2E66A9C80FF47DB446D095437FA7877
   logicalPath: config/default
   name: interrupts.c
@@ -55,20 +55,27 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 5CC09D2D96C34EC27065C4CCC2F755CD
-- generatedChecksum: 4CA117C8231CC9CFBCAA7A20B1DC2F83
+- generatedChecksum: 433BF0A953517779B5D0FB5F781ACF92
   logicalPath: config/default/peripheral/spi/spi_master
   name: plib_spi4_master.c
   physicalPath: peripheral/spi/spi_master
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 4CA117C8231CC9CFBCAA7A20B1DC2F83
-- generatedChecksum: AC37F5974508024B7538B4938509A860
+  userChecksum: 433BF0A953517779B5D0FB5F781ACF92
+- generatedChecksum: 3168873BE1C565A8A49FFBEAB1F80837
   logicalPath: config/default/peripheral/uart
   name: plib_uart3.c
   physicalPath: peripheral/uart
   security: NON_SECURE
   type: SOURCE
-  userChecksum: AC37F5974508024B7538B4938509A860
+  userChecksum: 3168873BE1C565A8A49FFBEAB1F80837
+- generatedChecksum: 75C83AA1697B5EFAA25930859E6BB836
+  logicalPath: config/default/system/command
+  name: sys_command.c
+  physicalPath: system/command/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 75C83AA1697B5EFAA25930859E6BB836
 - generatedChecksum: 20C22A19D5DC74DEBFC4CCCA83B6F603
   logicalPath: config/default/system/console
   name: sys_console.c
@@ -125,20 +132,27 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: C95CE0ABB86E6B11CF77E8891D294510
-- generatedChecksum: DE51BB8F6FDBC39FB049CB2A14E56B25
+- generatedChecksum: 47B584985982B2FF32628D4CB874CB4D
+  logicalPath: config/default/system/reset
+  name: sys_reset.c
+  physicalPath: system/reset
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 47B584985982B2FF32628D4CB874CB4D
+- generatedChecksum: 67F9299CB45509FFEED57462A0543F94
   logicalPath: config/default
   name: tasks.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: DE51BB8F6FDBC39FB049CB2A14E56B25
-- generatedChecksum: 7806B30ECAE0D18D08CD583D8775530D
+  userChecksum: 67F9299CB45509FFEED57462A0543F94
+- generatedChecksum: 71352EF41F6688AD8408E42970B50B66
   logicalPath: config/default/stdio
   name: xc32_monitor.c
   physicalPath: stdio
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 7806B30ECAE0D18D08CD583D8775530D
+  userChecksum: 71352EF41F6688AD8408E42970B50B66
 - generatedChecksum: null
   logicalPath: ''
   name: app.h
@@ -146,20 +160,20 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: null
-- generatedChecksum: 4855B5EA5BE394CEACBC41B6FEAD2183
+- generatedChecksum: DB5DB731BF80DC18D1A43CE8DB3AB058
   logicalPath: config/default
   name: configuration.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 4855B5EA5BE394CEACBC41B6FEAD2183
-- generatedChecksum: 474943930348F5EE1942A255F00FF2A8
+  userChecksum: DB5DB731BF80DC18D1A43CE8DB3AB058
+- generatedChecksum: 187AF45F547AD85096A9A67FD7EA42A3
   logicalPath: config/default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 474943930348F5EE1942A255F00FF2A8
+  userChecksum: 187AF45F547AD85096A9A67FD7EA42A3
 - generatedChecksum: E189C26B2269F8DE46033CCD0621958D
   logicalPath: config/default
   name: device.h
@@ -230,13 +244,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 5AD02E94AA6F50CB19EA49130A1095EE
-- generatedChecksum: 3C25423AB0BC93255ACCCCB241B2C25E
+- generatedChecksum: 313B7DAD62CC03B8E819E8DA3675EC88
   logicalPath: config/default/peripheral/spi/spi_master
   name: plib_spi4_master.h
   physicalPath: peripheral/spi/spi_master
   security: NON_SECURE
   type: HEADER
-  userChecksum: 3C25423AB0BC93255ACCCCB241B2C25E
+  userChecksum: 313B7DAD62CC03B8E819E8DA3675EC88
 - generatedChecksum: CFA758C8B7258190473EF7C60C4BA4E9
   logicalPath: config/default/peripheral/spi/spi_master
   name: plib_spi_master_common.h
@@ -244,13 +258,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: CFA758C8B7258190473EF7C60C4BA4E9
-- generatedChecksum: BF714CAA1070CE40164B442D4AEF5882
+- generatedChecksum: E9FABB6959CD59D5AE9AD6BEACBC1330
   logicalPath: config/default/peripheral/uart
   name: plib_uart3.h
   physicalPath: peripheral/uart
   security: NON_SECURE
   type: HEADER
-  userChecksum: BF714CAA1070CE40164B442D4AEF5882
+  userChecksum: E9FABB6959CD59D5AE9AD6BEACBC1330
 - generatedChecksum: 91611515A95D92B82B7F4064C16D122B
   logicalPath: config/default/peripheral/uart
   name: plib_uart_common.h
@@ -258,20 +272,27 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 91611515A95D92B82B7F4064C16D122B
-- generatedChecksum: 91CB36F6EC29DAA7C584282A875E5CBA
+- generatedChecksum: 712D1407BC82CB6B3C4C44FED4F14D26
+  logicalPath: config/default/system/command
+  name: sys_command.h
+  physicalPath: system/command
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 712D1407BC82CB6B3C4C44FED4F14D26
+- generatedChecksum: 3AE819DFC5376F6E9AD0427596F24644
   logicalPath: config/default/system/console
   name: sys_console.h
   physicalPath: system/console
   security: NON_SECURE
   type: HEADER
-  userChecksum: 91CB36F6EC29DAA7C584282A875E5CBA
-- generatedChecksum: 6972608768DDBE6E37A2D81B83DF490B
+  userChecksum: 3AE819DFC5376F6E9AD0427596F24644
+- generatedChecksum: FADDA086C6C4E8FD7EBCE117438767A6
   logicalPath: config/default/system/debug
   name: sys_debug.h
   physicalPath: system/debug
   security: NON_SECURE
   type: HEADER
-  userChecksum: 6972608768DDBE6E37A2D81B83DF490B
+  userChecksum: FADDA086C6C4E8FD7EBCE117438767A6
 - generatedChecksum: 47330C2D8F204B2B69F8A86240A564B6
   logicalPath: config/default/system/int
   name: sys_int.h
@@ -286,6 +307,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: FC7B55936A09E0CA1395AE4DFB1A188F
+- generatedChecksum: 8E43BD17134E69982826F202D0AB42C5
+  logicalPath: config/default/system/reset
+  name: sys_reset.h
+  physicalPath: system/reset
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 8E43BD17134E69982826F202D0AB42C5
 - generatedChecksum: BE95B4F134C5C929787B9DA6FDBF3501
   logicalPath: config/default/system
   name: system.h
@@ -307,13 +335,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 1C75A8A6B60598A2FD0D533F57839B72
-- generatedChecksum: 2C8543317B3F067432097AB9BD3E8672
+- generatedChecksum: 7DC91D6D376C98802C9C2990432DE9B7
   logicalPath: config/default
   name: toolchain_specifics.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 2C8543317B3F067432097AB9BD3E8672
+  userChecksum: 7DC91D6D376C98802C9C2990432DE9B7
 - generatedChecksum: null
   logicalPath: config/default
   name: user.h
@@ -336,7 +364,7 @@ settings:
   delimiter: ;
   key: extra-include-directories
   security: NON_SECURE
-  value: ../src;../src/config/default;../src/packs/PIC32MX675F512H_DFP;
+  value: ../src;../src/config/default;
 - append: false
   category: C32
   delimiter: ''
@@ -348,7 +376,7 @@ settings:
   delimiter: ''
   key: heap-size
   security: NON_SECURE
-  value: '512'
+  value: '1024'
 - append: false
   category: C32-LD
   delimiter: ''
@@ -366,7 +394,7 @@ settings:
   delimiter: ;
   key: extra-include-directories
   security: NON_SECURE
-  value: ../src;../src/config/default;../src/packs/PIC32MX675F512H_DFP;
+  value: ../src;../src/config/default;
 - append: false
   category: C32CPP
   delimiter: ''

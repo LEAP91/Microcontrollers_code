@@ -2,6 +2,7 @@ build/default/production/_ext/1832805299/sys_console.o: \
  ../src/config/default/system/console/src/sys_console.c \
  ../src/config/default/system/console/sys_console.h \
  ../src/config/default/configuration.h ../src/config/default/user.h \
+ ../src/config/default/device.h \
  ../src/config/default/toolchain_specifics.h \
  ../src/config/default/system/system.h \
  ../src/config/default/system/system_common.h \
@@ -22,6 +23,8 @@ build/default/production/_ext/1832805299/sys_console.o: \
 ../src/config/default/configuration.h:
 
 ../src/config/default/user.h:
+
+../src/config/default/device.h:
 
 ../src/config/default/toolchain_specifics.h:
 

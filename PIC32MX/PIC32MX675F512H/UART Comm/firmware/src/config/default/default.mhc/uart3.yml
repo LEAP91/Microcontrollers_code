@@ -12,14 +12,14 @@ children:
       - type: Dynamic
         attributes: {id: uart3, value: '16'}
   - type: Comment
-    attributes: {id: UART_BAUD_ERROR_COMMENT}
+    attributes: {id: UART_BAUD_PER_ERROR_COMMENT}
     children:
     - type: Attributes
       children:
-      - type: Boolean
-        attributes: {id: visible}
+      - type: String
+        attributes: {id: text}
         children:
-        - {type: Value, value: 'false'}
+        - {type: Value, value: '*** Baud Error = 2.1241 % ***'}
   - type: KeyValueSet
     attributes: {id: UART_BRGH}
     children:
@@ -27,16 +27,6 @@ children:
       children:
       - type: Dynamic
         attributes: {id: uart3, value: '0'}
-  - type: Comment
-    attributes: {id: UART_BRGH_MODE_COMMENT}
-    children:
-    - type: Attributes
-      children:
-      - type: String
-        attributes: {id: text}
-        children:
-        - {type: Value, value: '*** High Speed mode 4x baud clock enabled (BRGH =
-            1) ***'}
   - type: Integer
     attributes: {id: UART_CLOCK_FREQ}
     children:

@@ -20,6 +20,19 @@ children:
         attributes: {id: drvPic32mEthmac, value: LAN8720}
 - type: Attachments
   children:
+  - type: DirectDependency
+    attributes: {id: ETHMAC_PHY_Dependency}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: targetComponentID}
+        children:
+        - {type: Value, value: drvExtPhyLan8720}
+      - type: String
+        attributes: {id: targetAttachmentID}
+        children:
+        - {type: Value, value: libdrvExtPhyLan8720}
   - type: DirectCapability
     attributes: {id: libdrvPic32mEthmac}
     children:

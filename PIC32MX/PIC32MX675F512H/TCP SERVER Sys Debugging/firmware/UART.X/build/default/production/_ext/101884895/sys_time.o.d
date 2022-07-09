@@ -12,6 +12,7 @@ build/default/production/_ext/101884895/sys_time.o: \
  ../src/config/default/peripheral/evic/plib_evic.h \
  ../src/config/default/system/int/sys_int_mapping.h \
  ../src/config/default/configuration.h ../src/config/default/user.h \
+ ../src/config/default/device.h \
  ../src/config/default/system/time/src/sys_time_local.h \
  ../src/config/default/osal/osal.h \
  ../src/config/default/osal/osal_definitions.h \
@@ -42,6 +43,8 @@ build/default/production/_ext/101884895/sys_time.o: \
 ../src/config/default/configuration.h:
 
 ../src/config/default/user.h:
+
+../src/config/default/device.h:
 
 ../src/config/default/system/time/src/sys_time_local.h:
 

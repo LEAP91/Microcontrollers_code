@@ -1,6 +1,7 @@
 build/default/production/_ext/944882569/sys_debug.o: \
  ../src/config/default/system/debug/src/sys_debug.c \
  ../src/config/default/configuration.h ../src/config/default/user.h \
+ ../src/config/default/device.h \
  ../src/config/default/toolchain_specifics.h \
  ../src/config/default/system/system.h \
  ../src/config/default/system/system_common.h \
@@ -16,6 +17,8 @@ build/default/production/_ext/944882569/sys_debug.o: \
 ../src/config/default/configuration.h:
 
 ../src/config/default/user.h:
+
+../src/config/default/device.h:
 
 ../src/config/default/toolchain_specifics.h:
 

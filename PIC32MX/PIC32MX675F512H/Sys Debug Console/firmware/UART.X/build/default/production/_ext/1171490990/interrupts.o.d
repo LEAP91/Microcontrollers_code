@@ -1,6 +1,7 @@
 build/default/production/_ext/1171490990/interrupts.o: \
  ../src/config/default/interrupts.c ../src/config/default/configuration.h \
- ../src/config/default/user.h ../src/config/default/toolchain_specifics.h \
+ ../src/config/default/user.h ../src/config/default/device.h \
+ ../src/config/default/toolchain_specifics.h \
  ../src/config/default/interrupts.h ../src/config/default/definitions.h \
  ../src/config/default/peripheral/uart/plib_uart3.h \
  ../src/config/default/device.h \
@@ -31,6 +32,8 @@ build/default/production/_ext/1171490990/interrupts.o: \
 ../src/config/default/configuration.h:
 
 ../src/config/default/user.h:
+
+../src/config/default/device.h:
 
 ../src/config/default/toolchain_specifics.h:
 

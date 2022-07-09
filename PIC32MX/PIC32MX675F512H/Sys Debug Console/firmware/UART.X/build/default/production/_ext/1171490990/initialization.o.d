@@ -1,6 +1,7 @@
 build/default/production/_ext/1171490990/initialization.o: \
  ../src/config/default/initialization.c \
  ../src/config/default/configuration.h ../src/config/default/user.h \
+ ../src/config/default/device.h \
  ../src/config/default/toolchain_specifics.h \
  ../src/config/default/definitions.h \
  ../src/config/default/peripheral/uart/plib_uart3.h \
@@ -27,12 +28,13 @@ build/default/production/_ext/1171490990/initialization.o: \
  ../src/config/default/osal/osal_definitions.h \
  ../src/config/default/osal/osal_impl_basic.h \
  ../src/config/default/system/debug/sys_debug.h \
- ../src/config/default/system/console/sys_console.h ../src/app.h \
- ../src/config/default/device.h
+ ../src/config/default/system/console/sys_console.h ../src/app.h
 
 ../src/config/default/configuration.h:
 
 ../src/config/default/user.h:
+
+../src/config/default/device.h:
 
 ../src/config/default/toolchain_specifics.h:
 
@@ -89,5 +91,3 @@ build/default/production/_ext/1171490990/initialization.o: \
 ../src/config/default/system/console/sys_console.h:
 
 ../src/app.h:
-
-../src/config/default/device.h:

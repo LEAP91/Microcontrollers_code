@@ -3,6 +3,7 @@ build/default/production/_ext/732082881/drv_ethmac.o: \
  ../src/config/default/driver/ethmac/src/dynamic/drv_ethmac_lib.h \
  ../src/config/default/system_config.h \
  ../src/config/default/configuration.h ../src/config/default/user.h \
+ ../src/config/default/device.h \
  ../src/config/default/toolchain_specifics.h \
  ../src/config/default/system/debug/sys_debug.h \
  ../src/config/default/system/system.h \
@@ -38,6 +39,8 @@ build/default/production/_ext/732082881/drv_ethmac.o: \
 ../src/config/default/configuration.h:
 
 ../src/config/default/user.h:
+
+../src/config/default/device.h:
 
 ../src/config/default/toolchain_specifics.h:
 

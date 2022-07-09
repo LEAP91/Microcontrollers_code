@@ -4,6 +4,7 @@ build/default/production/_ext/1033058136/arp.o: \
  ../src/config/default/toolchain_specifics.h \
  ../src/config/default/system_config.h \
  ../src/config/default/configuration.h ../src/config/default/user.h \
+ ../src/config/default/device.h \
  ../src/config/default/toolchain_specifics.h \
  ../src/config/default/system/debug/sys_debug.h \
  ../src/config/default/system/system.h \
@@ -44,6 +45,7 @@ build/default/production/_ext/1033058136/arp.o: \
  ../src/config/default/library/tcpip/udp.h \
  ../src/config/default/library/tcpip/icmp.h \
  ../src/config/default/library/tcpip/lldp.h \
+ ../src/config/default/library/tcpip/tcpip_commands.h \
  ../src/config/default/library/tcpip/src/tcpip_types.h \
  ../src/config/default/library/tcpip/src/link_list.h \
  ../src/config/default/library/tcpip/src/tcpip_heap_alloc.h \
@@ -55,6 +57,7 @@ build/default/production/_ext/1033058136/arp.o: \
  ../src/config/default/library/tcpip/src/arp_manager.h \
  ../src/config/default/library/tcpip/src/dns_manager.h \
  ../src/config/default/library/tcpip/src/tcp_manager.h \
+ ../src/config/default/library/tcpip/src/tcpip_commands_manager.h \
  ../src/config/default/library/tcpip/src/udp_manager.h \
  ../src/config/default/library/tcpip/src/lldp_manager.h \
  ../src/config/default/library/tcpip/src/tcpip_packet.h \
@@ -72,6 +75,8 @@ build/default/production/_ext/1033058136/arp.o: \
 ../src/config/default/configuration.h:
 
 ../src/config/default/user.h:
+
+../src/config/default/device.h:
 
 ../src/config/default/toolchain_specifics.h:
 
@@ -153,6 +158,8 @@ build/default/production/_ext/1033058136/arp.o: \
 
 ../src/config/default/library/tcpip/lldp.h:
 
+../src/config/default/library/tcpip/tcpip_commands.h:
+
 ../src/config/default/library/tcpip/src/tcpip_types.h:
 
 ../src/config/default/library/tcpip/src/link_list.h:
@@ -174,6 +181,8 @@ build/default/production/_ext/1033058136/arp.o: \
 ../src/config/default/library/tcpip/src/dns_manager.h:
 
 ../src/config/default/library/tcpip/src/tcp_manager.h:
+
+../src/config/default/library/tcpip/src/tcpip_commands_manager.h:
 
 ../src/config/default/library/tcpip/src/udp_manager.h:
 

@@ -5,12 +5,14 @@
  */
 /* ************************************************************************** */
 
-#ifndef _DEV_BOARD_H   /* Guard against multiple inclusion */
-#define _DEV_BOARD_H 
+#ifndef _DEV_BOARD_H /* Guard against multiple inclusion */
+#define _DEV_BOARD_H
+
 #include "config/default/peripheral/gpio/plib_gpio.h"
 
 #define LED1_ON LED1_Clear();
 #define LED1_OFF LED1_Set();
+#define LED1_TOG LED1_Toggle();
 
 #define LED2_ON LED2_Clear();
 #define LED2_OFF LED2_Set();
@@ -28,141 +30,137 @@
 #define BLUE_OFF BLUE_Set();
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
+  /* ************************************************************************** */
+  /* ************************************************************************** */
+  /* Section: Constants                                                         */
+  /* ************************************************************************** */
+  /* ************************************************************************** */
 
-    /* ************************************************************************** */
-    /* ************************************************************************** */
-    /* Section: Constants                                                         */
-    /* ************************************************************************** */
-    /* ************************************************************************** */
+  /*  A brief description of a section can be given directly below the section
+      banner.
+   */
 
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
+  /* ************************************************************************** */
+  /** Descriptive Constant Name
 
+    @Summary
+      Brief one-line summary of the constant.
 
-    /* ************************************************************************** */
-    /** Descriptive Constant Name
+    @Description
+      Full description, explaining the purpose and usage of the constant.
+      <p>
+      Additional description in consecutive paragraphs separated by HTML
+      paragraph breaks, as necessary.
+      <p>
+      Type "JavaDoc" in the "How Do I?" IDE toolbar for more information on tags.
 
-      @Summary
-        Brief one-line summary of the constant.
-    
-      @Description
-        Full description, explaining the purpose and usage of the constant.
-        <p>
-        Additional description in consecutive paragraphs separated by HTML 
-        paragraph breaks, as necessary.
-        <p>
-        Type "JavaDoc" in the "How Do I?" IDE toolbar for more information on tags.
-    
-      @Remarks
-        Any additional remarks
-     */
+    @Remarks
+      Any additional remarks
+   */
 #define EXAMPLE_CONSTANT 0
 
+  // *****************************************************************************
+  // *****************************************************************************
+  // Section: Data Types
+  // *****************************************************************************
+  // *****************************************************************************
 
-    // *****************************************************************************
-    // *****************************************************************************
-    // Section: Data Types
-    // *****************************************************************************
-    // *****************************************************************************
+  /*  A brief description of a section can be given directly below the section
+      banner.
+   */
 
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
+  // *****************************************************************************
 
+  /** Descriptive Data Type Name
 
-    // *****************************************************************************
+    @Summary
+      Brief one-line summary of the data type.
 
-    /** Descriptive Data Type Name
+    @Description
+      Full description, explaining the purpose and usage of the data type.
+      <p>
+      Additional description in consecutive paragraphs separated by HTML
+      paragraph breaks, as necessary.
+      <p>
+      Type "JavaDoc" in the "How Do I?" IDE toolbar for more information on tags.
 
-      @Summary
-        Brief one-line summary of the data type.
-    
-      @Description
-        Full description, explaining the purpose and usage of the data type.
-        <p>
-        Additional description in consecutive paragraphs separated by HTML 
-        paragraph breaks, as necessary.
-        <p>
-        Type "JavaDoc" in the "How Do I?" IDE toolbar for more information on tags.
+    @Remarks
+      Any additional remarks
+      <p>
+      Describe enumeration elements and structure and union members above each
+      element or member.
+   */
+  typedef struct _example_struct_t
+  {
+    /* Describe structure member. */
+    int some_number;
 
-      @Remarks
-        Any additional remarks
-        <p>
-        Describe enumeration elements and structure and union members above each 
-        element or member.
-     */
-    typedef struct _example_struct_t {
-        /* Describe structure member. */
-        int some_number;
+    /* Describe structure member. */
+    bool some_flag;
 
-        /* Describe structure member. */
-        bool some_flag;
+  } example_struct_t;
 
-    } example_struct_t;
+  // *****************************************************************************
+  // *****************************************************************************
+  // Section: Interface Functions
+  // *****************************************************************************
+  // *****************************************************************************
 
+  /*  A brief description of a section can be given directly below the section
+      banner.
+   */
 
-    // *****************************************************************************
-    // *****************************************************************************
-    // Section: Interface Functions
-    // *****************************************************************************
-    // *****************************************************************************
+  // *****************************************************************************
+  /**
+    @Function
+      int ExampleFunctionName ( int param1, int param2 )
 
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
+    @Summary
+      Brief one-line description of the function.
 
-    // *****************************************************************************
-    /**
-      @Function
-        int ExampleFunctionName ( int param1, int param2 ) 
+    @Description
+      Full description, explaining the purpose and usage of the function.
+      <p>
+      Additional description in consecutive paragraphs separated by HTML
+      paragraph breaks, as necessary.
+      <p>
+      Type "JavaDoc" in the "How Do I?" IDE toolbar for more information on tags.
 
-      @Summary
-        Brief one-line description of the function.
+    @Precondition
+      List and describe any required preconditions. If there are no preconditions,
+      enter "None."
 
-      @Description
-        Full description, explaining the purpose and usage of the function.
-        <p>
-        Additional description in consecutive paragraphs separated by HTML 
-        paragraph breaks, as necessary.
-        <p>
-        Type "JavaDoc" in the "How Do I?" IDE toolbar for more information on tags.
+    @Parameters
+      @param param1 Describe the first parameter to the function.
 
-      @Precondition
-        List and describe any required preconditions. If there are no preconditions,
-        enter "None."
+      @param param2 Describe the second parameter to the function.
 
-      @Parameters
-        @param param1 Describe the first parameter to the function.
-    
-        @param param2 Describe the second parameter to the function.
+    @Returns
+      List (if feasible) and describe the return values of the function.
+      <ul>
+        <li>1   Indicates an error occurred
+        <li>0   Indicates an error did not occur
+      </ul>
 
-      @Returns
-        List (if feasible) and describe the return values of the function.
-        <ul>
-          <li>1   Indicates an error occurred
-          <li>0   Indicates an error did not occur
-        </ul>
+    @Remarks
+      Describe any special behavior not described above.
+      <p>
+      Any additional remarks.
 
-      @Remarks
-        Describe any special behavior not described above.
-        <p>
-        Any additional remarks.
+    @Example
+      @code
+      if(ExampleFunctionName(1, 2) == 0)
+      {
+          return 3;
+      }
+   */
+  int ExampleFunction(int param1, int param2);
 
-      @Example
-        @code
-        if(ExampleFunctionName(1, 2) == 0)
-        {
-            return 3;
-        }
-     */
-    int ExampleFunction(int param1, int param2);
-
-
-    /* Provide C++ Compatibility */
+  /* Provide C++ Compatibility */
 #ifdef __cplusplus
 }
 #endif

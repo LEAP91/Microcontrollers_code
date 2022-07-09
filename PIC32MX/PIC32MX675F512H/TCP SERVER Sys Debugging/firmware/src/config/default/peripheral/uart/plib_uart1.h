@@ -61,7 +61,7 @@
 // *****************************************************************************
 // *****************************************************************************
 
-#define UART1_FrequencyGet()    (uint32_t)(80000000UL)
+#define UART1_FrequencyGet()    (uint32_t)(8000000UL)
 
 /****************************** UART1 API *********************************/
 
@@ -78,6 +78,8 @@ size_t UART1_WriteCountGet(void);
 size_t UART1_WriteFreeBufferCountGet(void);
 
 size_t UART1_WriteBufferSizeGet(void);
+
+bool UART1_TransmitComplete(void);
 
 bool UART1_WriteNotificationEnable(bool isEnabled, bool isPersistent);
 

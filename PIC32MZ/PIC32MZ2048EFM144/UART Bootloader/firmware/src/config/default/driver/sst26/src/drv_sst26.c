@@ -56,7 +56,7 @@
 // *****************************************************************************
 // *****************************************************************************
 
-#define SQI_CHIP_SELECT         SQI_BDCTRL_SQICS_CS1
+#define SQI_CHIP_SELECT         SQI_BDCTRL_SQICS_CS0
 
 #define SQI_LANE_MODE           SQI_BDCTRL_MODE_QUAD_LANE
 

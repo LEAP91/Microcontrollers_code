@@ -15,26 +15,26 @@
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
-* Copyright (C) 2021 Microchip Technology Inc. and its subsidiaries.
-*
-* Subject to your compliance with these terms, you may use Microchip software
-* and any derivatives exclusively with Microchip products. It is your
-* responsibility to comply with third party license terms applicable to your
-* use of third party software (including open source software) that may
-* accompany Microchip software.
-*
-* THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
-* EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
-* WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
-* PARTICULAR PURPOSE.
-*
-* IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
-* INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
-* WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
-* BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
-* FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
-* ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
-* THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+ * Copyright (C) 2021 Microchip Technology Inc. and its subsidiaries.
+ *
+ * Subject to your compliance with these terms, you may use Microchip software
+ * and any derivatives exclusively with Microchip products. It is your
+ * responsibility to comply with third party license terms applicable to your
+ * use of third party software (including open source software) that may
+ * accompany Microchip software.
+ *
+ * THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+ * EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED
+ * WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A
+ * PARTICULAR PURPOSE.
+ *
+ * IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+ * INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+ * WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS
+ * BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE
+ * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN
+ * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
+ * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
  *******************************************************************************/
 // DOM-IGNORE-END
 
@@ -55,23 +55,23 @@
 // *****************************************************************************
 // *****************************************************************************
 
-#define FLASH_START             (0x9d000000UL)
-#define FLASH_LENGTH            (0x200000UL)
-#define PAGE_SIZE               (2048UL)
-#define ERASE_BLOCK_SIZE        (16384UL)
-#define PAGES_IN_ERASE_BLOCK    (ERASE_BLOCK_SIZE / PAGE_SIZE)
-#define DATA_SIZE               ERASE_BLOCK_SIZE
+#define FLASH_START (0x9d000000UL)
+#define FLASH_LENGTH (0x200000UL)
+#define PAGE_SIZE (2048UL)
+#define ERASE_BLOCK_SIZE (16384UL)
+#define PAGES_IN_ERASE_BLOCK (ERASE_BLOCK_SIZE / PAGE_SIZE)
+#define DATA_SIZE ERASE_BLOCK_SIZE
 
-#define BOOTLOADER_SIZE         16384
+#define BOOTLOADER_SIZE 16384
 
-#define APP_START_ADDRESS       ((uint32_t)(PA_TO_KVA0(0x1d000000UL)))
+#define APP_START_ADDRESS ((uint32_t)(PA_TO_KVA0(0x1d000000UL)))
 
-#define APP_UPDATE_REQUIRED         (0xFFFFFFFFU)
-#define APP_CLEAR_UPDATE_REQUIRED   (0x00000000U)
+#define APP_UPDATE_REQUIRED (0xFFFFFFFFU)
+#define APP_CLEAR_UPDATE_REQUIRED (0x00000000U)
 
-#define APP_META_DATA_PROLOGUE      (0xDEADBEEFU)
-#define APP_META_DATA_EPILOGUE      (0xBEEFDEADU)
-#define APP_META_DATA_CLR           (0xFFFFFFFFU)
+#define APP_META_DATA_PROLOGUE (0xDEADBEEFU)
+#define APP_META_DATA_EPILOGUE (0xBEEFDEADU)
+#define APP_META_DATA_CLR (0xFFFFFFFFU)
 
 typedef enum
 {
@@ -213,10 +213,10 @@ typedef struct
 APP_META_DATA CACHE_ALIGN appMetaData;
 
 BOOTLOADER_DATA CACHE_ALIGN btlData =
-{
-    .state              = BOOTLOADER_STATE_INIT,
-    .flash_addr         = APP_START_ADDRESS,
-    .appStartAddress    = APP_START_ADDRESS,
+    {
+        .state = BOOTLOADER_STATE_INIT,
+        .flash_addr = APP_START_ADDRESS,
+        .appStartAddress = APP_START_ADDRESS,
 };
 
 static uint32_t CACHE_ALIGN clearUpdateRequired[DRV_SST26_PAGE_SIZE / sizeof(uint32_t)];
@@ -242,7 +242,7 @@ static void bootloader_TriggerReset(void)
 
 void run_Application(void)
 {
-    uint32_t msp            = *(uint32_t *)(btlData.appStartAddress);
+    uint32_t msp = *(uint32_t *)(btlData.appStartAddress);
 
     void (*fptr)(void);
 
@@ -260,11 +260,11 @@ void run_Application(void)
 /* Function to Generate CRC by reading the firmware programmed into internal flash */
 static uint32_t crc_generate(void)
 {
-    uint32_t   i, j, value;
-    uint32_t   crc_tab[256];
-    uint32_t   size    = appMetaData.appSize;
-    uint32_t   crc     = 0xffffffff;
-    uint8_t    data;
+    uint32_t i, j, value;
+    uint32_t crc_tab[256];
+    uint32_t size = appMetaData.appSize;
+    uint32_t crc = 0xffffffff;
+    uint8_t data;
 
     for (i = 0; i < 256; i++)
     {
@@ -292,7 +292,7 @@ static uint32_t crc_generate(void)
     return crc;
 }
 
-static bool BOOTLOADER_WaitForXferComplete( void )
+static bool BOOTLOADER_WaitForXferComplete(void)
 {
     bool status = false;
 
@@ -304,7 +304,7 @@ static bool BOOTLOADER_WaitForXferComplete( void )
 
     } while (transferStatus == SERIAL_MEM_TRANSFER_BUSY);
 
-    if(transferStatus == SERIAL_MEM_TRANSFER_COMPLETED)
+    if (transferStatus == SERIAL_MEM_TRANSFER_COMPLETED)
     {
         status = true;
     }
@@ -312,15 +312,15 @@ static bool BOOTLOADER_WaitForXferComplete( void )
     return status;
 }
 
-static bool BOOTLOADER_GetMetaData( void )
+static bool BOOTLOADER_GetMetaData(void)
 {
     bool status = false;
 
-    btlData.serialFlashStart    = btlData.geometry.blockStartAddress;
+    btlData.serialFlashStart = btlData.geometry.blockStartAddress;
 
-    btlData.serialFlashSize     = (btlData.geometry.read_blockSize * btlData.geometry.read_numBlocks);
+    btlData.serialFlashSize = (btlData.geometry.read_blockSize * btlData.geometry.read_numBlocks);
 
-    btlData.appMetaDataAddress  = ((btlData.serialFlashStart + btlData.serialFlashSize) - btlData.geometry.erase_blockSize);
+    btlData.appMetaDataAddress = ((btlData.serialFlashStart + btlData.serialFlashSize) - btlData.geometry.erase_blockSize);
 
     if (DRV_SST26_Read(btlData.handle, (uint32_t *)&appMetaData, sizeof(appMetaData), btlData.appMetaDataAddress) != true)
     {
@@ -332,36 +332,36 @@ static bool BOOTLOADER_GetMetaData( void )
     return status;
 }
 
-static bool BOOTLOADER_CheckForUpdate( void )
+static bool BOOTLOADER_CheckForUpdate(void)
 {
     bool status = false;
 
     /* Check if Meta Data has expected prologue and epilogue before update
      * When meta Data is in Reset State or corrupted jump to existing
      * application running in internal flash.
-    */
+     */
     if ((appMetaData.prologue == APP_META_DATA_PROLOGUE) &&
         (appMetaData.epilogue == APP_META_DATA_EPILOGUE) &&
-        (appMetaData.appSize  != 0))
+        (appMetaData.appSize != 0))
     {
         if (appMetaData.isAppUpdateRequired == APP_UPDATE_REQUIRED)
         {
             status = true;
         }
 
-        btlData.flash_addr      = appMetaData.appStartAddress;
+        btlData.flash_addr = appMetaData.appStartAddress;
         btlData.appStartAddress = appMetaData.appStartAddress;
     }
     else
     {
-        btlData.flash_addr      = APP_START_ADDRESS;
+        btlData.flash_addr = APP_START_ADDRESS;
         btlData.appStartAddress = APP_START_ADDRESS;
     }
 
     return status;
 }
 
-static bool BOOTLOADER_UpdateMetaData( void )
+static bool BOOTLOADER_UpdateMetaData(void)
 {
     bool status = false;
 
@@ -394,43 +394,40 @@ static bool BOOTLOADER_UpdateMetaData( void )
     return status;
 }
 
-void __WEAK SYS_DeInitialize( void *data )
+void __WEAK SYS_DeInitialize(void *data)
 {
     /* Function can be overriden with custom implementation */
 }
 
 static void BOOTLOADER_ReleaseResources(void)
 {
-    SYS_DeInitialize ( NULL );
+    SYS_DeInitialize(NULL);
 }
 
 /* Function to program received application firmware data into internal flash */
 static void flash_task(void)
 {
-    uint32_t addr       = btlData.flash_addr;
-    uint32_t page       = 0;
-    uint32_t write_idx  = 0;
-
+    uint32_t addr = btlData.flash_addr;
+    uint32_t page = 0;
+    uint32_t write_idx = 0;
 
     /* Erase the Current sector */
     NVM_PageErase(addr);
 
-    while(NVM_IsBusy() == true)
+    while (NVM_IsBusy() == true)
     {
-
     }
 
     for (page = 0; page < PAGES_IN_ERASE_BLOCK; page++)
     {
         NVM_RowWrite((uint32_t *)&flash_data[write_idx], addr);
 
-        while(NVM_IsBusy() == true)
+        while (NVM_IsBusy() == true)
         {
-
         }
 
-        addr        += PAGE_SIZE;
-        write_idx   += PAGE_SIZE;
+        addr += PAGE_SIZE;
+        write_idx += PAGE_SIZE;
     }
 
     btlData.flash_addr += DATA_SIZE;
@@ -448,164 +445,170 @@ bool __WEAK bootloader_Trigger(void)
     return false;
 }
 
-void bootloader_Tasks ( void )
+void bootloader_Tasks(void)
 {
-    LED1_ON;
+
     /* Check the application's current state. */
-    switch ( btlData.state )
+    switch (btlData.state)
     {
-        case BOOTLOADER_STATE_INIT:
+    case BOOTLOADER_STATE_INIT:
+    {
+        if (DRV_SST26_Status(DRV_SST26_INDEX) == SYS_STATUS_READY)
         {
-            if (DRV_SST26_Status(DRV_SST26_INDEX) == SYS_STATUS_READY)
-            {
-                btlData.state = BOOTLOADER_STATE_OPEN_DRIVER;
-            }
+            btlData.state = BOOTLOADER_STATE_OPEN_DRIVER;
+            // LED1_ON;
+        }
 
+        break;
+    }
+
+    case BOOTLOADER_STATE_OPEN_DRIVER:
+    {
+        // RED_ON;
+        btlData.handle = DRV_SST26_Open(DRV_SST26_INDEX, DRV_IO_INTENT_READWRITE);
+        LED3_ON;
+        if (btlData.handle != DRV_HANDLE_INVALID)
+        {
+            btlData.state = BOOTLOADER_STATE_GEOMETRY_GET;
+            LED2_ON;
+        }
+
+        break;
+    }
+
+    case BOOTLOADER_STATE_GEOMETRY_GET:
+    {
+        if (DRV_SST26_GeometryGet(btlData.handle, (DRV_SST26_GEOMETRY *)&btlData.geometry) != true)
+        {
+            btlData.state = BOOTLOADER_STATE_ERROR;
+            LED3_ON;
             break;
         }
 
-        case BOOTLOADER_STATE_OPEN_DRIVER:
+        btlData.state = BOOTLOADER_STATE_GET_METADATA;
+
+        break;
+    }
+
+    case BOOTLOADER_STATE_GET_METADATA:
+    {
+        if (BOOTLOADER_GetMetaData() == true)
         {
-            btlData.handle = DRV_SST26_Open(DRV_SST26_INDEX, DRV_IO_INTENT_READWRITE);
+            btlData.state = BOOTLOADER_STATE_CHECK_UPDATE;
+            RED_ON;
+        }
+        else
+        {
+            btlData.state = BOOTLOADER_STATE_RUN_APPLICATION;
+            BLUE_ON;
+        }
 
-            if (btlData.handle != DRV_HANDLE_INVALID)
-            {
-                btlData.state = BOOTLOADER_STATE_GEOMETRY_GET;
-            }
+        break;
+    }
 
+    case BOOTLOADER_STATE_CHECK_UPDATE:
+    {
+        if (BOOTLOADER_CheckForUpdate() == true)
+        {
+            btlData.state = BOOTLOADER_STATE_READ_APP_BINARY;
+        }
+        else
+        {
+            btlData.state = BOOTLOADER_STATE_CHECK_TRIGGER;
+        }
+
+        break;
+    }
+
+    case BOOTLOADER_STATE_CHECK_TRIGGER:
+    {
+        if (bootloader_Trigger() == true)
+        {
+            btlData.state = BOOTLOADER_STATE_READ_APP_BINARY;
+        }
+        else
+        {
+            btlData.state = BOOTLOADER_STATE_RUN_APPLICATION;
+        }
+
+        break;
+    }
+
+    case BOOTLOADER_STATE_RUN_APPLICATION:
+    {
+        BOOTLOADER_ReleaseResources();
+
+        run_Application();
+        break;
+    }
+
+    case BOOTLOADER_STATE_READ_APP_BINARY:
+    {
+        memset((void *)flash_data, 0xFF, DATA_SIZE);
+
+        if (DRV_SST26_Read(btlData.handle, (uint32_t *)&flash_data[0], DATA_SIZE, (btlData.serialFlashStart + btlData.read_index)) == false)
+        {
+            btlData.state = BOOTLOADER_STATE_ERROR;
             break;
         }
 
-        case BOOTLOADER_STATE_GEOMETRY_GET:
+        if (BOOTLOADER_WaitForXferComplete() == true)
         {
-            if (DRV_SST26_GeometryGet(btlData.handle, (DRV_SST26_GEOMETRY *)&btlData.geometry) != true)
-            {
-                btlData.state = BOOTLOADER_STATE_ERROR;
-                break;
-            }
-
-            btlData.state = BOOTLOADER_STATE_GET_METADATA;
-
-            break;
+            btlData.state = BOOTLOADER_STATE_FLASH;
+        }
+        else
+        {
+            btlData.state = BOOTLOADER_STATE_ERROR;
         }
 
-        case BOOTLOADER_STATE_GET_METADATA:
-        {
-            if (BOOTLOADER_GetMetaData() == true)
-            {
-                btlData.state = BOOTLOADER_STATE_CHECK_UPDATE;
-            }
-            else
-            {
-                btlData.state = BOOTLOADER_STATE_RUN_APPLICATION;
-            }
+        break;
+    }
 
-            break;
+    case BOOTLOADER_STATE_FLASH:
+    {
+        flash_task();
+
+        btlData.read_index += DATA_SIZE;
+
+        if (btlData.read_index >= appMetaData.appSize)
+        {
+            btlData.state = BOOTLOADER_STATE_VERIFY_BINARY;
+        }
+        else
+        {
+            btlData.state = BOOTLOADER_STATE_READ_APP_BINARY;
         }
 
-        case BOOTLOADER_STATE_CHECK_UPDATE:
-        {
-            if (BOOTLOADER_CheckForUpdate() == true)
-            {
-                btlData.state = BOOTLOADER_STATE_READ_APP_BINARY;
-            }
-            else
-            {
-                btlData.state = BOOTLOADER_STATE_CHECK_TRIGGER;
-            }
+        break;
+    }
 
-            break;
+    case BOOTLOADER_STATE_VERIFY_BINARY:
+    {
+        btlData.crc32 = crc_generate();
+
+        if (btlData.crc32 == appMetaData.appCRC32)
+        {
+            btlData.state = BOOTLOADER_STATE_UPDATE_META_DATA;
+        }
+        else
+        {
+            btlData.state = BOOTLOADER_STATE_ERROR;
         }
 
-        case BOOTLOADER_STATE_CHECK_TRIGGER:
-        {
-            if (bootloader_Trigger() == true)
-            {
-                btlData.state = BOOTLOADER_STATE_READ_APP_BINARY;
-            }
-            else
-            {
-                btlData.state = BOOTLOADER_STATE_RUN_APPLICATION;
-            }
-                
-            break;
-        }
+        break;
+    }
 
-        case BOOTLOADER_STATE_RUN_APPLICATION:
-        {
-            BOOTLOADER_ReleaseResources();
+    case BOOTLOADER_STATE_UPDATE_META_DATA:
+    {
+        BOOTLOADER_UpdateMetaData();
 
-            run_Application();
-            break;
-        }
+        bootloader_TriggerReset();
 
-        case BOOTLOADER_STATE_READ_APP_BINARY:
-        {
-            memset((void *)flash_data, 0xFF, DATA_SIZE);
+        break;
+    }
 
-            if (DRV_SST26_Read(btlData.handle, (uint32_t *)&flash_data[0], DATA_SIZE, (btlData.serialFlashStart + btlData.read_index)) == false)
-            {
-                btlData.state = BOOTLOADER_STATE_ERROR;
-                break;
-            }
-
-            if (BOOTLOADER_WaitForXferComplete() == true)
-            {
-                btlData.state = BOOTLOADER_STATE_FLASH;
-            }
-            else
-            {
-                btlData.state = BOOTLOADER_STATE_ERROR;
-            }
-
-            break;
-        }
-
-        case BOOTLOADER_STATE_FLASH:
-        {
-            flash_task();
-
-            btlData.read_index += DATA_SIZE;
-
-            if (btlData.read_index >= appMetaData.appSize)
-            {
-                btlData.state = BOOTLOADER_STATE_VERIFY_BINARY;
-            }
-            else
-            {
-                btlData.state = BOOTLOADER_STATE_READ_APP_BINARY;
-            }
-
-            break;
-        }
-
-        case BOOTLOADER_STATE_VERIFY_BINARY:
-        {
-            btlData.crc32 = crc_generate();
-
-            if (btlData.crc32 == appMetaData.appCRC32)
-            {
-                btlData.state = BOOTLOADER_STATE_UPDATE_META_DATA;
-            }
-            else
-            {
-                btlData.state = BOOTLOADER_STATE_ERROR;
-            }
-
-            break;
-        }
-
-        case BOOTLOADER_STATE_UPDATE_META_DATA:
-        {
-            BOOTLOADER_UpdateMetaData();
-
-            bootloader_TriggerReset();
-
-            break;
-        }
-
-        case BOOTLOADER_STATE_ERROR:
-        default:
-            break;
+    case BOOTLOADER_STATE_ERROR:
+    default:
+        break;
     }
 }

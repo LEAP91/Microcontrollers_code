@@ -1,22 +1,3 @@
-/*******************************************************************************
-  MPLAB Harmony Application Header File
-
-  Company:
-    Microchip Technology Inc.
-
-  File Name:
-    app.h
-
-  Summary:
-    This header file provides prototypes and definitions for the application.
-
-  Description:
-    This header file provides function prototypes and data type definitions for
-    the application.  Some of these are required by the system (such as the
-    "APP_Initialize" and "APP_Tasks" prototypes) and some of them are only used
-    internally by the application (such as the "APP_STATES" definition).  Both
-    are defined here for convenience.
-*******************************************************************************/
 
 #ifndef _APP_H
 #define _APP_H
@@ -34,14 +15,15 @@
 #include "configuration.h"
 #include "system/console/sys_console.h"
 // DOM-IGNORE-BEGIN
-#ifdef __cplusplus  // Provide C++ Compatibility
+#ifdef __cplusplus // Provide C++ Compatibility
 
-extern "C" {
+extern "C"
+{
 
 #endif
 
-typedef enum
-{
+  typedef enum
+  {
     APP_STATE_WAIT_UART_CONSOLE_CONFIGURED = 0,
     APP_STATE_GET_CONSOLE_HANDLE,
     APP_STATE_DEMONSTRATE_DEBUG_APIS,
@@ -54,22 +36,20 @@ typedef enum
     APP_STATE_ERROR,
     APP_STATE_WRITE_DAC,
     APP_STATE_IDLE,
-            
-            
 
-} APP_STATES;
+  } APP_STATES;
 
-typedef struct
-{
+  typedef struct
+  {
     /* The application's current state */
     APP_STATES state;
     SYS_CONSOLE_HANDLE consoleHandle;
     /* TODO: Define any additional data used by the application. */
 
-} APP_DATA;
+  } APP_DATA;
 
-typedef enum 
-{
+  typedef enum
+  {
     // All Registers
     REVISION_ID = 0x00,
     STATUS_INTERRUPTS = 0x01,
@@ -86,40 +66,30 @@ typedef enum
     GPIO_DATA = 0x0c,
     GPI_EDGE_CTRL = 0x0d,
     GPI_EDGE_STATUS = 0x0e,
-            
-}Register_address;
 
-typedef enum 
-{
+  } Register_address;
+
+  typedef enum
+  {
     high_impedance = 0,
     AO_10V = 1,
     AO_20mA = 2,
     out_of_range1 = 3,
-            
-}AOut_Mode;
 
+  } AOut_Mode;
 
+  void APP_Initialize(void);
 
-void MAX22007_Mode_Set(uint8_t Channel, AOut_Mode mode);
-uint16_t MAX22007_convert_Voltage_to_LSB (float voltage);
-uint16_t MAX22007_convert_Current_to_LSB (float current_mA);
-void MAX22007_Set_DAC(uint8_t Channel, uint16_t LSB_code);
-void MAX22007_write_register(Register_address address, uint16_t data);
-uint32_t MAX22007_read_register(Register_address address);
+  void APP_Tasks(void);
 
-void APP_Initialize ( void );
-
-void APP_Tasks( void );
-
-//DOM-IGNORE-BEGIN
+// DOM-IGNORE-BEGIN
 #ifdef __cplusplus
 }
 #endif
-//DOM-IGNORE-END
+// DOM-IGNORE-END
 
 #endif /* _APP_H */
 
 /*******************************************************************************
  End of File
  */
-

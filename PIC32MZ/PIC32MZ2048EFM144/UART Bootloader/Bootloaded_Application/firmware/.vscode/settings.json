@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "sys_debug.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "definitions.h": "c",
+        "dev_board.h": "c",
+        "plib_nvm.h": "c",
+        "plib_gpio.h": "c"
     }
 }

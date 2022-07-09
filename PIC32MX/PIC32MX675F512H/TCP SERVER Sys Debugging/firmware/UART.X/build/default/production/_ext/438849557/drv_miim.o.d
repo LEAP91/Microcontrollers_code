@@ -3,6 +3,7 @@ build/default/production/_ext/438849557/drv_miim.o: \
  ../src/config/default/driver/miim/src/drv_miim_local.h \
  ../src/config/default/system_config.h \
  ../src/config/default/configuration.h ../src/config/default/user.h \
+ ../src/config/default/device.h \
  ../src/config/default/toolchain_specifics.h \
  ../src/config/default/driver/miim/drv_miim.h \
  ../src/config/default/system/system_common.h \
@@ -35,6 +36,8 @@ build/default/production/_ext/438849557/drv_miim.o: \
 ../src/config/default/configuration.h:
 
 ../src/config/default/user.h:
+
+../src/config/default/device.h:
 
 ../src/config/default/toolchain_specifics.h:
 

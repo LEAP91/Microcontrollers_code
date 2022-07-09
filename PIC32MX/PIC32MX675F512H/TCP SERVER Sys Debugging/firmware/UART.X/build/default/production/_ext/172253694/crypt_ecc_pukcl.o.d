@@ -2,6 +2,7 @@ build/default/production/_ext/172253694/crypt_ecc_pukcl.o: \
  ../src/third_party/wolfssl/wolfssl/wolfcrypt/src/port/pic32/crypt_ecc_pukcl.c \
  ../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/crypt_ecc_pukcl.h \
  ../src/config/default/configuration.h ../src/config/default/user.h \
+ ../src/config/default/device.h \
  ../src/config/default/toolchain_specifics.h \
  ../src/third_party/wolfssl/wolfssl/wolfcrypt/cryptocb.h \
  ../src/third_party/wolfssl/wolfssl/wolfcrypt/types.h \
@@ -69,6 +70,8 @@ build/default/production/_ext/172253694/crypt_ecc_pukcl.o: \
 ../src/config/default/configuration.h:
 
 ../src/config/default/user.h:
+
+../src/config/default/device.h:
 
 ../src/config/default/toolchain_specifics.h:
 

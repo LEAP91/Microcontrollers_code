@@ -3,4 +3,4 @@ type: GroupComponent
 attributes: {displayName: TCP/IP STACK, id: TCP/IP STACK}
 children:
 - type: ElementPosition
-  attributes: {x: '63', y: '138', id: TCP/IP STACK}
+  attributes: {x: '66', y: '138', id: TCP/IP STACK}

@@ -65,7 +65,7 @@ int main ( void )
     // ...
         reset = 20;
     }
-   // SYS_CONSOLE_PRINT("Reset %d\n\r", reset);
+    SYS_CONSOLE_PRINT("Reset %d\n\r", reset);
     RCON = 0;
     
 

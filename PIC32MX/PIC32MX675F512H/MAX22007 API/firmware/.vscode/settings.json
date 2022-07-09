@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "definitions.h": "c",
+        "configuration.h": "c",
+        "max22007_api.h": "c",
+        "string.h": "c",
+        "app.h": "c",
+        "stdlib.h": "c"
+    }
+}

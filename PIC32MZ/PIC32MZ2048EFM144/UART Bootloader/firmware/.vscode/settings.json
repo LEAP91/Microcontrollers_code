@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "definitions.h": "c",
+        "plib_gpio.h": "c",
+        "bootloader.h": "c",
+        "plib_sqi1.h": "c",
+        "plib_evic.h": "c",
+        "device.h": "c",
+        "plib_sqi_common.h": "c",
+        "configuration.h": "c"
+    }
+}

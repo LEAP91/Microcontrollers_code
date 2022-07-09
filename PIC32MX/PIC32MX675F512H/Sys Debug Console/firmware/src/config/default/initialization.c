@@ -64,11 +64,11 @@
 
 
 /*** DEVCFG1 ***/
-#pragma config FNOSC =      PRIPLL
-#pragma config FPBDIV =     DIV_1
+#pragma config FNOSC =      FRCPLL
+#pragma config FPBDIV =     DIV_4
 #pragma config FSOSCEN =    OFF
 #pragma config IESO =       ON
-#pragma config POSCMOD =    XT
+#pragma config POSCMOD =    OFF
 #pragma config OSCIOFNC =   OFF
 #pragma config FCKSM =      CSDCMD
 #pragma config WDTPS =      PS1048576
@@ -84,11 +84,12 @@
 
 /*** DEVCFG3 ***/
 #pragma config FSRSSEL =    PRIORITY_7
-#pragma config FVBUSONIO =  ON
+#pragma config FVBUSONIO =  OFF
 #pragma config USERID =     0xffff
-#pragma config FUSBIDIO =   ON
+#pragma config FUSBIDIO =   OFF
 #pragma config FMIIEN =     OFF
 #pragma config FETHIO =     OFF
+
 
 
 
@@ -184,6 +185,8 @@ const SYS_DEBUG_INIT debugInit =
 
 void SYS_Initialize ( void* data )
 {
+    /* MISRAC 2012 deviation block start */
+    /* MISRA C-2012 Rule 2.2 deviated in this file.  Deviation record ID -  H3_MISRAC_2012_R_2_2_DR_1 */
 
     /* Start out with interrupts disabled before configuring any modules */
     __builtin_disable_interrupts();
@@ -198,8 +201,8 @@ void SYS_Initialize ( void* data )
     CHECONbits.PFMWS = 2;
     CHECONbits.PREFEN = 3;
 
-    /* Set the SRAM wait states to zero */
-    BMXCONbits.BMXWSDRM = 0;
+    /* Set the SRAM wait states to One */
+    BMXCONbits.BMXWSDRM = 1;
 
     /* Configure Debug Data Port */
     DDPCONbits.JTAGEN = 0;
@@ -228,6 +231,7 @@ void SYS_Initialize ( void* data )
     __builtin_enable_interrupts();
 
 
+    /* MISRAC 2012 deviation block end */
 }
 
 

@@ -74,6 +74,10 @@ void SYS_Tasks ( void )
     /* Maintain system services */
     
 
+SYS_CMD_Tasks();
+
+
+
 
     /* Maintain Device Drivers */
     DRV_MIIM_Tasks(sysObj.drvMiim);

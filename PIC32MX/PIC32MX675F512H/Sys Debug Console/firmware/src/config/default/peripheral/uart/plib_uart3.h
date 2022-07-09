@@ -61,7 +61,7 @@
 // *****************************************************************************
 // *****************************************************************************
 
-#define UART3_FrequencyGet()    (uint32_t)(80000000UL)
+#define UART3_FrequencyGet()    (uint32_t)(20000000UL)
 
 /****************************** UART3 API *********************************/
 
@@ -78,6 +78,8 @@ size_t UART3_WriteCountGet(void);
 size_t UART3_WriteFreeBufferCountGet(void);
 
 size_t UART3_WriteBufferSizeGet(void);
+
+bool UART3_TransmitComplete(void);
 
 bool UART3_WriteNotificationEnable(bool isEnabled, bool isPersistent);
 

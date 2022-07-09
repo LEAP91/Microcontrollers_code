@@ -37,7 +37,8 @@ build/default/production/_ext/1832805299/sys_console_uart.o: \
  ../src/config/default/system/debug/sys_debug.h ../src/app.h \
  ../src/app_input.h ../src/config/default/system/console/sys_console.h \
  ../src/config/default/system/console/src/sys_console_uart_definitions.h \
- ../src/config/default/peripheral/nvm/plib_nvm.h
+ ../src/config/default/peripheral/nvm/plib_nvm.h ../src/Dev_Board.h \
+ ../src/config/default/peripheral/gpio/plib_gpio.h
 
 ../src/config/default/system/console/sys_console.h:
 
@@ -122,3 +123,7 @@ build/default/production/_ext/1832805299/sys_console_uart.o: \
 ../src/config/default/system/console/src/sys_console_uart_definitions.h:
 
 ../src/config/default/peripheral/nvm/plib_nvm.h:
+
+../src/Dev_Board.h:
+
+../src/config/default/peripheral/gpio/plib_gpio.h:

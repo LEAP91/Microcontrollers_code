@@ -159,6 +159,11 @@ bool SPI4_Read(void* pReceiveData, size_t rxSize)
     return(SPI4_WriteRead(NULL, 0, pReceiveData, rxSize));
 }
 
+bool SPI4_IsTransmitterBusy (void)
+{
+    return ((SPI4STAT & _SPI4STAT_SRMT_MASK) == 0)? true : false;
+}
+
 bool SPI4_WriteRead (void* pTransmitData, size_t txSize, void* pReceiveData, size_t rxSize)
 {
     bool isRequestAccepted = false;

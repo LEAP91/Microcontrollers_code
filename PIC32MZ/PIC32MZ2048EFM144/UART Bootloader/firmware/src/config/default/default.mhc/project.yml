@@ -12,14 +12,14 @@ files:
   physicalPath: bootloader
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 46A4471AF5092ED390CE6E273B893FB9
-- generatedChecksum: F74818AF60798C8B82255A88755ED9DA
+  userChecksum: F11BA725D1F560D612615DE7181825FA
+- generatedChecksum: 479D3F2FF6900275CD72549F38CD37F7
   logicalPath: config/default/driver/sst26
   name: drv_sst26.c
   physicalPath: driver/sst26/src
   security: NON_SECURE
   type: SOURCE
-  userChecksum: F74818AF60798C8B82255A88755ED9DA
+  userChecksum: 479D3F2FF6900275CD72549F38CD37F7
 - generatedChecksum: D230A6B646D2E78CEAA6AA924E04FCA0
   logicalPath: config/default
   name: exceptions.c
@@ -48,13 +48,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: null
-- generatedChecksum: E51343A581886DB4AA014D4FB94D5581
+- generatedChecksum: 1D681ED01F57EBA2D556EA541E5D6272
   logicalPath: config/default/peripheral/clk
   name: plib_clk.c
   physicalPath: peripheral/clk
   security: NON_SECURE
   type: SOURCE
-  userChecksum: E51343A581886DB4AA014D4FB94D5581
+  userChecksum: 1D681ED01F57EBA2D556EA541E5D6272
 - generatedChecksum: F8BB2BAA74068083A80E6E229BBCF3E3
   logicalPath: config/default/peripheral/coretimer
   name: plib_coretimer.c
@@ -124,14 +124,14 @@ files:
   physicalPath: bootloader
   security: NON_SECURE
   type: HEADER
-  userChecksum: 990DBFB8486BC4A7F3871187FE5C13C3
-- generatedChecksum: C472A3605FD8BA41A5DFC627BC92C8F0
+  userChecksum: 40E9452FAF8F6E8F49D83F70FC79CF02
+- generatedChecksum: 67C8145EA555B661582B4977B7D51C1B
   logicalPath: config/default
   name: configuration.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: C472A3605FD8BA41A5DFC627BC92C8F0
+  userChecksum: 67C8145EA555B661582B4977B7D51C1B
 - generatedChecksum: 6175AAD64C07B96A2A1A5B0B75A13A37
   logicalPath: config/default
   name: definitions.h
@@ -320,7 +320,7 @@ files:
   physicalPath: ''
   security: NON_SECURE
   type: LINKER
-  userChecksum: 131E08ED34A41917A3FAC8F13F203328
+  userChecksum: 20F2DEF86BF96CBF37EABC08C47CCEA1
 format_version: v1.0
 libraries: []
 settings:

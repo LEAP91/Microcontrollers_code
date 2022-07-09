@@ -31,8 +31,7 @@
 bool bootloader_Trigger(void)
 {
   uint32_t i;
-  LED3_ON;
-  LED2_OFF;
+
   // Cheap delay. This should give at leat 1 ms delay.
   for (i = 0; i < 2000; i++)
   {
@@ -50,10 +49,10 @@ bool bootloader_Trigger(void)
 
 int main(void)
 {
-  LED2_ON;
+
   /* Initialize all modules */
   SYS_Initialize(NULL);
-  LED1_ON;
+  //LED1_ON;
   while (true)
   {
     /* Maintain state machines of all polled MPLAB Harmony modules. */

@@ -114,8 +114,7 @@ void APP_Initialize(void)
 {
   /* Place the App state machine in its initial state. */
   appData.state = APP_STATE_INIT;
-
-  
+  APP_TIMER_START();
 }
 
 /******************************************************************************
@@ -139,7 +138,7 @@ void APP_Tasks(void)
 
     if (appInitialized)
     {
-
+      LED2_ON;
       appData.state = APP_STATE_SERVICE_TASKS;
     }
     break;
@@ -149,7 +148,7 @@ void APP_Tasks(void)
   {
     CORETIMER_DelayMs(500);
 
-    LED1_Toggle();
+    LED1_TOG;
 
     break;
   }

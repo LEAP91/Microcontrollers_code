@@ -1,6 +1,7 @@
 build/default/production/_ext/1645245335/crypto.o: \
  ../src/config/default/crypto/src/crypto.c ../src/config/default/config.h \
  ../src/config/default/configuration.h ../src/config/default/user.h \
+ ../src/config/default/device.h \
  ../src/config/default/toolchain_specifics.h \
  ../src/config/default/configuration.h \
  ../src/config/default/crypto/crypto.h \
@@ -30,6 +31,8 @@ build/default/production/_ext/1645245335/crypto.o: \
 ../src/config/default/configuration.h:
 
 ../src/config/default/user.h:
+
+../src/config/default/device.h:
 
 ../src/config/default/toolchain_specifics.h:
 

@@ -18,5 +18,12 @@ children:
       children:
       - type: User
         attributes: {value: 'true'}
+  - type: Boolean
+    attributes: {id: TCPIP_AUTOCONFIG_ENABLE_TCPIPCMD}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
 - type: ElementPosition
   attributes: {x: '21', y: '20', id: tcpip_basic_config}

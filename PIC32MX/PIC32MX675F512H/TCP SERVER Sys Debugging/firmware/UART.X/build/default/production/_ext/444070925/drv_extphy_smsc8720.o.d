@@ -3,6 +3,7 @@ build/default/production/_ext/444070925/drv_extphy_smsc8720.o: \
  ../src/config/default/driver/ethphy/src/drv_ethphy_local.h \
  ../src/config/default/system_config.h \
  ../src/config/default/configuration.h ../src/config/default/user.h \
+ ../src/config/default/device.h \
  ../src/config/default/toolchain_specifics.h \
  ../src/config/default/driver/miim/drv_miim.h \
  ../src/config/default/system/system_common.h \
@@ -21,6 +22,8 @@ build/default/production/_ext/444070925/drv_extphy_smsc8720.o: \
 ../src/config/default/configuration.h:
 
 ../src/config/default/user.h:
+
+../src/config/default/device.h:
 
 ../src/config/default/toolchain_specifics.h:
 

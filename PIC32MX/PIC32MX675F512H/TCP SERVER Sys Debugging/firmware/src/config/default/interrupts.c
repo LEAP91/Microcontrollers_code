@@ -62,7 +62,7 @@
 
 
 void CORE_TIMER_InterruptHandler( void );
-void UART_1_InterruptHandler( void );
+void UART_3_InterruptHandler( void );
 void NVM_InterruptHandler( void );
 void ETHERNET_InterruptHandler( void );
 
@@ -74,9 +74,9 @@ void __ISR(_CORE_TIMER_VECTOR, ipl1SOFT) CORE_TIMER_Handler (void)
     CORE_TIMER_InterruptHandler();
 }
 
-void __ISR(_UART_1_VECTOR, ipl1SOFT) UART_1_Handler (void)
+void __ISR(_UART_3_VECTOR, ipl1SOFT) UART_3_Handler (void)
 {
-    UART_1_InterruptHandler();
+    UART_3_InterruptHandler();
 }
 
 void __ISR(_FCE_VECTOR, ipl1SOFT) FCE_Handler (void)

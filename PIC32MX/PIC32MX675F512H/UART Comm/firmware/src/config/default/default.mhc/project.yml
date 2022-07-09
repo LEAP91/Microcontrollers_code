@@ -6,13 +6,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 99DB74296DF9943C474F4F03A700C790
-- generatedChecksum: E21EC2B0C8B3C14EBEF33E7DE835CEEC
+- generatedChecksum: F59C52600D8E31890318A7563101C56A
   logicalPath: config/default
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: E21EC2B0C8B3C14EBEF33E7DE835CEEC
+  userChecksum: F59C52600D8E31890318A7563101C56A
 - generatedChecksum: 4B6A778CF4449A8EC938F5D4D0917E56
   logicalPath: config/default
   name: interrupts.c
@@ -48,20 +48,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 8C641FF1528AA66A000E7493A3F15BCE
-- generatedChecksum: 8B6FEE286EE951B4C5E2059295CA30AB
+- generatedChecksum: F1A53BF3A68616FFCB0CD3D8F9F057CE
   logicalPath: config/default/peripheral/uart
   name: plib_uart3.c
   physicalPath: peripheral/uart
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 8B6FEE286EE951B4C5E2059295CA30AB
-- generatedChecksum: 7806B30ECAE0D18D08CD583D8775530D
+  userChecksum: F1A53BF3A68616FFCB0CD3D8F9F057CE
+- generatedChecksum: 71352EF41F6688AD8408E42970B50B66
   logicalPath: config/default/stdio
   name: xc32_monitor.c
   physicalPath: stdio
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 7806B30ECAE0D18D08CD583D8775530D
+  userChecksum: 71352EF41F6688AD8408E42970B50B66
 - generatedChecksum: B01D75990FC057D94C0C3AE3812CCF54
   logicalPath: config/default
   name: definitions.h
@@ -118,13 +118,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 91611515A95D92B82B7F4064C16D122B
-- generatedChecksum: 2C8543317B3F067432097AB9BD3E8672
+- generatedChecksum: 7DC91D6D376C98802C9C2990432DE9B7
   logicalPath: config/default
   name: toolchain_specifics.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 2C8543317B3F067432097AB9BD3E8672
+  userChecksum: 7DC91D6D376C98802C9C2990432DE9B7
 - generatedChecksum: 8D8549D8E5BF0954D3BCD1B62B84436C
   logicalPath: config/default
   name: p32MX675F512H.ld
@@ -140,7 +140,7 @@ settings:
   delimiter: ;
   key: extra-include-directories
   security: NON_SECURE
-  value: ../src;../src/config/default;../src/packs/PIC32MX675F512H_DFP;
+  value: ../src;../src/config/default;
 - append: false
   category: C32
   delimiter: ''
@@ -170,7 +170,7 @@ settings:
   delimiter: ;
   key: extra-include-directories
   security: NON_SECURE
-  value: ../src;../src/config/default;../src/packs/PIC32MX675F512H_DFP;
+  value: ../src;../src/config/default;
 - append: false
   category: C32CPP
   delimiter: ''

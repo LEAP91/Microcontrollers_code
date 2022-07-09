@@ -11,6 +11,15 @@ children:
       children:
       - type: Dynamic
         attributes: {id: uart3, value: '25'}
+  - type: Comment
+    attributes: {id: UART_BAUD_PER_ERROR_COMMENT}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: text}
+        children:
+        - {type: Value, value: '*** Baud Error = 0.1597 % ***'}
   - type: KeyValueSet
     attributes: {id: UART_BRGH}
     children:
@@ -18,16 +27,6 @@ children:
       children:
       - type: Dynamic
         attributes: {id: uart3, value: '0'}
-  - type: Comment
-    attributes: {id: UART_BRGH_MODE_COMMENT}
-    children:
-    - type: Attributes
-      children:
-      - type: String
-        attributes: {id: text}
-        children:
-        - {type: Value, value: '*** High Speed mode 4x baud clock enabled (BRGH =
-            1) ***'}
   - type: Integer
     attributes: {id: UART_CLOCK_FREQ}
     children:
@@ -92,7 +91,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '256'}
+        attributes: {value: '1024'}
   - type: File
     attributes: {id: UART_SOURCE}
     children:
@@ -114,7 +113,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '256'}
+        attributes: {value: '1024'}
   - type: Hex
     attributes: {id: UMODE_VALUE}
     children:
