@@ -11,6 +11,8 @@
 
 #define TX_NUM_BYTES 4
 #define RX_NUM_BYTES 4
+
+// Replace depending on the SPI module selected
 #define SPI_WRITE(a, b) SPI4_Write(a, b)
 #define SPI_IsBusy SPI4_IsBusy()
 #define SPI_WriteRead(v, x, y, z) SPI4_WriteRead(v, x, y, z)
@@ -89,10 +91,10 @@ uint32_t MAX22007_read_register(Register_address address)
     {
         dac_cmd[4] = (address << 1) + 0x01;
         memcpy(txBuffer, dac_cmd, 4);
-        while (SPI4_IsBusy())
+        while (SPI_IsBusy)
             ;
-        SPI4_WriteRead(&txBuffer, 4, &rxBuffer, 4);
-        while (SPI4_IsBusy())
+        SPI_WriteRead(&txBuffer, 4, &rxBuffer, 4);
+        while (SPI_IsBusy)
             ;
     }
     else
@@ -100,10 +102,10 @@ uint32_t MAX22007_read_register(Register_address address)
         dac_cmd[3] = (address << 1) + 0x01;
         memcpy(txBuffer, dac_cmd, 4);
 
-        while (SPI4_IsBusy())
+        while (SPI_IsBusy)
             ;
-        SPI4_WriteRead(&txBuffer, 4, &rxBuffer, 4);
-        while (SPI4_IsBusy())
+        SPI_WriteRead(&txBuffer, 4, &rxBuffer, 4);
+        while (SPI_IsBusy)
             ;
 
         crc_Buffer[0] = (address << 1) + 0x01;
@@ -119,7 +121,7 @@ uint32_t MAX22007_read_register(Register_address address)
             return 0xfffffffe; // return a 32 bit value to flag an error
         }
     }
-    result = (((uint16_t)rxBuffer[1]) << 8) + (rxBuffer[2]); // Get 16 bit register result
+    result = (((uint16_t)rxBuffer[2]) << 8) + (rxBuffer[1]); // Get 16 bit register result
 
     return result;
 }
@@ -144,7 +146,7 @@ void MAX22007_write_register(Register_address address, uint16_t data)
     if (crc_Enabled == false)
     {
         memcpy(txBuffer, dac_cmd + 1, 3);
-        SPI4_Write(&txBuffer, 3);
+        SPI_WRITE(&txBuffer, 3);
     }
     else
     {
@@ -155,10 +157,10 @@ void MAX22007_write_register(Register_address address, uint16_t data)
 
         memcpy(txBuffer, dac_cmd, 4);
 
-        while (SPI4_IsBusy())
+        while (SPI_IsBusy)
             ;
         reqAccepted = SPI_WRITE(&txBuffer, 4);
-        while (SPI4_IsBusy())
+        while (SPI_IsBusy)
             ;
         while (!reqAccepted)
             ;
@@ -179,7 +181,7 @@ void MAX22007_Mode_Set(uint8_t Channel, AOut_Mode mode)
     //  Set AO Mode (Register 0x05: CHANNEL_MODE)
     uint16_t previous_mode = MAX22007_read_register(CHANNEL_MODE);
 
-    uint16_t new_mode = (uint16_t)previous_mode;
+    uint16_t new_mode = (uint16_t)previous_mode | 0x0F00;
     switch (Channel)
     {
     case 0:
@@ -251,6 +253,8 @@ void MAX22007_Mode_Set(uint8_t Channel, AOut_Mode mode)
         break;
     }
 
+    SYS_CONSOLE_PRINT("Previous mode: %x\r\n", previous_mode);
+    SYS_CONSOLE_PRINT("Mode set register value: %x\r\n", new_mode);
     MAX22007_write_register(CHANNEL_MODE, new_mode);
 }
 

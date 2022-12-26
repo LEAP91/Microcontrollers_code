@@ -111,7 +111,7 @@ void UART3_Initialize( void )
     U3STASET = (_U3STA_UTXEN_MASK | _U3STA_URXEN_MASK | _U3STA_UTXISEL1_MASK );
 
     /* BAUD Rate register Setup */
-    U3BRG = 42;
+    U3BRG = 3;
 
     /* Disable Interrupts */
     IEC1CLR = _IEC1_U3EIE_MASK;

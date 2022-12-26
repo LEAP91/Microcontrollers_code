@@ -71,9 +71,13 @@ void APP_Tasks(void)
 
         MAX22007_Mode_Set(0, AO_10V); // setup Channel 0 to Voltage Mode
 
-        DAC_LSB_value = MAX22007_convert_Voltage_to_LSB((float)8.0); // get integer value for 10.0 Volt
+        DAC_LSB_value = MAX22007_convert_Voltage_to_LSB((float)6.5); // get integer value for 10.0 Volt
 
         MAX22007_Set_DAC(0, DAC_LSB_value); // write this 10V value to Channel 0
+        MAX22007_Mode_Set(1, AO_10V);
+        // DAC_LSB_value = MAX22007_convert_Voltage_to_LSB((float)6.5); // get integer value for 10.0 Volt
+
+        // MAX22007_Set_DAC(0, DAC_LSB_value); // write this 10V value to Channel 0
 
         appData.state = APP_STATE_IDLE;
         break;
