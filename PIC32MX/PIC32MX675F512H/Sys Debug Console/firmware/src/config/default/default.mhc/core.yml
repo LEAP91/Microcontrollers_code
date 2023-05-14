@@ -80,7 +80,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '2'}
+        attributes: {id: core, value: '0'}
       - type: User
         attributes: {value: '2'}
   - type: Combo
@@ -96,7 +96,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: FRCPLL}
+        attributes: {value: FRC}
   - type: Combo
     attributes: {id: CONFIG_FPBDIV}
     children:
@@ -180,14 +180,14 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '20000000'}
+        attributes: {value: '2000000'}
   - type: String
     attributes: {id: CPU_CLOCK_FREQUENCY}
     children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '80000000'}
+        attributes: {id: core, value: '8000000'}
   - type: Integer
     attributes: {id: CVR_CLOCK_FREQUENCY}
     children:
@@ -530,7 +530,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '80000000'}
+        attributes: {value: '8000000'}
   - type: Hex
     attributes: {id: SYS_PORT_C_LAT}
     children:
@@ -607,7 +607,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: '20000000'}
+        attributes: {id: core, value: '2000000'}
   - type: Integer
     attributes: {id: UART4_CLOCK_FREQUENCY}
     children:

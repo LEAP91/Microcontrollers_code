@@ -63,4 +63,4 @@ children:
       - type: Dynamic
         attributes: {id: uart3, value: '8'}
 - type: ElementPosition
-  attributes: {x: '49', y: '100', id: uart3}
+  attributes: {x: '57', y: '129', id: uart3}

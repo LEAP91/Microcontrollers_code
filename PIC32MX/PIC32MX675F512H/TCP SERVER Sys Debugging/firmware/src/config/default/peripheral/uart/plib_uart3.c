@@ -49,15 +49,15 @@
 
 UART_RING_BUFFER_OBJECT uart3Obj;
 
-#define UART3_READ_BUFFER_SIZE      1024
-#define UART3_READ_BUFFER_SIZE_9BIT (1024 >> 1)
+#define UART3_READ_BUFFER_SIZE      128
+#define UART3_READ_BUFFER_SIZE_9BIT (128 >> 1)
 #define UART3_RX_INT_DISABLE()      IEC1CLR = _IEC1_U3RXIE_MASK;
 #define UART3_RX_INT_ENABLE()       IEC1SET = _IEC1_U3RXIE_MASK;
 
 static uint8_t UART3_ReadBuffer[UART3_READ_BUFFER_SIZE];
 
-#define UART3_WRITE_BUFFER_SIZE     1024
-#define UART3_WRITE_BUFFER_SIZE_9BIT       (1024 >> 1)
+#define UART3_WRITE_BUFFER_SIZE     128
+#define UART3_WRITE_BUFFER_SIZE_9BIT       (128 >> 1)
 #define UART3_TX_INT_DISABLE()      IEC1CLR = _IEC1_U3TXIE_MASK;
 #define UART3_TX_INT_ENABLE()       IEC1SET = _IEC1_U3TXIE_MASK;
 
@@ -163,6 +163,7 @@ bool UART3_SerialSetup( UART_SERIAL_SETUP *setup, uint32_t srcClkFreq )
 {
     bool status = false;
     uint32_t baud;
+    uint32_t status_ctrl;
     uint8_t brgh = 1;
     int32_t uxbrg = 0;
 
@@ -196,7 +197,10 @@ bool UART3_SerialSetup( UART_SERIAL_SETUP *setup, uint32_t srcClkFreq )
             return status;
         }
 
-        /* Turn OFF UART3 */
+        /* Turn OFF UART3. Save UTXEN, URXEN and UTXBRK bits as these are cleared upon disabling UART */
+
+        status_ctrl = U3STA & (_U3STA_UTXEN_MASK | _U3STA_URXEN_MASK | _U3STA_UTXBRK_MASK);
+
         U3MODECLR = _U3MODE_ON_MASK;
 
         if(setup->dataWidth == UART_DATA_9_BIT)
@@ -228,6 +232,9 @@ bool UART3_SerialSetup( UART_SERIAL_SETUP *setup, uint32_t srcClkFreq )
         }
 
         U3MODESET = _U3MODE_ON_MASK;
+
+        /* Restore UTXEN, URXEN and UTXBRK bits. */
+        U3STASET = status_ctrl;
 
         status = true;
     }
@@ -597,15 +604,15 @@ size_t UART3_WriteBufferSizeGet(void)
 }
 
 bool UART3_TransmitComplete( void )
-{    
+{
     if((U3STA & _U3STA_TRMT_MASK))
     {
         return true;
     }
-	else
-	{
-		return false;
-	}
+    else
+    {
+        return false;
+    }
 }
 
 bool UART3_WriteNotificationEnable(bool isEnabled, bool isPersistent)

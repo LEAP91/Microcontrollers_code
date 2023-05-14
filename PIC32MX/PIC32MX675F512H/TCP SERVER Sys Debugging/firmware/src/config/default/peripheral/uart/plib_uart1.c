@@ -49,15 +49,15 @@
 
 UART_RING_BUFFER_OBJECT uart1Obj;
 
-#define UART1_READ_BUFFER_SIZE      256
-#define UART1_READ_BUFFER_SIZE_9BIT (256 >> 1)
+#define UART1_READ_BUFFER_SIZE      128
+#define UART1_READ_BUFFER_SIZE_9BIT (128 >> 1)
 #define UART1_RX_INT_DISABLE()      IEC0CLR = _IEC0_U1RXIE_MASK;
 #define UART1_RX_INT_ENABLE()       IEC0SET = _IEC0_U1RXIE_MASK;
 
 static uint8_t UART1_ReadBuffer[UART1_READ_BUFFER_SIZE];
 
-#define UART1_WRITE_BUFFER_SIZE     256
-#define UART1_WRITE_BUFFER_SIZE_9BIT       (256 >> 1)
+#define UART1_WRITE_BUFFER_SIZE     128
+#define UART1_WRITE_BUFFER_SIZE_9BIT       (128 >> 1)
 #define UART1_TX_INT_DISABLE()      IEC0CLR = _IEC0_U1TXIE_MASK;
 #define UART1_TX_INT_ENABLE()       IEC0SET = _IEC0_U1TXIE_MASK;
 
@@ -111,7 +111,7 @@ void UART1_Initialize( void )
     U1STASET = (_U1STA_UTXEN_MASK | _U1STA_URXEN_MASK | _U1STA_UTXISEL1_MASK );
 
     /* BAUD Rate register Setup */
-    U1BRG = 16;
+    U1BRG = 173;
 
     /* Disable Interrupts */
     IEC0CLR = _IEC0_U1EIE_MASK;
@@ -163,6 +163,7 @@ bool UART1_SerialSetup( UART_SERIAL_SETUP *setup, uint32_t srcClkFreq )
 {
     bool status = false;
     uint32_t baud;
+    uint32_t status_ctrl;
     uint8_t brgh = 1;
     int32_t uxbrg = 0;
 
@@ -196,7 +197,10 @@ bool UART1_SerialSetup( UART_SERIAL_SETUP *setup, uint32_t srcClkFreq )
             return status;
         }
 
-        /* Turn OFF UART1 */
+        /* Turn OFF UART1. Save UTXEN, URXEN and UTXBRK bits as these are cleared upon disabling UART */
+
+        status_ctrl = U1STA & (_U1STA_UTXEN_MASK | _U1STA_URXEN_MASK | _U1STA_UTXBRK_MASK);
+
         U1MODECLR = _U1MODE_ON_MASK;
 
         if(setup->dataWidth == UART_DATA_9_BIT)
@@ -228,6 +232,9 @@ bool UART1_SerialSetup( UART_SERIAL_SETUP *setup, uint32_t srcClkFreq )
         }
 
         U1MODESET = _U1MODE_ON_MASK;
+
+        /* Restore UTXEN, URXEN and UTXBRK bits. */
+        U1STASET = status_ctrl;
 
         status = true;
     }
@@ -597,15 +604,15 @@ size_t UART1_WriteBufferSizeGet(void)
 }
 
 bool UART1_TransmitComplete( void )
-{    
+{
     if((U1STA & _U1STA_TRMT_MASK))
     {
         return true;
     }
-	else
-	{
-		return false;
-	}
+    else
+    {
+        return false;
+    }
 }
 
 bool UART1_WriteNotificationEnable(bool isEnabled, bool isPersistent)

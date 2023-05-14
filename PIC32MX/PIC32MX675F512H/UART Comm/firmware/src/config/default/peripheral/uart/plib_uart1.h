@@ -61,7 +61,7 @@
 // *****************************************************************************
 // *****************************************************************************
 
-#define UART1_FrequencyGet()    (uint32_t)(80000000UL)
+#define UART1_FrequencyGet()    (uint32_t)(8000000UL)
 
 /****************************** UART1 API *********************************/
 
@@ -86,6 +86,7 @@ bool UART1_ReceiverIsReady( void );
 void UART1_WriteByte( int data );
 
 bool UART1_TransmitterIsReady( void );
+
 
 bool UART1_TransmitComplete( void );
 

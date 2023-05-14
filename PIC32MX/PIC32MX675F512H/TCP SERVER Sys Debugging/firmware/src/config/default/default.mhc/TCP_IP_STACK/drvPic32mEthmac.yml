@@ -33,18 +33,5 @@ children:
         attributes: {id: targetAttachmentID}
         children:
         - {type: Value, value: libdrvExtPhyLan8720}
-  - type: DirectCapability
-    attributes: {id: libdrvPic32mEthmac}
-    children:
-    - type: Attributes
-      children:
-      - type: String
-        attributes: {id: targetComponentID}
-        children:
-        - {type: Value, value: BASIC CONFIGURATION}
-      - type: String
-        attributes: {id: targetAttachmentID}
-        children:
-        - {type: Value, value: 'tcpipNetConfig_0:NETCONFIG_MAC_Dependency'}
 - type: ElementPosition
   attributes: {x: '271', y: '99', id: drvPic32mEthmac}

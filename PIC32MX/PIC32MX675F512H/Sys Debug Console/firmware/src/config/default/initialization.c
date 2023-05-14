@@ -64,7 +64,7 @@
 
 
 /*** DEVCFG1 ***/
-#pragma config FNOSC =      FRCPLL
+#pragma config FNOSC =      FRC
 #pragma config FPBDIV =     DIV_4
 #pragma config FSOSCEN =    OFF
 #pragma config IESO =       ON

@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "ads8674_drivers.h": "c",
+        "ADS8674.C": "cpp"
+    }
+}
