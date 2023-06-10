@@ -1,1 +1,5 @@
+<<<<<<< HEAD:PIC32MX/PIC32MX675F512H/ADS8674 Drivers/firmware/ads8674_drivers.X/.generated_files/3c3389b5d2441f059cc14483b9159bea1b4d72dc.flag
  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/default" -Werror -Wall   -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  D:\Software\PIC microcontrolers\PIC32MX\PIC32MX675F512H\ADS8674 Drivers\firmware\src\config\default\tasks.c
+=======
+ $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/default" -Werror -Wall   -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  D:\Software\PIC microcontrolers\PIC32MX\PIC32MX675F512H\ISOFACE Drivers without UART\firmware\src\main.c
+>>>>>>> dfe6d6aa00cdbb8fd303131307e528343f52be40:PIC32MX/PIC32MX675F512H/ISOFACE Drivers without UART/firmware/UART.X/.generated_files/280b07bcabb75bff0f20ced5d8781c572b66f6a4.flag

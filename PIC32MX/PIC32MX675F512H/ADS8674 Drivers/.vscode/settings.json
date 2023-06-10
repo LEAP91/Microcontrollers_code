@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "ads8674_drivers.h": "c",
-        "ADS8674.C": "cpp"
+        "ADS8674.C": "cpp",
+        "plib_spi4_master.h": "c"
     }
 }

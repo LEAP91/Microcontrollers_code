@@ -55,20 +55,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 994F6BB5EEB18C01DA51438591B93054
-- generatedChecksum: 3A910F7693062E704DDC80639A11C65B
+- generatedChecksum: F21B776BE904E9A2D78E360F489778DA
   logicalPath: config/default/peripheral/spi/spi_master
   name: plib_spi4_master.c
   physicalPath: peripheral/spi/spi_master
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 3A910F7693062E704DDC80639A11C65B
-- generatedChecksum: 6694E0086C611F89709F11951E2BB803
+  userChecksum: F21B776BE904E9A2D78E360F489778DA
+- generatedChecksum: E5DA81F4A9B48E050D63FBA5FDC39109
   logicalPath: config/default/peripheral/uart
   name: plib_uart3.c
   physicalPath: peripheral/uart
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 6694E0086C611F89709F11951E2BB803
+  userChecksum: E5DA81F4A9B48E050D63FBA5FDC39109
 - generatedChecksum: 20C22A19D5DC74DEBFC4CCCA83B6F603
   logicalPath: config/default/system/console
   name: sys_console.c

@@ -1,1 +1,9 @@
+<<<<<<< HEAD
  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/default" -Werror -Wall   -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  D:\Software\PIC microcontrolers\PIC32MX\PIC32MX675F512H\ISOFACE Drivers without UART\firmware\src\main.c
+=======
+<<<<<<< HEAD:PIC32MX/PIC32MX675F512H/ADS8674 Drivers/firmware/ads8674_drivers.X/.generated_files/12acd444cf45f52d245eb5084110bb42e4eb1f3a.flag
+ $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/default" -Werror -Wall   -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  D:\Software\PIC microcontrolers\PIC32MX\PIC32MX675F512H\ADS8674 Drivers\firmware\src\app.c
+=======
+ $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -ffunction-sections -O1 -I"../src" -I"../src/config/default" -Werror -Wall   -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  D:\Software\PIC microcontrolers\PIC32MX\PIC32MX675F512H\ISOFACE Drivers without UART\firmware\src\main.c
+>>>>>>> dfe6d6aa00cdbb8fd303131307e528343f52be40:PIC32MX/PIC32MX675F512H/ISOFACE Drivers without UART/firmware/UART.X/.generated_files/da5be798d7493cea8cffc9d0d7b063f1fc5b5eab.flag
+>>>>>>> dfe6d6aa00cdbb8fd303131307e528343f52be40

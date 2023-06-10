@@ -52,7 +52,7 @@ SPI_OBJECT spi4Obj;
 
 #define SPI4_CON_MSTEN                      (1 << _SPI4CON_MSTEN_POSITION)
 #define SPI4_CON_CKP                        (0 << _SPI4CON_CKP_POSITION)
-#define SPI4_CON_CKE                        (0 << _SPI4CON_CKE_POSITION)
+#define SPI4_CON_CKE                        (1 << _SPI4CON_CKE_POSITION)
 #define SPI4_CON_MODE_32_MODE_16            (3 << _SPI4CON_MODE16_POSITION)
 #define SPI4_CON_ENHBUF                     (1 << _SPI4CON_ENHBUF_POSITION)
 #define SPI4_CON_MSSEN                      (1 << _SPI4CON_MSSEN_POSITION)
@@ -80,7 +80,7 @@ void SPI4_Initialize ( void )
     IFS1CLR = 0x400;
 
     /* BAUD Rate register Setup */
-    SPI4BRG = 49;
+    SPI4BRG = 19;
 
     /* CLear the Overflow */
     SPI4STATCLR = _SPI4STAT_SPIROV_MASK;
@@ -88,7 +88,7 @@ void SPI4_Initialize ( void )
     /*
     MSTEN = 1
     CKP = 0
-    CKE = 0
+    CKE = 1
     MODE<32,16> = 3
     ENHBUF = 1
     MSSEN = 1

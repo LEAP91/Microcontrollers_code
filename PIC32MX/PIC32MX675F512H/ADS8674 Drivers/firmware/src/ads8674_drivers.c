@@ -28,7 +28,6 @@ uint8_t ch3_address[4] = {0, 0, 0, 0xCC};
 uint8_t dummy[4] = {0, 0, 0, 0};
 
 uint8_t STDBY_mode[4] = {0, 0, 0, 0x82};
-
 // ********************************************************************
 //
 // Function: Read Alarm Threshold Registers
@@ -40,25 +39,47 @@ uint8_t STDBY_mode[4] = {0, 0, 0, 0x82};
 // ********************************************************************
 void read_ch_threshold()
 {
-    SPI_ADC_CS_Clear();
-    uint8_t addr_buffer[4] = {0, 0, 0, 0};
-    uint8_t channel = 0x17;
-    addr_buffer[3] = channel;
-    // addr_buffer[3] = (addr_buffer[3] << 1) + 0;
-    addr_buffer[3] = addr_buffer[3] >> 1;
-    // addr_buffer[3] = addr_buffer[3] + 0x80;
+    for (uint8_t i = 0; i < 5; i++)
+    {
 
-    memcpy(txBuffer, addr_buffer, 4);
-    while_spi_busy;
-    // SYS_CONSOLE_PRINT("SPI Write Read..\r\n");
-    SPI_WriteRead(&txBuffer, 4, &rxBuffer, 4);
-    while_spi_busy;
+        SYS_CONSOLE_PRINT("%d\r\n", i);
+        SPI_ADC_CS_Clear();
+        uint8_t addr_buffer[4] = {0, 0, 0, 0};
+        // uint8_t channel = 0x17;
 
-    SYS_CONSOLE_PRINT("read threshold %x\r\n", rxBuffer[0]);
-    SYS_CONSOLE_PRINT("read threshold %x\r\n", rxBuffer[1]);
-    SYS_CONSOLE_PRINT("read threshold %x\r\n", rxBuffer[2]);
-    SYS_CONSOLE_PRINT("read threshold %x\r\n", rxBuffer[3]);
-    SPI_ADC_CS_Set();
+        if (i > 1)
+        {
+            addr_buffer[3] = 0x00;
+        }
+        else
+        {
+            addr_buffer[3] = 0xCC;
+        }
+
+        // addr_buffer[3] = 0xCC;
+        // addr_buffer[2] = 0x08;
+        // addr_buffer[3] = i;
+        // addr_buffer[3] = (addr_buffer[3] << 1) + 1;
+        // addr_buffer[3] = addr_buffer[3] >> 1;
+        // addr_buffer[3] = addr_buffer[3] + 0x80;
+
+        memcpy(txBuffer, addr_buffer, 4);
+        while_spi_busy;
+        // SYS_CONSOLE_PRINT("SPI Write Read..\r\n");
+        SPI_WriteRead(&txBuffer, 4, &rxBuffer, 4);
+        while_spi_busy;
+
+        SYS_CONSOLE_PRINT("read threshold %x\r\n", rxBuffer[0]);
+        SYS_CONSOLE_PRINT("read threshold %x\r\n", rxBuffer[1]);
+        SYS_CONSOLE_PRINT("read threshold %x\r\n", rxBuffer[2]);
+        SYS_CONSOLE_PRINT("read threshold %x\r\n", rxBuffer[3]);
+
+        uint16_t result = (((uint16_t)rxBuffer[0]) << 8) + (rxBuffer[1]);
+        SYS_CONSOLE_PRINT("Float: %f\r\n", (float)result);
+        float voltage = convert_LSB_to_voltage(result);
+        SYS_CONSOLE_PRINT("Float result: %f\r\n", voltage);
+        SPI_ADC_CS_Set();
+    }
 }
 
 void channel_samples(uint8_t tx_buff[])
@@ -148,6 +169,10 @@ uint8_t read_channel_range(uint8_t channel)
 //
 // Function: selects channel range
 // Description: selects channel range (Either 2.5V or 1.25)
+// Value read = rage x VREF
+// VREF = 4.096
+// 0101 = 0 - 2.5 = Para 10V
+// 0110 = 0 - 1.25 = Para 5V = Para medicion de corriente
 //
 // Input: integer - Channel number (05h, 06h, 07h, 08h)
 // Input: integer - Range - 1 for 2.5v, 2 for 1.25, 3 for 0.625

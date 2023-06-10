@@ -48,6 +48,7 @@ children:
         attributes: {value: ETXD1}
   - type: String
     attributes: {id: BSP_PIN_49_FUNCTION_TYPE}
+<<<<<<< HEAD
     children:
     - type: Values
       children:
@@ -62,6 +63,8 @@ children:
         attributes: {value: U1RX}
   - type: String
     attributes: {id: BSP_PIN_51_FUNCTION_TYPE}
+=======
+>>>>>>> dfe6d6aa00cdbb8fd303131307e528343f52be40
     children:
     - type: Values
       children:
