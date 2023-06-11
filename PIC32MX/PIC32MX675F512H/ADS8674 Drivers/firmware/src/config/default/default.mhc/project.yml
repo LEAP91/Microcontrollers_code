@@ -55,13 +55,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 994F6BB5EEB18C01DA51438591B93054
-- generatedChecksum: F21B776BE904E9A2D78E360F489778DA
+- generatedChecksum: 40553A3AC333718633B44490A775F1ED
   logicalPath: config/default/peripheral/spi/spi_master
   name: plib_spi4_master.c
   physicalPath: peripheral/spi/spi_master
   security: NON_SECURE
   type: SOURCE
-  userChecksum: F21B776BE904E9A2D78E360F489778DA
+  userChecksum: 40553A3AC333718633B44490A775F1ED
 - generatedChecksum: E5DA81F4A9B48E050D63FBA5FDC39109
   logicalPath: config/default/peripheral/uart
   name: plib_uart3.c

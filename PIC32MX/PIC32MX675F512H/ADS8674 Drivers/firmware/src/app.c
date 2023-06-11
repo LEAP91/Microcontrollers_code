@@ -24,7 +24,7 @@ static void APP_DebugAPIDemonstrate(void)
 {
     SPI_ADC_CS_Set();
     // SYS_CONSOLE_MESSAGE("Debug Message Test\n\r");
-    // write_channel_range(3, 1);
+    // write_channel_range(2, 1);
     // range = read_channel_range(1);
     // value = read_channel(1);
     read_ch_threshold();

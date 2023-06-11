@@ -39,7 +39,7 @@ uint8_t STDBY_mode[4] = {0, 0, 0, 0x82};
 // ********************************************************************
 void read_ch_threshold()
 {
-    for (uint8_t i = 0; i < 5; i++)
+    for (uint8_t i = 0; i < 10; i++)
     {
 
         SYS_CONSOLE_PRINT("%d\r\n", i);
@@ -53,7 +53,7 @@ void read_ch_threshold()
         }
         else
         {
-            addr_buffer[3] = 0xCC;
+            addr_buffer[3] = 0xC8;
         }
 
         // addr_buffer[3] = 0xCC;
@@ -74,7 +74,7 @@ void read_ch_threshold()
         SYS_CONSOLE_PRINT("read threshold %x\r\n", rxBuffer[2]);
         SYS_CONSOLE_PRINT("read threshold %x\r\n", rxBuffer[3]);
 
-        uint16_t result = (((uint16_t)rxBuffer[0]) << 8) + (rxBuffer[1]);
+        uint16_t result = (((uint16_t)rxBuffer[1]) << 8) + (rxBuffer[0]);
         SYS_CONSOLE_PRINT("Float: %f\r\n", (float)result);
         float voltage = convert_LSB_to_voltage(result);
         SYS_CONSOLE_PRINT("Float result: %f\r\n", voltage);
@@ -103,7 +103,7 @@ void channel_samples(uint8_t tx_buff[])
 float convert_LSB_to_voltage(uint16_t reg)
 {
     float voltage;
-    // reg = reg >> 2;
+    reg = reg >> 2;
     float float_reg = (float)reg;
     SYS_CONSOLE_PRINT("float %f\r\n", float_reg);
 
